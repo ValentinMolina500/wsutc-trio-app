@@ -1,46 +1,95 @@
 <Page id="page" navigatingTo="onNavigatedTo">
     <ActionBar class="action-bar" title="TRIO Feed" />
 
-        <ListView id="feed" items="{{ content }}">
-            <ListView.itemTemplate>
+    <ListView id="feed" items="{{ content }}" itemTemplateSelector="typeOfContent">
+        <ListView.itemTemplates>
+            <template key="NEWS">
                 <StackLayout>
-                    <GridLayout class="card-container" rows="auto, auto, auto, auto, 1, auto" columns="auto, *">
-                        <Image row="0" class="card-icon-img" rowSpan="2" src="~/imgs/wsutc-logo-v2.png" />
+                    <GridLayout class="card-container" rows="auto, auto, auto, auto, auto, 1, auto" columns="auto, *">
+                        <Image row="0" class="card-icon-img" rowSpan="2" src="{{ icon || '~/imgs/wsutc-logo-v2.png' }}" />
                         <Label col="1" class="heading-info">
                             <FormattedString>
-                                <Span class="heading-name" text="Stassia Feltes  " />
-                                <Span class="type" fontSize="12" class="fas" text="&#xf0da;  " />
-                                <Span class="type" text="Career" />
+                                <Span class="heading-name" text="{{ staff }}" />
+                                <Span text="  " />
+                                <Span fontSize="12" class="fas type" text="&#xf0da;  " />
+                                <Span class="type" text="{{ area }}" />
                             </FormattedString>
                         </Label>
-                        <Label col="1" row="1" class="posted-time" text="3 hours ago" />
-                        <Image row="2" col="0" colSpan="2" src="~/imgs/college.jpg" />
-                        <Label  row="3" colSpan="2" class="card-description-text" text="Come join us to hear Bill Gates speech! This is an important event." />
+                        <Label colSpan="2" rowSpan="2"  margin="16" verticalAlignment="middle" horizontalAlignment="right" class="fas" text="&#xf0c1;" />
+                        <Label col="1" row="1" class="posted-time" text="{{ timestamp }}" />
+                        <Image row="2" col="0" colSpan="2" src="{{ image }}" />
+                        <Label row="3" class="card-title-text" colSpan="2" text="{{ title }}" />
+                        <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
 
-                        <StackLayout row="4" colSpan="2" class="card-divider" />
+                        <StackLayout row="5" colSpan="2" class="card-divider" />
 
-                        <GridLayout row="5" colSpan="2" class="card-time-text" margin="16" columns="*, *, *" height="auto">
-                            <Label>
+                        <GridLayout row="6" colSpan="2" class="card-time-text" margin="16" columns="*, *" height="auto">
+                            <Label textAlign="center">
                                 <FormattedString>
-                                    <Span class="fas" text="&#xf3c5; " />
-                                    <Span text=" BSEL 171" />
+                                    <Span class="far" text="&#xf5c2;  " />
+                                    <Span text="17" />
                                 </FormattedString>
                             </Label>
                             <Label col="1">
                                 <FormattedString>
-                                    <Span class="far" text="&#xf017; " />
-                                    <Span text=" 4:00 PM" />
+                                    <Span class="far" text="&#xf59a;  " />
+                                    <Span text="22" />
+                                </FormattedString>
+                            </Label>
+                            <!-- <Label col="2">
+                                <FormattedString>
+                                    <Span class="far" text="&#xf073;  " />
+                                    <Span text="{{ date }}" />
+                                </FormattedString>
+                            </Label> -->
+                        </GridLayout>
+                    </GridLayout>
+                </StackLayout>
+            </template>
+
+            <template key="EVENT">
+                <StackLayout>
+                    <GridLayout class="card-container" rows="auto, auto, auto, auto, auto, 1, auto" columns="auto, *">
+                        <Image row="0" class="card-icon-img" rowSpan="2" src="{{ icon || '~/imgs/wsutc-logo-v2.png' }}" />
+                        <Label col="1" class="heading-info">
+                            <FormattedString>
+                                <Span class="heading-name" text="{{ staff }}" />
+                                <Span text="  " />
+                                <Span fontSize="12" class="fas type" text="&#xf0da;  " />
+                                <Span class="type" text="{{ area }}" />
+                            </FormattedString>
+                        </Label>
+                        <Label col="1" row="1" class="posted-time" text="{{ timestamp }}" />
+                        <Image row="2" col="0" colSpan="2" src="{{ image }}" />
+                        <Label row="3" class="card-title-text" colSpan="2" text="{{ title }}" />
+                        <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
+
+                        <StackLayout row="5" colSpan="2" class="card-divider" />
+
+                        <GridLayout row="6" colSpan="2" class="card-time-text" margin="16" columns="*, *, *" height="auto">
+                            <Label>
+                                <FormattedString>
+                                    <Span class="fas" text="&#xf3c5;  " />
+                                    <Span text="{{ location }}" />
+                                </FormattedString>
+                            </Label>
+                            <Label col="1">
+                                <FormattedString>
+                                    <Span class="far" text="&#xf017;  " />
+                                    <Span text="{{ time }}" />
                                 </FormattedString>
                             </Label>
                             <Label col="2">
                                 <FormattedString>
-                                    <Span class="far" text="&#xf073; " />
-                                    <Span text=" 1/22" />
+                                    <Span class="far" text="&#xf073;  " />
+                                    <Span text="{{ date }}" />
                                 </FormattedString>
                             </Label>
                         </GridLayout>
                     </GridLayout>
                 </StackLayout>
-            </ListView.itemTemplate>
-        </ListView>
+            </template>
+
+        </ListView.itemTemplates>
+    </ListView>
 </Page>

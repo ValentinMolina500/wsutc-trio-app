@@ -12,12 +12,15 @@ $time-text-color: #ccd6e3;
 }
 
 .card-icon-img {
-    margin: 16 8;
+    margin: 16;
     border-radius: 100%;
-    fill: aspectFill;
+    stretch: aspectFill;
     height: 45;
     width: 45;
 }
+
+
+
 
 .heading-info {
     vertical-align: bottom;
@@ -36,7 +39,7 @@ $time-text-color: #ccd6e3;
     color: $sub-heading-color;
 }
 
-.card-description-text {
+.card-description-text, .card-description-text-no-img {
     font-size: 14;
     color: #5b626d;
     line-height: 6;
@@ -44,12 +47,27 @@ $time-text-color: #ccd6e3;
     text-wrap: true;
 }
 
+.card-description-text {
+    margin: 4 16 16 16;
+}
+
+// .card-description-text-no-img {
+//     margin: 5 16 16 16;
+// }
+
+
 .card-divider {
     background-color: #ececec;
 }
 
 .card-time-text {
     color: $time-text-color;
+}
+
+.card-title-text {
+    color: #48505b;
+    font-weight: bold;
+    margin: 16 16 4 16; 
 }
 
 
