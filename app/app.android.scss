@@ -2,7 +2,7 @@
 $wsu-crimson: #981e32;
 $default-font: "Roboto-Regular";
 $red-accent: #c60c30;
-$lightgray: #eff0f2;
+$lightgray: #ecf4fa;
 
 .fab {
     font-family: "Font Awesome 5 Brands", "fa-brands-400";
@@ -20,7 +20,7 @@ $lightgray: #eff0f2;
 }
 
 Label, Button, TextField {
-    font-family: "Roboto-Regular";
+    font-family: "VarelaRound-Regular";
 }
 
 #page, .divider {
@@ -59,6 +59,7 @@ Label, Button, TextField {
     margin: 4 36;
     height: 48;
     font-size: 16;
+    font-family: "Roboto-Regular";
 }
 
 .login-button {

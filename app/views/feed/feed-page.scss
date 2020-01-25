@@ -1,34 +1,55 @@
-.content-title {
-    padding: 4 8;
-    font-size: 18;
-    color: black;
-    opacity: 0.87;
-    font-weight: 600;
-}
 
-.list-item-container {
+$bold-text-color: #48505b;
+$red-accent: #c60c30;
+$sub-heading-color: #a3b1ca;
+$time-text-color: #ccd6e3;
+
+.card-container {
     border-radius: 4;
-}
-
-#feed-container {
+    height: auto;
     background-color: white;
-    margin: 0 8;
+    margin: 4 8;
 }
 
-.posted-text {
-    padding: 8 8 4 8;
-    font-size: 16;
+.card-icon-img {
+    margin: 16 8;
+    border-radius: 100%;
+    fill: aspectFill;
+    height: 45;
+    width: 45;
 }
 
-.time-icon, .date-icon {
-    font-size: 16;
-    text-align: center;
-    margin: 4 0 4 0;
+.heading-info {
+    vertical-align: bottom;
+    font-weight: bold;
 }
 
-.image {
-    margin: 4 0 0 0;
+.heading-name {
+    color: $bold-text-color;
 }
 
+.type {
+    color: $red-accent;
+}
+
+.posted-time {
+    color: $sub-heading-color;
+}
+
+.card-description-text {
+    font-size: 14;
+    color: #5b626d;
+    line-height: 6;
+    margin: 16;
+    text-wrap: true;
+}
+
+.card-divider {
+    background-color: #ececec;
+}
+
+.card-time-text {
+    color: $time-text-color;
+}
 
 
