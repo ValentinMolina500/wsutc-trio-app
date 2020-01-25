@@ -1,0 +1,17 @@
+<Page id="page" navigatingTo="onNavigatingTo">
+    <ActionBar class="action-bar" title="Staff" />
+    <ListView id="list-view" items="{{ staff }}" itemTap="{{ onStaffTap }}">
+        <ListView.itemTemplate>
+            <StackLayout>
+                <GridLayout rows="auto, auto" columns="auto, *" class="card-container">
+                    <Image row="0" class="card-icon-img" rowSpan="2" src="{{ image }}" />
+                    <Label class="staff-name" row="0" col="1" text="{{ name }}" />
+            
+                    <Label class="{{ position == 'TRIO President' ? 'staff-position-pres' : 'staff-position' }}" row="1" col="1" text="{{ position }}" />
+                </GridLayout>
+            </StackLayout>
+        </ListView.itemTemplate>
+
+    </ListView>
+
+</Page>

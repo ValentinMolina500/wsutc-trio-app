@@ -11,6 +11,6 @@ export default class LoginPage extends Observable {
     public onButtonTap(args: EventData) {
         let button = <Button>args.object;
         let page = button.page;
-        Navigator.navigate(Pages.FEED, page);
+        Navigator.navigate(Pages.HOME, page);
     }
 }

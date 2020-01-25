@@ -1,14 +1,28 @@
+<Page actionBarHidden="true">
 
+    <Tabs  tabsPosition="bottom" selectedIndex="0">
+        <TabStrip highlightColor="#c60c30">
+            <TabStripItem>
+                <Label text="Home" />
+                <!-- <Image src="font://&#xf015;" class="fas"></Image> -->
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Staff" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Settings" />
+            </TabStripItem>
+        </TabStrip>
 
-<Page>
-<BottomNavigation>
-    <TabStrip>
-        <Label text="Home" />
-    </TabStrip>
-
-    <TabStripItem>
-        <Frame defaultPage="~/views/feed/feed-page" />
-    </TabStripItem>
-</BottomNavigation>
+        <TabContentItem>
+            <Frame defaultPage="~/views/feed/feed-page" />
+        </TabContentItem>
+        <TabContentItem>
+            <Frame defaultPage="~/views/staff/staff-page" />
+        </TabContentItem>
+        <TabContentItem>
+            <Frame defaultPage="~/views/settings/settings-page" />
+        </TabContentItem>
+    </Tabs>
 </Page>
 

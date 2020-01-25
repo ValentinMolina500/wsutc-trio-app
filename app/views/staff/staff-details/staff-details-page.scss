@@ -1,0 +1,65 @@
+$red-accent: #c60c30;
+$bold-text-color: #48505b;
+.staff-image {
+    // border-width: 2;
+    border-radius: 100%;
+}
+
+.center {
+    text-align: center;
+}
+.fade {
+    // background: linear-gradient(to top, rgb(58, 58, 58), transparent);
+}
+
+.staff-name, .staff-position {
+    
+    text-align: center;
+
+    color: #48505b;
+}
+
+.staff-name {
+    font-size: 20;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.staff-position {
+    font-size: 18;
+    vertical-align: middle;
+    margin-top: 48;
+}
+
+
+.campus {
+    margin-bottom: 90;
+}
+
+.test {
+    // border-width: 2;
+    // border-color: black;
+    border-radius: 50%;
+    background-color: white;
+}
+
+#appointment-btn {
+    margin: 24;
+    horizontal-align: center;
+    vertical-align: bottom;
+    height: 64;
+    width: 64;
+    border-radius: 100%;
+    background-color: $red-accent;
+    color: white;
+    font-weight: bold;
+}
+
+.plus-icon, .chevron-icon {
+    font-size: 16;
+}
+
+.env-icon {
+    font-size: 16;
+}
+

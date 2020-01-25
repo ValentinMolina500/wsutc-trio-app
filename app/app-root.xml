@@ -1,5 +1,5 @@
 <Page>
-    <Frame defaultPage="views/login/login-page" />
+    <Frame id="top-frame" defaultPage="views/login/login-page" />
 </Page>
 <!-- <BottomNavigation>
     <TabStrip>

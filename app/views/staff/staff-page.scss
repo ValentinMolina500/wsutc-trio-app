@@ -1,0 +1,35 @@
+
+$bold-text-color: #48505b;
+$red-accent: #c60c30;
+$sub-heading-color: #a3b1ca;
+$time-text-color: #ccd6e3;
+
+.card-container {
+    border-radius: 4;
+    height: auto;
+    background-color: white;
+    margin: 4 8;
+}
+
+.card-icon-img {
+    margin: 16;
+    border-radius: 100%;
+    stretch: aspectFill;
+    height: 65;
+    width: 65;
+}
+
+
+.staff-name {
+    vertical-align: bottom;
+    font-weight: bold;
+    color: $bold-text-color;
+}
+
+.staff-position {
+    color: $sub-heading-color
+}
+.staff-position-pres {
+    color: $red-accent;
+    // font-weight: bold;
+}

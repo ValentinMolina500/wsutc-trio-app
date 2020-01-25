@@ -9,7 +9,7 @@ export default class FeedPage extends Observable {
 
     public content: Array<News | Event> = [
         {
-            area: ContentArea.LIFE,
+            area: ContentArea.CARRER,
             description: "Come join our resume workshop with Alisa Thompson.",
             date: "4/15",
             icon: "~/imgs/oliva.jpg",
