@@ -1,0 +1,46 @@
+<Page id="page" navigatingTo="onNavigatedTo">
+    <ActionBar class="action-bar" title="TRIO Feed" />
+
+    <GridLayout id="feed-container">
+        <ListView id="feed" items="{{ content }}">
+            <ListView.itemTemplate>
+                <GridLayout rows="4, auto, auto,  auto, auto, 4" class="list-item-container">
+                    <StackLayout row="0" class="divider" />
+                    <Label class="posted-text" row="1" text="Posted 14 hours ago" />
+                    <Label row="2" class="content-title" textWrap="true" text="{{ title }}" />
+
+                
+
+                    <GridLayout  row="3" columns="*, *, *">
+                
+                        <Label col="0" class="time-icon">
+                            <FormattedString>
+                                <Span class="far" text="&#xf017;" />
+                                <Span text=" 4:00 PM" />
+                            </FormattedString>
+                        </Label>
+
+                        <Label col="1" class="date-icon">
+                            <FormattedString>
+                                <Span class="far" text="&#xf073;" />
+                                <Span text=" 1/27" />
+                            </FormattedString>
+                        </Label>
+                        <Label col="2" class="date-icon">
+                            <FormattedString>
+                                <Span class="fas" text="&#xf3c5;" />
+                                <Span text=" BSEL" />
+                            </FormattedString>
+                        </Label>
+
+                    </GridLayout>
+
+
+                    <Image class="image" row="4" src="{{ image || '~/imgs/college.jpg'}}" />
+                    <StackLayout row="5" class="divider" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+
+</Page>

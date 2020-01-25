@@ -1,0 +1,14 @@
+
+
+<Page>
+<BottomNavigation>
+    <TabStrip>
+        <Label text="Home" />
+    </TabStrip>
+
+    <TabStripItem>
+        <Frame defaultPage="~/views/feed/feed-page" />
+    </TabStripItem>
+</BottomNavigation>
+</Page>
+

@@ -1,0 +1,12 @@
+<Page loaded="onLoaded">
+    <ActionBar class="action-bar" title="Settings" />
+    <StackLayout margin="16">
+        <Label margin="0 0 8 0" color="black" fontSize="18" fontWeight="600" text="Current User" />
+        <Label margin="8 0" color="black" fontSize="16"  text="Valentin Molina" />
+        <Label margin="8 0" color="black" fontSize="16"  text="valentin.molina@wsu.edu" />
+        <Label margin="8 0" color="black" fontSize="16"  text="031660605" />
+        <StackLayout margin="8 0" backgroundColor="lightgray" height="1" />
+        <Button tap="{{ logout }}" margin="8 0" class="login-button bold-text" text="Logout" />
+    </StackLayout>    
+
+</Page>

@@ -1,0 +1,35 @@
+<Page actionBarHidden="true" loaded="onLoaded">
+    <ActionBar class="action-bar" title="Login" />
+    <GridLayout class="login-wrapper" rows="*, *, *, *">
+        <!-- <GridLayout row="0" backgroundColor="red" /> -->
+        <!-- <GridLayout row="1" backgroundColor="green" /> -->
+        <!-- <GridLayout row="3" backgroundColor="blue" /> -->
+
+        <GridLayout rows="auto, auto, *" row="2">
+            <TextField hint="Email" keyboardType="email" row="0" 
+                class="login-text-field"/>
+            <TextField hint="Password" secure="true" row="1" 
+                class="login-text-field"/>
+        </GridLayout>
+        <Image row="0" stretch="aspectFit" class="wsutc-logo" 
+            src="~/imgs/wsutc-logo-v2.png" />
+
+        <Image row="1" rowSpan="2" class="trio-logo" 
+            stretch="aspectFit" 
+            src="~/imgs/trio-logo.jpg" />
+            
+        <Button tap="{{ onButtonTap }}" row="2" rowSpan="2" class="login-button bold-text"  text="Login" />   
+
+        <GridLayout row="3">
+            <!-- <Label class="register-text" text="Don't have an account? Register" /> -->
+            <Label class="register-text">
+                <FormattedString>
+                    <Span text="Don't have an account? " />
+                    <Span class="color-red" text="Register" />
+                </FormattedString>
+            </Label>
+        </GridLayout>
+
+    </GridLayout>
+
+</Page>
