@@ -1,9 +1,7 @@
 <Page actionBarHidden="true" loaded="onLoaded">
-    <ActionBar class="action-bar" title="Login" />
+    <!-- <ActionBar class="action-bar" title="Login" />
     <GridLayout class="login-wrapper" rows="*, *, *, *">
-        <!-- <GridLayout row="0" backgroundColor="red" /> -->
-        <!-- <GridLayout row="1" backgroundColor="green" /> -->
-        <!-- <GridLayout row="3" backgroundColor="blue" /> -->
+
 
         <GridLayout rows="auto, auto, *" row="2">
             <TextField hint="Email" keyboardType="email" row="0" 
@@ -21,7 +19,6 @@
         <Button tap="{{ onButtonTap }}" row="2" rowSpan="2" class="login-button bold-text"  text="Login" />   
 
         <GridLayout row="3">
-            <!-- <Label class="register-text" text="Don't have an account? Register" /> -->
             <Label class="register-text">
                 <FormattedString>
                     <Span text="Don't have an account? " />
@@ -30,6 +27,25 @@
             </Label>
         </GridLayout>
 
-    </GridLayout>
+    </GridLayout> -->
+    <GridLayout rows="2*, *, *, *" columns="*, *">
 
+        <GridLayout rows="auto, auto" row="1" colSpan="2">    
+            <Label row="0" class="raleway-bold login-heading" text="LOGIN" />
+            <Label row="1" class="raleway-bold register-text" text="Don't have an Account? Register" />
+        </GridLayout>
+        <GridLayout colSpan="2" row="1" rows="auto, auto" verticalAlignment="bottom">
+            <Label row="0" class="raleway email-txt" text="Email" />
+            <TextField  row="1" class="email-tf" />
+        </GridLayout>
+
+         <GridLayout colSpan="2" row="2" rows="auto, auto" verticalAlignment="top">
+            <Label row="0" class="raleway email-txt" text="Password" />
+            <TextField  row="1" class="email-tf" />
+        </GridLayout>
+        <!-- <StackLayout row="3" backgroundColor="orange" /> -->
+        <Button colSpan="2" tap="{{ onButtonTap }}" row="3" text="LOGIN" id="login-btn" />
+        <Image class="trio-logo" row="0" col="0" colSpan="2" src="~/imgs/trio-logo.jpg" />
+        <Image class="wsu-logo" row="0" colSpan="2"  src="~/imgs/wsutc-logo.png" />
+    </GridLayout>
 </Page>

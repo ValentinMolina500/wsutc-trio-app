@@ -1,0 +1,60 @@
+.login-heading {
+    font-size: 24;
+    color: #060606;
+    margin: 0 16 4 16;
+    font-weight: bold;
+}
+
+.register-text {
+    margin: 4 16 16 16;
+    font-weight: bold;
+    color: #060606;
+    font-family: "Raleway-Black"
+}
+
+.email-tf {
+    // vertical-align: bottom;
+    margin: 0 16;
+    // color: orangered ;
+    // background-color: ;
+    border-bottom-width: 1;
+    border-color: #DCDCDC; 
+}
+
+.email-txt {
+    margin: 4 16;
+    
+}
+
+#login-btn {
+    vertical-align: bottom;
+    height: 72;
+    color: white;
+    background-color: #c60c30;
+    margin: 36 24;
+    font-weight: bold;
+    font-size: 16;
+}
+
+
+.raleway, TextField {
+    font-family: "Raleway-Regular" !important;
+}
+.raleway-med {
+    font-family: "Raleway-Medium" !important;
+}
+.raleway-bold {
+    font-family: "Raleway-Black" !important;
+}
+
+.trio-logo {
+    margin: 48;
+    vertical-align: bottom;
+}
+
+.wsu-logo {
+    vertical-align: top;
+    height: 140;
+    width: 140;
+    margin-top: 8;
+}
