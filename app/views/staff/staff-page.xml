@@ -1,13 +1,20 @@
 <Page id="page" navigatingTo="onNavigatingTo">
-    <ActionBar class="action-bar" title="Staff" />
+    <ActionBar class="action-bar" title="Current Staff" marginBottom="4" />
     <ListView id="list-view" items="{{ staff }}" itemTap="{{ onStaffTap }}">
         <ListView.itemTemplate>
             <StackLayout>
-                <GridLayout rows="auto, auto" columns="auto, *" class="card-container">
+                <GridLayout rows="auto, auto, 1, auto" columns="auto, *" class="card-container">
                     <Image row="0" class="card-icon-img" rowSpan="2" src="{{ image }}" />
                     <Label class="staff-name" row="0" col="1" text="{{ name }}" />
-            
+
                     <Label class="{{ position == 'TRIO President' ? 'staff-position-pres' : 'staff-position' }}" row="1" col="1" text="{{ position }}" />
+                    <StackLayout row="2" colSpan="2" class="card-divider" />
+
+                    <GridLayout padding="16" colSpan="3" row="3" rows="*" columns="*, *, *">
+                        <Label id="message-icon" class="fal" col="2" text="&#xf4a6;" />
+                        <Label id="calendar-icon" class="fal" col="1" text="&#xf073;" />
+                        <Label id="email-icon" class="fal" col="0" text="&#xf0e0;" />
+                    </GridLayout>
                 </GridLayout>
             </StackLayout>
         </ListView.itemTemplate>

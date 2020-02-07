@@ -1,5 +1,7 @@
-<Page id="page"  navigatingTo="onNavigatedTo">
-    <ActionBar class="action-bar" title="What's New" />
+<Page id="page" navigatingTo="onNavigatedTo" 
+    xmlns:RL="nativescript-ripple" 
+    xmlns:dd="nativescript-drop-down">
+    <ActionBar class="action-bar" title="What's New" marginBottom="4" />
 
     <ListView id="feed" items="{{ content }}" itemTemplateSelector="typeOfContent">
         <ListView.itemTemplates>
@@ -15,27 +17,37 @@
                                 <Span class="type" text="{{ area }}" />
                             </FormattedString>
                         </Label>
-                        <Label colSpan="2" rowSpan="2"  margin="16" verticalAlignment="middle" horizontalAlignment="right" class="fas" text="&#xf0c1;" />
+                        <!-- <Label colSpan="2" rowSpan="2" padding="16" verticalAlignment="middle" horizontalAlignment="right" class="fas gray" text="&#xf0c1;" /> -->
+                        <RL:Ripple id="{{ postId }}" tap="{{ openMenu }}" colSpan="2" rowSpan="2" verticalAlignment="middle" horizontalAlignment="right">
+                            <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
+                        </RL:Ripple>
+                        <!-- <dd:DropDown items="{{ ddItems }}" colSpan="2" rowSpan="2" class="drop-down" /> -->
                         <Label col="1" row="1" class="posted-time" text="{{ timestamp }}" />
-                        <Image class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
-                        <Label row="3" class="card-title-text" colSpan="2" text="{{ title }}" />
+                        <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
+                        <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
                         <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
 
                         <StackLayout row="5" colSpan="2" class="card-divider" />
 
-                        <GridLayout row="6" colSpan="2" class="card-time-text" margin="16" columns="*, *" height="auto">
-                            <Label textAlign="center">
-                                <FormattedString>
-                                    <Span class="far" text="&#xf5c2;  " />
-                                    <Span text="17" />
-                                </FormattedString>
-                            </Label>
-                            <Label col="1">
-                                <FormattedString>
-                                    <Span class="far" text="&#xf59a;  " />
-                                    <Span text="22" />
-                                </FormattedString>
-                            </Label>
+                        <GridLayout row="6" colSpan="2" columns="*, *" height="auto">
+
+                            <RL:Ripple col="0" tap="{{ doSmile }}">
+                                <Label class="{{ hasSmiled ? 'card-active-text' : 'card-time-text' }}" padding="16" textAlign="center">
+                                    <FormattedString>
+                                        <Span class="far" text="&#xf5c2;  " />
+                                        <Span text="{{ smileCount }}" />
+                                    </FormattedString>
+                                </Label>
+                            </RL:Ripple>
+
+                            <RL:Ripple col="1" tap="{{ doSurprise }}">
+                                <Label class="{{ hasSurprised ? 'card-active-text' : 'card-time-text' }}" padding="16" col="1">
+                                    <FormattedString>
+                                        <Span class="far" text="&#xf59a;  " />
+                                        <Span text="{{ surprisedCount }}" />
+                                    </FormattedString>
+                                </Label>
+                            </RL:Ripple>
                             <!-- <Label col="2">
                                 <FormattedString>
                                     <Span class="far" text="&#xf073;  " />
@@ -59,20 +71,28 @@
                                 <Span class="type" text="{{ area }}" />
                             </FormattedString>
                         </Label>
+                        <!-- <Label colSpan="2" rowSpan="2" margin="16" verticalAlignment="middle" horizontalAlignment="right" class="fas gray" text="&#xf736;" /> -->
+                        <RL:Ripple id="{{ postId }}" tap="{{ openMenu }}" colSpan="2" rowSpan="2" verticalAlignment="middle" horizontalAlignment="right">
+                            <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
+                        </RL:Ripple>
                         <Label col="1" row="1" class="posted-time" text="{{ timestamp }}" />
-                        <Image class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
-                        <Label row="3" class="card-title-text" colSpan="2" text="{{ title }}" />
+                        <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
+                        <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
                         <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
 
                         <StackLayout row="5" colSpan="2" class="card-divider" />
 
-                        <GridLayout row="6" colSpan="2" class="card-time-text" margin="16" columns="*, *, *" height="auto">
-                            <Label>
-                                <FormattedString>
-                                    <Span class="fas" text="&#xf3c5;  " />
-                                    <Span text="{{ location }}" />
-                                </FormattedString>
-                            </Label>
+
+                        <RL:Ripple tap="{{ eventAdd }}" row="6" colSpan="2">
+                        <GridLayout padding="16" class="card-time-text" columns="*, *, *, auto" height="auto">
+
+                                <Label>
+                                    <FormattedString>
+                                        <Span class="fas" text="&#xf3c5;  " />
+                                        <Span text="{{ location }}" />
+                                    </FormattedString>
+                                </Label>
+                            
                             <Label col="1">
                                 <FormattedString>
                                     <Span class="far" text="&#xf017;  " />
@@ -86,6 +106,7 @@
                                 </FormattedString>
                             </Label>
                         </GridLayout>
+                        </RL:Ripple>
                     </GridLayout>
                 </StackLayout>
             </template>

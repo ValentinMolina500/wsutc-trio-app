@@ -1,5 +1,6 @@
 $red-accent: #c60c30;
 $bold-text-color: #48505b;
+$sub-heading-color: #a3b1ca;
 .staff-image {
     // border-width: 2;
     border-radius: 100%;
@@ -13,13 +14,15 @@ $bold-text-color: #48505b;
 }
 
 .staff-name, .staff-position {
-    
     text-align: center;
-
-    color: #48505b;
+    
+}
+.staff-position {
+    color: $sub-heading-color;
 }
 
 .staff-name {
+    color: #48505b;
     font-size: 20;
     vertical-align: middle;
     font-weight: bold;
@@ -43,12 +46,12 @@ $bold-text-color: #48505b;
     background-color: white;
 }
 
-#appointment-btn {
+.appointment-btn {
     margin: 24;
     horizontal-align: center;
     vertical-align: bottom;
-    height: 64;
-    width: 64;
+    height: 60;
+    width: 60;
     border-radius: 100%;
     background-color: $red-accent;
     color: white;

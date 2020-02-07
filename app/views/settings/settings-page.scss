@@ -1,0 +1,35 @@
+$bold-text-color: #48505b;
+
+.heading {
+    margin: 8 16;
+    color: $bold-text-color;
+    font-size: 20;
+    font-weight: bold;
+}
+
+.content {
+    margin: 8
+}
+
+.right {
+    // text-align: center;
+    horizontal-align: center;
+}
+
+.logout-btn {
+    // horizontal-align: center;
+    vertical-align: bottom;
+    margin: 24 48;
+    // background-color: #c60c30;
+    background: #ED213A;  /* fallback for old browsers */
+background: linear-gradient(to right, #981e32, #c60c30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 100%;
+    color: white;
+    font-weight: bold;
+    height: 56;
+}
+
+.circles {
+    vertical-align: bottom;
+    margin: 0;
+}

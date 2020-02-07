@@ -26,20 +26,37 @@
     
 }
 
-#login-btn {
-    vertical-align: bottom;
-    height: 72;
-    color: white;
-    background-color: #c60c30;
-    margin: 36 24;
+.login-text {
+    margin: 0 32;
     font-weight: bold;
-    font-size: 16;
+    font-size: 24;
+    color: black;
 }
 
-
-.raleway, TextField {
-    font-family: "Raleway-Regular" !important;
+.tf {
+    margin: 16 32; 
 }
+
+.tf-2 {
+    margin: 0 32; 
+}
+
+#login-btn {
+   vertical-align: middle;
+   margin: 0 48 0 48;
+   background: #ED213A;  /* fallback for old browsers */
+background: linear-gradient(to right, #981e32, #c60c30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   border-radius: 100%;
+   color: white;
+   font-weight: bold;
+   height: 56;
+}
+
+// .page {
+//     background: url("~/imgs/drawing.png");
+//     background-repeat: no-repeat;
+// }
+
 .raleway-med {
     font-family: "Raleway-Medium" !important;
 }
@@ -57,4 +74,15 @@
     height: 140;
     width: 140;
     margin-top: 8;
+}
+
+#change-btn {
+    vertical-align: bottom;
+    margin: 8 64 8 64;
+    background: #ED213A;  /* fallback for old browsers */
+    background: linear-gradient(to right, #4f868e, #00a5bd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 100%;
+    color: white;
+    font-weight: bold;
+    height: 40;
 }

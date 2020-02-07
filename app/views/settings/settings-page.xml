@@ -1,6 +1,7 @@
-<Page loaded="onLoaded">
+<Page id="page" loaded="onLoaded">
     <ActionBar class="action-bar" title="Settings" />
-    <StackLayout margin="16">
+    <!-- <GridLayout rows="*, *, *, *">
+    <StackLayout row="0" rowSpan="3" margin="16">
         <Label margin="0 0 8 0" color="black" fontSize="18" fontWeight="600" text="Current User" />
         <Label margin="8 0" color="black" fontSize="16"  text="Valentin Molina" />
         <Label margin="8 0" color="black" fontSize="16"  text="valentin.molina@wsu.edu" />
@@ -8,5 +9,33 @@
         <StackLayout margin="8 0" backgroundColor="lightgray" height="1" />
         <Button tap="{{ logout }}" margin="8 0" class="login-button bold-text" text="Logout" />
     </StackLayout>    
+    </GridLayout> -->
+
+    <!-- <ScrollView height="100%"> -->
+    <GridLayout color="#48505b" backgroundColor="white" margin="8" rows="auto, auto, auto, auto, auto, auto, auto, auto, auto, *" columns="auto, *, *, *, auto">
+        <Label class="heading" colSpan="4" text="Current User" />
+        <Label color="#a3b1ca" row="1" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf007;" />
+        <Label row="1" col="1" colSpan="3" margin="8 16 8 8" text="Valentin Molina" />
+        <Label color="#a3b1ca" row="2" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf0e0;" />
+        <Label row="2" col="1" colSpan="3" margin="8 16 8 8" text="valentin.molina@wsu.edu" />
+        <Label color="#a3b1ca" row="3" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf2c2;" />
+        <Label row="3" col="1" colSpan="3" margin="8 16 8 8" text="03316783" />
+        <Label color="#a3b1ca" row="4" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf507;" />
+        <Label row="4" col="1" colSpan="3" margin="8 16 8 8" text="TRIO Staff" />
+        <StackLayout row="5" colSpan="5" margin="8 0" backgroundColor="#ececec" height="1" />
+        <Label row="6" class="heading" colSpan="4" text="Preferences" />
+        <Label color="#a3b1ca" row="7" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf0f3;" />
+        <Label row="7" col="1" colSpan="3" margin="8 16 8 8" text="Allow Notifications" />
+        <Switch row="7" color="#c60c30" col="4" margin="0 16" />
+        <Label color="#a3b1ca" row="8" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf3e0;" />
+        <Label row="8" col="1" colSpan="3" margin="8 16 8 8" text="Edit Profile Picture" />
+        <Label row="8" class="far right" text="&#xf054;" col="4" margin="16 0" />
+
+        <Button tap="{{ logout }}" class="logout-btn" rowSpan="10" colSpan="5" text="LOGOUT" />
+
+    </GridLayout>
+    <!-- </ScrollView> -->
+
+    <!-- <Image row="3" padding="0 16" stretch="aspectFill"  src="~/imgs/circles3.png" /> -->
 
 </Page>

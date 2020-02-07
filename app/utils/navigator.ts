@@ -1,17 +1,32 @@
 import { Frame, Page, getFrameById } from "tns-core-modules/ui/frame";
 import pages, { Pages } from "~/utils/pages";
+import Authentication from "./authentication";
 /**
  * Handles navigating between pages
  */
 export class Navigator {
     private frame: Frame;
+    // private currentPage: Page;
 
-    public navigate(to: Pages, page: Page): void {
+    public navigateFrame(to: Pages) {
+        let frame = Frame.topmost();
+        frame.navigate(pages.get(to).path);
+    }
+
+    public async navigate(to: Pages, page: Page) {
+        let targetPage = pages.get(to);
         if (to == Pages.LOGIN) {
             let frame = Frame.getFrameById("top-frame");
-            frame.navigate(pages.get(to).path);
+            frame.navigate(targetPage.path);
+        } else if (targetPage.secure) {
+            {
+                let authenticated = await Authentication.isAuthenticated();
+                if (authenticated) {
+                    page.frame.navigate(targetPage.path);
+                }
+            }
         } else {
-            page.frame.navigate(pages.get(to).path);
+            page.frame.navigate(targetPage.path);
         }
     }
 
@@ -24,6 +39,14 @@ export class Navigator {
             }
         })
     }
+
+    // public setCurrentPage(page: Page) {
+    //     this.currentPage = page;
+    // }
+
+    // public getCurrentPage(page: Page) {
+    //     return this.currentPage;
+    // }
 }
 
 

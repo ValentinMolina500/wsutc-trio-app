@@ -10,10 +10,10 @@ export default class StaffPage extends Observable {
     }
 
     public staff: Array<any> = [
-        { name: "Stassia Feltes", position: "TRIO President", image: "~/imgs/stassia.jpg" },
-        { name: "Oliva Primera", position: "Supplemental Instructor", image: "~/imgs/oliva.jpg" },
-        { name: "Jennifer Silva-Guiterrez", position: "Program Coordinator", image: "~/imgs/jennifer.jpg" },
-        { name: "Jarod Cable", position: "Supplemental Instructor", image: "~/imgs/jarod.jpg" },
+        { email: "stassia.feltes@wsu.edu", name: "Stassia Feltes", position: "TRIO President", image: "~/imgs/stassia.jpg" },
+        { email: "oliva.primera@wsu.edu", name: "Oliva Primera", position: "Supplemental Instructor", image: "~/imgs/oliva.jpg" },
+        { email: "j.silva-gutierrez@wsu.edu", name: "Jennifer Silva-Gutierrez", position: "Program Coordinator", image: "~/imgs/jennifer.jpg" },
+        { email: "valentin.molina@wsu.edu", name: "Jarod Cable", position: "Supplemental Instructor", image: "~/imgs/jarod.jpg" },
     ]
 
     public onStaffTap(args: ItemEventData) {

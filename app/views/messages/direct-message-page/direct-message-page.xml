@@ -1,0 +1,27 @@
+<Page id="page" loaded="onLoaded">
+    <ActionBar class="action-bar" title="Stassia Feltes">
+        <GridLayout rows="auto" columns="auto, auto, *">
+            <Label tap="goBack" class="far" text="&#xf060;" fontSize="20" verticalAlignment="middle" />
+            <Image tap="goBack" col="1" marginLeft="8" horizontalAlignment="left" borderRadius="100%" stretch="aspectFill" height="35" width="35" src="~/imgs/stassia.jpg" />
+            <Label col="2" marginLeft="8" fontSize="20" verticalAlignment="middle" text="Stassia Feltes" />
+        </GridLayout>
+    </ActionBar>
+
+    <ListView id="feed" items="{{ messages }}">
+        <ListView.itemTemplate>
+
+            <StackLayout>
+                <GridLayout rows="auto" columns="*, 64">
+
+                    <GridLayout borderRadius="4" rows="auto, auto" margin="8 16 4 16" columns="*, auto" backgroundColor="white">
+                        <Label class="message-text" color="black" colSpan="2" textWrap="true" margin="8 8 4 8" text="{{ message }}" />
+                        <Label text="12:17 PM" row="1" col="1" padding="0 4 4 4" horizontalAlignment="right" verticalAlignment="bottom" fontSize="12" />
+                    </GridLayout>
+                </GridLayout>
+
+            </StackLayout>
+        </ListView.itemTemplate>
+
+    </ListView>
+
+</Page>

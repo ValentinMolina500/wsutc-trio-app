@@ -23,6 +23,7 @@ $time-text-color: #ccd6e3;
 .staff-name {
     vertical-align: bottom;
     font-weight: bold;
+    font-size: 16;
     color: $bold-text-color;
 }
 
@@ -32,4 +33,24 @@ $time-text-color: #ccd6e3;
 .staff-position-pres {
     color: $red-accent;
     // font-weight: bold;
+}
+
+#message-icon, #calendar-icon, #email-icon {
+    font-size: 20;
+    text-align: center;
+    color: #a3b1ca;
+}
+
+#message-icon {
+    margin-left: 16;
+}
+
+#email-icon {
+    margin-right: 16;
+}
+
+
+
+.card-divider {
+    background-color: #ececec;
 }

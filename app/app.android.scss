@@ -6,17 +6,20 @@ $lightgray: #ecf4fa;
 
 .fab {
     font-family: "Font Awesome 5 Brands", "fa-brands-400";
-    font-weight: 400;
+    // font-weight: 400;
 }
 
 .fas {
-    font-family: "Font Awesome 5 Free", "fa-solid-900";
-    font-weight: 900;
+    font-family: "Font Awesome 5 Pro Solid", fa-solid-900;
 }
 
 .far {
     font-family: "Font Awesome 5 Free", "fa-regular-400";
-    font-weight: 400;
+    // font-weight: 400;
+}
+
+.fal {
+    font-family: "fa-light-300";
 }
 
 Label, Button, TextField {
@@ -70,7 +73,9 @@ Label, Button, TextField {
     vertical-align: middle;
 }
 
-
+#settings {
+    // background: linear-gradient(to top, white, $lightgray);
+}
 // .register-text {
 //     text-align: center;
 //     vertical-align: middle;

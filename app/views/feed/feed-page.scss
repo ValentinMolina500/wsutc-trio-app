@@ -12,19 +12,17 @@ $time-text-color: #ccd6e3;
 }
 
 .card-icon-img {
-    margin: 16;
+    margin: 16 16 8 16;
     border-radius: 100%;
     stretch: aspectFill;
     height: 45;
     width: 45;
 }
 
-
-
-
 .heading-info {
     vertical-align: bottom;
     font-weight: bold;
+    font-size: 14;
 }
 
 .heading-name {
@@ -42,13 +40,13 @@ $time-text-color: #ccd6e3;
 .card-description-text, .card-description-text-no-img {
     font-size: 14;
     color: #5b626d;
-    line-height: 6;
-    margin: 16;
+    line-height: 0;
+    // margin: 16;
     text-wrap: true;
 }
 
 .card-description-text {
-    margin: 4 16 16 16;
+    margin: 0 16 16 16;
 }
 
 // .card-description-text-no-img {
@@ -61,15 +59,32 @@ $time-text-color: #ccd6e3;
 }
 
 .card-time-text {
-    color: $time-text-color;
+    color: $sub-heading-color;
+    font-size: 14;
+}
+
+.card-active-text {
+    color: $red-accent;
+}
+
+.drop-down {
+    horizontal-align: right;
 }
 
 .card-title-text {
     color: #48505b;
     font-weight: bold;
-    margin: 16 16 4 16; 
+    font-size: 16;
+    margin: 8 16 4 16; 
 }
 
-.card-img {}
+.card-img {
+    margin: 8 0;
+}
+
+.gray {
+    $bold-text-color: #48505b;
+}
+
 
 

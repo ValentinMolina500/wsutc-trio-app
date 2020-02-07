@@ -1,6 +1,6 @@
-<Page actionBarHidden="true">
+<Page actionBarHidden="true" loaded="onLoaded">
 
-    <Tabs  tabsPosition="bottom" selectedIndex="0">
+    <Tabs tabsPosition="bottom" selectedIndex="0">
         <TabStrip highlightColor="#c60c30">
             <TabStripItem>
                 <Label text="Home" />
@@ -10,8 +10,13 @@
                 <Label text="Staff" />
             </TabStripItem>
             <TabStripItem>
+                <Label fontSize="16" class="fas" text="&#xf27a;" />
+            </TabStripItem>
+
+            <TabStripItem>
                 <Label text="Settings" />
             </TabStripItem>
+            
         </TabStrip>
 
         <TabContentItem>
@@ -21,8 +26,12 @@
             <Frame defaultPage="~/views/staff/staff-page" />
         </TabContentItem>
         <TabContentItem>
+            <Frame defaultPage="~/views/messages/messages-page" />
+        </TabContentItem>
+        <TabContentItem>
             <Frame defaultPage="~/views/settings/settings-page" />
         </TabContentItem>
+    
     </Tabs>
 </Page>
 
