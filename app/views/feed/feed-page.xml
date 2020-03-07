@@ -3,7 +3,7 @@
     xmlns:dd="nativescript-drop-down">
     <ActionBar class="action-bar" title="What's New" marginBottom="4" />
 
-    <ListView id="feed" items="{{ content }}" itemTemplateSelector="typeOfContent">
+    <ListView id="feed" separatorColor="#eff0f2" items="{{ content.feeds }}" itemTemplateSelector="typeOfContent">
         <ListView.itemTemplates>
             <template key="NEWS">
                 <StackLayout>

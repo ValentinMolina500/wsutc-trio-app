@@ -15,7 +15,6 @@
     "lint": "tslint \"app/**/*.ts\""
   },
   "dependencies": {
-    "@fortawesome/fontawesome-pro": "^5.12.0",
     "@nativescript/theme": "~2.2.1",
     "nativescript-calendar": "^2.1.0",
     "nativescript-drop-down": "^5.0.4",

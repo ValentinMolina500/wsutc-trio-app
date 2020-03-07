@@ -13,8 +13,8 @@ export function onNavigatedTo(args: EventData): void {
 }
 
 function setupFeed(page: Page) {
-    let feed = <ListView>page.getViewById("feed");
-    feed.separatorColor = new Color('#eff0f2');
+    //let feed = <ListView>page.getViewById("feed");
+    //feed.separatorColor = new Color('#eff0f2');
 
     if (android) {
         // feed.android.setVerticalScrollBarEnabled(false);

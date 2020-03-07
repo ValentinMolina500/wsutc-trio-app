@@ -25,6 +25,17 @@ $lightgray: #ecf4fa;
 Label, Button, TextField {
     font-family: "VarelaRound-Regular";
 }
+.image1x{
+    width: 10;
+    height: 10;
+    font-size: 10;
+ }
+
+Tabs.bottom-nav {
+    background-color: orangered;
+    color: gold;
+    font-size: 5;
+}
 
 #page, .divider {
     background-color: $lightgray;
