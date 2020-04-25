@@ -1,6 +1,6 @@
-<Page id="page" navigatingTo="onNavigatingTo">
+<Page id="page" navigatingTo="onNavigatingTo" xmlns:RL="nativescript-ripple" >
     <ActionBar class="action-bar" title="Current Staff" marginBottom="4" />
-    <ListView id="list-view" items="{{ staff }}" itemTap="{{ onStaffTap }}">
+    <ListView id="list-view" items="{{ staff }}">
         <ListView.itemTemplate>
             <StackLayout>
                 <GridLayout rows="auto, auto, 1, auto" columns="auto, *" class="card-container">
@@ -10,10 +10,14 @@
                     <Label class="{{ position == 'TRIO President' ? 'staff-position-pres' : 'staff-position' }}" row="1" col="1" text="{{ position }}" />
                     <StackLayout row="2" colSpan="2" class="card-divider" />
 
-                    <GridLayout padding="16" colSpan="3" row="3" rows="*" columns="*, *, *">
-                        <Label id="message-icon" class="fal" col="2" text="&#xf4a6;" />
-                        <Label id="calendar-icon" class="fal" col="1" text="&#xf073;" />
-                        <Label id="email-icon" class="fal" col="0" text="&#xf0e0;" />
+                    <GridLayout  colSpan="3" row="3" rows="*" columns="*, *">
+                        <!-- <Label id="message-icon" class="fal" col="2" text="&#xf4a6;" /> -->
+                        <RL:Ripple col="1">
+                          <Label padding="12 16" id="calendar-icon" class="fal"  text="&#xf073;" />
+                        </RL:Ripple>
+                        <RL:Ripple  tap="{{ composeEmail }}" col="0">
+                        <Label padding="12 16" id="email-icon" class="fal" text="&#xf0e0;" />
+                        </RL:Ripple>
                     </GridLayout>
                 </GridLayout>
             </StackLayout>

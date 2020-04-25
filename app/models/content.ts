@@ -48,8 +48,6 @@ export class ContentItem extends Observable {
             ]
         });
     }
-
-
 }
 
 export enum ContentType {
@@ -140,7 +138,7 @@ export class EventItem extends ContentItem {
                         startDate: new Date(new Date().getTime() + (60*60*1000)),
                         endDate: new Date(new Date().getTime() + (2*60*60*1000)),
                         title: this.title,
-                        notes: "Created via the TRIO APp",
+                        notes: "Created via the TRIO APP",
                         location: this.location
                     }).then((id: string) => console.log("This is event id"));
                 }

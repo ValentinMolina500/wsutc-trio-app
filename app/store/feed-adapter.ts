@@ -3,6 +3,7 @@ import { Observable} from 'tns-core-modules/data/observable';
 //import { ObservableProperty } from '../observable-property-decorator';
 import { ItemEventData } from "tns-core-modules/ui/list-view";
 import { NewsItem } from '../models/content';
+
 export class FeedsAdapter extends Observable {
     public feeds: ObservableArray<NewsItem>;  
     private idMap: Map<number, number> = new Map();

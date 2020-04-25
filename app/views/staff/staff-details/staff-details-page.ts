@@ -27,6 +27,7 @@ export function goBack() {
 }
 
 export function sendEmail() {
+
     email.available().then((avail: boolean) => {
         console.log("Email avaialble? " + avail)
 
