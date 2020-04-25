@@ -17,7 +17,6 @@ export default class FeedPage extends Observable {
         
     constructor(page) {
         super();
-
         this.page = page;
         this.content = Store.FeedsViewModel();
 

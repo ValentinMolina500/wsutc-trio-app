@@ -6,10 +6,16 @@ export class Authentication {
     }
 
     public isAuthenticated(): Promise<boolean> {
-        return Firebase.isAuthenticated()
-            .then((user) => {
-                return user != null;
-            });
+        return new Promise(function(resolve, reject) {
+            Firebase.isAuthenticated()
+                .then((user) => {
+                    console.log('log',true);
+                    resolve(true);
+                }).catch((error) => {
+                    console.log('log', false);
+                    resolve(false);
+                });
+        });
     }
 
     public logout() {

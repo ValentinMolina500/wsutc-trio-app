@@ -5,7 +5,7 @@ import { Pages } from "~/utils/pages";
 
 export function  onLoaded(args: EventData) {
     let page = <Page>args.object;
-    // checkAuthentication(page);
+     checkAuthentication(page);
 }
 
 async function checkAuthentication(page: Page) {
