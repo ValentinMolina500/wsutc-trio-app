@@ -1,37 +1,35 @@
-<Page actionBarHidden="true" loaded="onLoaded">
-
-    <Tabs tabsPosition="bottom" selectedIndex="0">
-        <TabStrip highlightColor="#c60c30">
-            <TabStripItem>
-                <Label text="Home" />
-                <!-- <Image src="font://&#xf015;" class="fas"></Image> -->
-            </TabStripItem>
-            <TabStripItem>
-                <Label text="Staff" />
-            </TabStripItem>
-            <TabStripItem>
-                <Label fontSize="16" class="fas" text="&#xf27a;" />
-            </TabStripItem>
-
-            <TabStripItem>
-                <Label text="Settings" />
-            </TabStripItem>
-            
-        </TabStrip>
-
-        <TabContentItem>
-            <Frame defaultPage="~/views/feed/feed-page" />
-        </TabContentItem>
-        <TabContentItem>
-            <Frame defaultPage="~/views/staff/staff-page" />
-        </TabContentItem>
-        <TabContentItem>
-            <Frame defaultPage="~/views/messages/messages-page" />
-        </TabContentItem>
-        <TabContentItem>
-            <Frame defaultPage="~/views/settings/settings-page" />
-        </TabContentItem>
-    
-    </Tabs>
+<Page actionBarHidden="true" loaded="onLoaded" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo">
+    <GridLayout>
+        <Tabs row="0" tabsPosition="bottom" selectedIndex="0" visibility="{{ listLoad ? 'visible' : 'collapse' }}">
+            <TabStrip highlightColor="#c60c30">
+                <TabStripItem>
+                    <Label text="Home" />
+                    <!-- <Image src="font://&#xf015;" class="fas"></Image> -->
+                </TabStripItem>
+                <TabStripItem>
+                    <Label text="Staff" />
+                </TabStripItem>
+                <TabStripItem>
+                    <Label fontSize="16" class="fas" text="&#xf27a;" />
+                </TabStripItem>
+                <TabStripItem>
+                    <Label text="Settings" />
+                </TabStripItem>
+            </TabStrip>
+            <TabContentItem>
+                <Frame defaultPage="~/views/feed/feed-page" />
+            </TabContentItem>
+            <TabContentItem>
+                <Frame defaultPage="~/views/staff/staff-page" />
+            </TabContentItem>
+            <TabContentItem>
+                <Frame defaultPage="~/views/messages/messages-page" />
+            </TabContentItem>
+            <TabContentItem>
+                <Frame defaultPage="~/views/settings/settings-page" />
+            </TabContentItem>
+        </Tabs>
+        <ActivityIndicator row="0" width="50" height="50" color="orange" busy="true" visibility="{{ !listLoad ? 'visible' : 'collapse' }}">
+        </ActivityIndicator>
+    </GridLayout>
 </Page>
-

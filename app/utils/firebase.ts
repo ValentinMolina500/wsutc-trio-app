@@ -18,7 +18,7 @@ export class Firebase {
             }
         })
             .then(async () => {
-                let auth = await Auth.isAuthenticated();
+                //let auth = await Auth.isAuthenticated();
                 // auth ? console.log("Authenticated!") : Navigator.navigateFrame(Pages.LOGIN);
             })
             .catch((err) => (console.log("Error initing firebase " + err)));

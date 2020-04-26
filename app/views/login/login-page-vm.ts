@@ -5,26 +5,29 @@ import { Pages } from "~/utils/pages";
 import Authentication from "~/utils/authentication";
 
 export default class LoginPage extends Observable {
-    public email: string = "valentinmolina83@gmail.com";
-    public password: string = "Mario509";
+    public email: string = "luis.delatorre@wsu.edu";
+    public password: string = "Medalla6571";
     public toggle: boolean = true;
 
     constructor() {
         super();
+        //this.email = "luis.delatorre@wsu.edu";
+        //this.password = "Medalla6571";
     }
 
     public login(args: EventData) {
         let button = <Button>args.object;
         let page = button.page;
-        page.frame.navigate("~/views/home/home-page");
-        // Authentication.login(this.email, this.password)
-        //     .then((user) => {
-        //         console.log(user.email);
-        //         Navigator.navigate(Pages.HOME, page)
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
+        //page.frame.navigate("~/views/home/home-page");
+
+        Authentication.login(this.email, this.password)
+             .then((user) => {
+                 console.log(user.email);
+                 Navigator.navigate(Pages.HOME, page)
+             })
+             .catch((err) => {
+                 console.log(err);
+             });
     }
 
     public change() {

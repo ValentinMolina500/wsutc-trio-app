@@ -25,8 +25,8 @@
         <Image row="2" margin="0 32" horizontalAlignment="center" colSpan="2" src="~/imgs/trio-logo.jpg" />
         <StackLayout row="3" rowSpan="2" colSpan="2">
             <Label tap="{{ change }}" row="3"  class="login-text" text="Login" />
-            <TextField class="tf" hint="Email" />
-            <TextField secure="true" class="tf-2" hint="Password" />
+            <TextField text="{{ email }}" class="tf" hint="Email" />
+            <TextField text="{{ password }}"  class="tf-2" hint="Password" secure="true" />
             <Label margin="16 0 0 32">
                 <FormattedString>
                     <Span color="black" text="Don't have an account? " />
