@@ -4,6 +4,25 @@ import { NewsItem } from '../models/content';
 import { FeedsAdapter } from '../store/feed-adapter';
 import Firebase from "../utils/firebase";
 //https://github.com/jcmsalves/firebase-playground/tree/master/app/src/main/java/com/jcmsalves/firebaseplayground/realtimedatabase
+
+class ViewModel extends Observable {
+    public listLoad: Boolean;
+    public currentIndex: number;
+    constructor() {
+        super();
+        this.listLoad = false;
+        this.currentIndex = 0;
+
+    }
+    public load(val: Boolean) {
+        this.set('listLoad', val);
+    }
+    public setIndex(index: number) {
+        this.set('currentIndex', index);
+    }
+}
+
+
 export class myStore {
     public feedsContext: FeedsAdapter; 
     public homeViewModel: ViewModel; 
@@ -26,17 +45,3 @@ export class myStore {
 let Store = new myStore();
 export default Store;
 
-export class ViewModel extends Observable {
-    public listLoad: Boolean;
-    public index: Boolean;
-    constructor() {
-        super();
-        this.listLoad = false;
-    }
-    public load(val: Boolean) {
-        this.set('listLoad', val);
-    }
-    public setIndex(index: number) {
-        this.set('index', index);
-    }
-}

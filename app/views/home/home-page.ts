@@ -2,8 +2,8 @@ import { Observable, EventData, Page } from "tns-core-modules/ui/page/page";
 import Auth from "~/utils/authentication";
 import Nav from "~/utils/navigator";
 import { Pages } from "~/utils/pages";
-import Store, { ViewModel } from '../../store/store';//store adapter
-let viewModel: ViewModel;
+import Store from '../../store/store';//store adapter
+let viewModel: any;
 export function onNavigatingTo(args: EventData): void {
 	const page = <Page>args.object;
 	viewModel = Store.getHomeViewModel();
