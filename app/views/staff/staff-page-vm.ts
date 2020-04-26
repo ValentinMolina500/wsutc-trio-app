@@ -4,9 +4,10 @@ import Navigator from "~/utils/navigator";
 import { Pages } from "~/utils/pages";
 import { ItemEventData } from "tns-core-modules/ui/list-view/list-view";
 import * as email from "nativescript-email";
+import Store, { ViewModel } from '../../store/store';//store adapter
 
-class StaffItem extends Observable 
-{
+
+class StaffItem extends Observable {
   private email: string;
   private name: string;
   private position: string;
@@ -36,24 +37,26 @@ class StaffItem extends Observable
   }
 
   public scheduleEvent(): void {
-    
+
   }
 }
 export default class StaffPage extends Observable {
-    constructor() {
-        super();
-    }
+  public viewModel: ViewModel;
+  constructor() {
+    super();
+    this.viewModel = Store.getHomeViewModel();
+  }
 
-    public staff: Array<StaffItem> = [
-        new StaffItem({ email: "stassia.feltes@wsu.edu", name: "Stassia Feltes", position: "TRIO President", image: "~/imgs/stassia.jpg" }),
-        new StaffItem({ email: "oliva.primera@wsu.edu", name: "Oliva Primera", position: "Supplemental Instructor", image: "~/imgs/oliva.jpg" }),
-        new StaffItem({ email: "j.silva-gutierrez@wsu.edu", name: "Jennifer Silva-Gutierrez", position: "Program Coordinator", image: "~/imgs/jennifer.jpg" }),
-        new StaffItem({ email: "valentin.molina@wsu.edu", name: "Jarod Cable", position: "Supplemental Instructor", image: "~/imgs/jarod.jpg" }),
-    ]
+  public staff: Array<StaffItem> = [
+    new StaffItem({ email: "stassia.feltes@wsu.edu", name: "Stassia Feltes", position: "TRIO President", image: "~/imgs/stassia.jpg" }),
+    new StaffItem({ email: "oliva.primera@wsu.edu", name: "Oliva Primera", position: "Supplemental Instructor", image: "~/imgs/oliva.jpg" }),
+    new StaffItem({ email: "j.silva-gutierrez@wsu.edu", name: "Jennifer Silva-Gutierrez", position: "Program Coordinator", image: "~/imgs/jennifer.jpg" }),
+    new StaffItem({ email: "valentin.molina@wsu.edu", name: "Jarod Cable", position: "Supplemental Instructor", image: "~/imgs/jarod.jpg" }),
+  ]
 
-    public onStaffTap(args: ItemEventData) {
-        let button = <Button>args.object;
-        let page = button.page;
-        Navigator.navigateContext(Pages.STAFF_DETAILS, page, this.staff[args.index]);
-    }
+  public onStaffTap(args: ItemEventData) {
+    let button = <Button>args.object;
+    let page = button.page;
+    Navigator.navigateContext(Pages.STAFF_DETAILS, page, this.staff[args.index]);
+  }
 }

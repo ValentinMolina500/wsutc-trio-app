@@ -39,7 +39,17 @@ export class Firebase {
     public isAuthenticated(): Promise<firebase.User> {
         return firebase.getCurrentUser();
     }
-    
+    public validateConversation(user,staff): Promise<any> {
+
+        return firebase.getValue(`/students/${user.id}/conversation/${staff.id}`)
+            .then(function(value) {
+
+            })
+            .catch(error => console.log("ErrorV: " + error));
+
+
+        return firebase.getCurrentUser();
+    }
     public feedListener(callback){
         callback({
             type: ContentType.NEWS,

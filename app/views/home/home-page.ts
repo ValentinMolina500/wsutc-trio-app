@@ -2,10 +2,11 @@ import { Observable, EventData, Page } from "tns-core-modules/ui/page/page";
 import Auth from "~/utils/authentication";
 import Nav from "~/utils/navigator";
 import { Pages } from "~/utils/pages";
+import Store, { ViewModel } from '../../store/store';//store adapter
 let viewModel: ViewModel;
 export function onNavigatingTo(args: EventData): void {
 	const page = <Page>args.object;
-	viewModel = new ViewModel();
+	viewModel = Store.getHomeViewModel();
 	page.bindingContext = viewModel;
 	checkAuthentication(page);
 }
@@ -22,13 +23,3 @@ async function checkAuthentication(page: Page) {
     }
 }
 
-class ViewModel extends Observable {
-	public listLoad: Boolean;
-	constructor() {
-		super();
-		this.listLoad = false;
-	}
-	public load(val: Boolean) {
-		this.set('listLoad', val);
-	}
-}
