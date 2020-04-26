@@ -86,6 +86,13 @@ export class Firebase {
     public doLogout(): Promise<any> {
         return firebase.logout();
     }
+
+    public getConversation(uid: string) {
+        return firebase.getValue("/students/17413/conversations/" + uid)
+            .then((res) => {
+                console.log(res);
+            });
+    }
 }
 
 let singleton = new Firebase();

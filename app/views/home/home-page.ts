@@ -23,10 +23,12 @@ async function checkAuthentication(page: Page) {
 }
 
 class ViewModel extends Observable {
-	public listLoad: Boolean;
+    public listLoad: Boolean;
+    public currentIndex: number;
 	constructor() {
 		super();
-		this.listLoad = false;
+        this.listLoad = false;
+        this.currentIndex = 0;
 	}
 	public load(val: Boolean) {
 		this.set('listLoad', val);
