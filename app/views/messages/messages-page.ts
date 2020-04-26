@@ -29,10 +29,15 @@ export function onLoaded(args: EventData): void {
             },
         ],
         onItemTap: function(args: ItemEventData) {
-            Frame.topmost().navigate("~/views/messages/direct-message-page/direct-message-page")
+            Frame.topmost().navigate("~/views/messages/direct-message-page/direct-message-page");
+            
         }
     });
 
     let feed = <ListView>page.getViewById("feed");
     feed.separatorColor = new Color('#eff0f2');
+}
+
+export function onNavigatedTo(): void {
+    console.log("NAVIGATING TO");
 }

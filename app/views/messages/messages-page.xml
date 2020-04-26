@@ -1,4 +1,4 @@
-<Page backgroundColor="white" loaded="onLoaded">
+<Page backgroundColor="white" loaded="onLoaded" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo">
     <ActionBar class="action-bar" title="Messages" />
 
     <ListView id="feed" items="{{ messages }}" itemTap="{{ onItemTap }}">

@@ -6,8 +6,8 @@ import vm from "./direct-message-vm";
 
 export function onLoaded(args: EventData) {
     let page = <Page>args.object;
-    page.bindingContext = new vm(page);
-  
+    page.bindingContext = new vm(page, page.navigationContext.messages);
+    console.log(page.navigationContext);
 }
 
 export function goBack() {

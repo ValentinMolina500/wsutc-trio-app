@@ -2,7 +2,8 @@ import { Observable } from "tns-core-modules/data/observable";
 import { ObservableArray } from "tns-core-modules/data/observable-array/observable-array";
 
 class ViewModel extends Observable {
-    public messages: ObservableArray<any> = new ObservableArray([
+    public messages: ObservableArray<any>;
+    public messages23: ObservableArray<any> = new ObservableArray([
         {
             message: "Maure scelerisque interdum massa.",
             type: "recieved",
@@ -38,13 +39,14 @@ class ViewModel extends Observable {
 
     private currentMessage: string = "";
     private feed;//complete the type 
-    constructor(page) {
+
+    constructor(page, messages) {
         super();
         this.feed = page.getViewById("feed");
+        this.messages = new ObservableArray(messages);
     }
 
     public sendMessage() {
-        console.log("woo")
         console.log(this.currentMessage);
         this.messages.push({ message: this.currentMessage, type: "sent" });
         
