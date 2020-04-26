@@ -13,10 +13,11 @@
                     <GridLayout  colSpan="3" row="3" rows="*" columns="*, *">
                         <!-- <Label id="message-icon" class="fal" col="2" text="&#xf4a6;" /> -->
                         <RL:Ripple col="1">
-                          <Label padding="12 16" id="calendar-icon" class="fal"  text="&#xf073;" />
+                            <Label padding="12 16" id="calendar-icon" class="fal"  text="&#xf073;" />
                         </RL:Ripple>
-                        <RL:Ripple  tap="{{ composeEmail }}" col="0">
-                        <Label padding="12 16" id="email-icon" class="fal" text="&#xf0e0;" />
+                        
+                        <RL:Ripple  tap="{{ sendMessage }}" col="0">
+                        <Label padding="12 16" id="message-icon" class="fal" text="&#xf4b6;" />
                         </RL:Ripple>
                     </GridLayout>
                 </GridLayout>

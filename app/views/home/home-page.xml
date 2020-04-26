@@ -1,6 +1,6 @@
 <Page actionBarHidden="true" loaded="onLoaded" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo">
     <GridLayout>
-        <Tabs row="0" tabsPosition="bottom" selectedIndex="0" visibility="{{ listLoad ? 'visible' : 'collapse' }}">
+        <Tabs row="0" tabsPosition="bottom" selectedIndex="{{ currentIndex }}" visibility="{{ listLoad ? 'visible' : 'collapse' }}">
             <TabStrip highlightColor="#c60c30">
                 <TabStripItem>
                     <Label text="Home" />
@@ -29,7 +29,7 @@
                 <Frame defaultPage="~/views/settings/settings-page" />
             </TabContentItem>
         </Tabs>
-        <ActivityIndicator row="0" width="50" height="50" color="orange" busy="true" visibility="{{ !listLoad ? 'visible' : 'collapse' }}">
+        <ActivityIndicator row="0" width="50" height="50" color="#981e32" busy="true" visibility="{{ !listLoad ? 'visible' : 'collapse' }}">
         </ActivityIndicator>
     </GridLayout>
 </Page>
