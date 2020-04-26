@@ -6,13 +6,11 @@
             <Label col="2" marginLeft="8" fontSize="20" verticalAlignment="middle" text="Stassia Feltes" />
         </GridLayout>
     </ActionBar>
-
-    <GridLayout height="100%" width="100%" rows="*, auto" columns="*">
-        
-        <ListView margin="8" width="100%" id="feed" items="{{ messages }}" itemTemplateSelector="messageSelector">
-            <ListView.itemTemplates>
-
-                <!-- <StackLayout>
+    <ScrollView verticalAlignment="bottom">
+        <GridLayout rows="*,auto" columns="*,50" height="100%">
+            <ListView row="0" colSpan="2" margin="8" separatorColor="transparent" width="100%" id="feed" items="{{ messages }}" itemTemplateSelector="messageSelector">
+                <ListView.itemTemplates>
+                    <!-- <StackLayout>
                     <GridLayout rows="auto" columns="*, 64">
 
                         <GridLayout borderRadius="4" rows="auto, auto" margin="8 16 4 16" columns="*, auto" backgroundColor="white">
@@ -20,34 +18,18 @@
                             <Label text="12:17 PM" row="1" col="1" padding="0 4 4 4" horizontalAlignment="right" verticalAlignment="bottom" fontSize="12" />
                         </GridLayout>
                     </GridLayout>
-
+<Label class="" horizontalAlignment="{{type=='recieved'?'right':'left'}}" width="40%" text="{{ message }}" />
                 </StackLayout> -->
-                <template key="recieved">
-                    <StackLayout width="100%">
-                        <GridLayout columns="*, 96">
-                            <StackLayout class="msg-container recieved">
-                                <Label class="message-recieved" text="{{ message }}" />
-                            </StackLayout>
-                        </GridLayout>
-                    </StackLayout>
-                </template>
-                <template key="sent">
-                    <StackLayout>
-                        <GridLayout columns="96, *">
-                            <StackLayout class="msg-container" col="1">
-                                <Label class="message-recieved" text="{{ message }}" />
-                            </StackLayout>
-                        </GridLayout>
-                    </StackLayout>
-                </template>
-            </ListView.itemTemplates>
-        </ListView>
-        <GridLayout row="1" columns="*, auto">
-            <TextField id="message-input" text="{{ currentMessage }}" col="0"/>
-            <Button tap="{{ sendMessage }}" id="send-button" col="1" class="fas" text="&#xf1d8;"/>
-
+                    <template key="recieved">
+                        <Label class="msg-container recieved" text="{{ message }}" textWrap="true" />
+                    </template>
+                    <template key="sent">
+                        <Label class="msg-container send" text="{{ message }}" textWrap="true" />
+                    </template>
+                </ListView.itemTemplates>
+            </ListView>
+            <TextField row="1" col="0" id="message-input" text="{{ currentMessage }}" col="0" />
+            <Button row="1" col="1" tap="{{ sendMessage }}" id="send-button" horizontalAlignment="right" class="fas" text="&#xf1d8;" />
         </GridLayout>
-
-
-    </GridLayout>
+    </ScrollView>
 </Page>

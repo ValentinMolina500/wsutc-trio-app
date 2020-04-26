@@ -6,9 +6,8 @@ import vm from "./direct-message-vm";
 
 export function onLoaded(args: EventData) {
     let page = <Page>args.object;
-    page.bindingContext = new vm();
-    let feed = <ListView>page.getViewById("feed");
-    feed.separatorColor = new Color('#eff0f2');
+    page.bindingContext = new vm(page);
+  
 }
 
 export function goBack() {

@@ -16,7 +16,6 @@ class StaffItem extends Observable {
 
   constructor(staff) {
     super();
-
     this.email = staff.email;
     this.name = staff.name;
     this.position = staff.position;
@@ -39,33 +38,27 @@ class StaffItem extends Observable {
   }
 
   public async sendMessage() {
-
     console.log(this.uid);
     viewModel.setIndex(2);
     //@ts-ignore
     let key: string = await firebase.getConversation(this.uid);
-
     if (!key) {
-
     } else {
-
     }
   }
 }
 export default class StaffPage extends Observable {
-
   public viewModel: any;
   constructor() {
     super();
     viewModel = Store.getHomeViewModel();
   }
 
-
   public staff: Array<StaffItem> = [
     new StaffItem({ email: "stassia.feltes@wsu.edu", name: "Stassia Feltes", position: "TRIO President", image: "~/imgs/stassia.jpg", uid: "667788" }),
     new StaffItem({ email: "oliva.primera@wsu.edu", name: "Oliva Primera", position: "Supplemental Instructor", image: "~/imgs/oliva.jpg", uid: "112233" }),
-    // new StaffItem({ email: "j.silva-gutierrez@wsu.edu", name: "Jennifer Silva-Gutierrez", position: "Program Coordinator", image: "~/imgs/jennifer.jpg" }),
-    // new StaffItem({ email: "valentin.molina@wsu.edu", name: "Jarod Cable", position: "Supplemental Instructor", image: "~/imgs/jarod.jpg" }),
+    new StaffItem({ email: "j.silva-gutierrez@wsu.edu", name: "Jennifer Silva-Gutierrez", position: "Program Coordinator", image: "~/imgs/jennifer.jpg", uid: "112253" }),
+    new StaffItem({ email: "valentin.molina@wsu.edu", name: "Jarod Cable", position: "Supplemental Instructor", image: "~/imgs/jarod.jpg", uid: "112633" }),
   ]
 
   public onStaffTap(args: ItemEventData) {

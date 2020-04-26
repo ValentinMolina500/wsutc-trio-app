@@ -17,23 +17,33 @@
     height: 44;
     width: 44;
     margin: 2 4;
-    color:  #fff;
+    color: #fff;
     font-size: 20;
     margin-right: 16;
 }
 
-#message-input, #send-button {
+#message-input,
+#send-button {
     margin-bottom: 4;
 }
 
-.message-recieved {
-    // width: 50%;
+.recieved,
+.send {
+    border-radius: 8;
+    margin-bottom: 8;
+}
+.send {
+    background: white;
+    margin-left: 60;
+     margin-right: 8;
+}
+.recieved {
+    background: #c0d0dd;
+     margin-right: 60;
+    margin-left: 8;
 }
 
 .msg-container {
-    margin: 8 16 8 16;
-    background: white;
-    padding: 8;
+
+    padding: 4;
 }
-
-

@@ -21,6 +21,18 @@ $lightgray: #ecf4fa;
 .fal {
     font-family: "fa-light-300";
 }
+.rounded-none{
+  border-radius: 0;
+}
+.rounded-xs{
+  border-radius: 2;
+}
+.rounded-md{
+  border-radius: 5;
+}
+.rounded-lg{
+  border-radius: 10;
+}
 
 Label, Button, TextField {
     font-family: "VarelaRound-Regular";
