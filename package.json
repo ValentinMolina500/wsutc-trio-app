@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@nativescript/theme": "~2.2.1",
+    "@nstudio/nativescript-loading-indicator": "^3.0.4",
     "nativescript-calendar": "^2.1.0",
     "nativescript-drop-down": "^5.0.4",
     "nativescript-email": "^1.5.5",

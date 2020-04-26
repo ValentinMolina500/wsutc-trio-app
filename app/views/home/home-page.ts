@@ -23,3 +23,7 @@ async function checkAuthentication(page: Page) {
     }
 }
 
+export function test(index) {
+	console.log(index.object);
+}
+

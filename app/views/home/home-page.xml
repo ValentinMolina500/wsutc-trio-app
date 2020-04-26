@@ -2,7 +2,7 @@
     <GridLayout>
         <Tabs row="0" tabsPosition="bottom" selectedIndex="{{ currentIndex }}" visibility="{{ listLoad ? 'visible' : 'collapse' }}">
             <TabStrip highlightColor="#c60c30">
-                <TabStripItem>
+                <TabStripItem >
                     <Label text="Home" />
                     <!-- <Image src="font://&#xf015;" class="fas"></Image> -->
                 </TabStripItem>

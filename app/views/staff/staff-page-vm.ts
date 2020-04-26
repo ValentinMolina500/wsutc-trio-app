@@ -7,6 +7,7 @@ import * as email from "nativescript-email";
 import Store from '../../store/store';//store adapter
 import firebase from "~/utils/firebase";
 import { Frame } from "tns-core-modules/ui/frame/frame";
+import dialogs from "~/utils/dialogs";
 
 let viewModel;
 class StaffItem extends Observable {
@@ -15,6 +16,7 @@ class StaffItem extends Observable {
     private position: string;
     private image: string;
     private uid: string;
+    private disabled: boolean;
 
     constructor(staff) {
         super();
@@ -23,6 +25,7 @@ class StaffItem extends Observable {
         this.position = staff.position;
         this.image = staff.image;
         this.uid = staff.uid;
+        this.disabled = false;
     }
 
     public composeEmail(): void {
@@ -41,26 +44,47 @@ class StaffItem extends Observable {
 
     public async sendMessage() {
         console.log(this.uid);
-        viewModel.setIndex(2);
-        
+        if (!this.disabled) {
+            console.log("TIMEOUT STARTED");
 
-        //@ts-ignore
-        let key: string = await firebase.getConversation(this.uid);
-        if (!key) {
-        } else {
-        
-        } 
+            this.disabled = true;
 
-        // Frame.topmost().navigate("~/views/messages/direct-message-page/direct-message-page");
-        Frame.topmost().navigate({
+             setTimeout(() => {
+                console.log("TIMEOUT FINISHED")
+                this.disabled = false;
+            }, 4000)
+
+            let key: string;
+
+        dialogs.showLoader();
+           
+            viewModel.setIndex(2);
+
+            key = await firebase.getConversation(this.uid);
+
+            if (!key) {
+            } else {
+
+            }
+
+            Frame.topmost().navigate({
                 moduleName: "~/views/messages/direct-message-page/direct-message-page",
-                context: { messages: [{ message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }]}});
+                context: { messages: [{ message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }] }
+            });
+
+
+        }
+
+
+
     }
 }
 export default class StaffPage extends Observable {
     public viewModel: any;
     constructor() {
         super();
+
+        console.log("STAFF PAGE");
         viewModel = Store.getHomeViewModel();
     }
 

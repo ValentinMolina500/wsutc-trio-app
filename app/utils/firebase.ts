@@ -97,7 +97,7 @@ export class Firebase {
         return firebase.logout();
     }
 
-    public getConversation(uid: string) {
+    public getConversation(uid: string): any {
         return firebase.getValue("/students/17413/conversations/" + uid)
             .then((res) => {
                 console.log(res);

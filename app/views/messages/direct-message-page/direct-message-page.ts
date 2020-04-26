@@ -3,11 +3,13 @@ import { fromObject } from "tns-core-modules/data/observable/observable";
 import { ListView } from "tns-core-modules/ui/list-view/list-view";
 import { Frame } from "tns-core-modules/ui/frame/frame";
 import vm from "./direct-message-vm";
+import dialogs from "~/utils/dialogs";
 
 export function onLoaded(args: EventData) {
     let page = <Page>args.object;
     page.bindingContext = new vm(page, page.navigationContext.messages);
     console.log(page.navigationContext);
+    dialogs.hideLoader();
 }
 
 export function goBack() {
