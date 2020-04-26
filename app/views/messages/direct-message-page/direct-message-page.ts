@@ -14,3 +14,8 @@ export function onLoaded(args: EventData) {
 export function goBack() {
     Frame.topmost().goBack();
 }
+
+export function messageSelector(item)
+{
+    return item.type == "sent" ? "sent" : "recieved";
+}
