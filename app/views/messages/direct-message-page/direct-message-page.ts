@@ -7,7 +7,7 @@ import dialogs from "~/utils/dialogs";
 
 export function onLoaded(args: EventData) {
     let page = <Page>args.object;
-    page.bindingContext = new vm(page, page.navigationContext.messages);
+    page.bindingContext = new vm(page, page.navigationContext);
     console.log(page.navigationContext);
     dialogs.hideLoader();
 }
@@ -18,5 +18,5 @@ export function goBack() {
 
 export function messageSelector(item)
 {
-    return item.type == "sent" ? "sent" : "recieved";
+    return item.senderId == "17413" ? "sent" : "recieved";
 }

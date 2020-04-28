@@ -43,6 +43,9 @@ class StaffItem extends Observable {
     }
 
     public async sendMessage() {
+        let conversation;
+        let key: string;
+
         console.log(this.uid);
         if (!this.disabled) {
             console.log("TIMEOUT STARTED");
@@ -54,22 +57,25 @@ class StaffItem extends Observable {
                 this.disabled = false;
             }, 4000)
 
-            let key: string;
+            
 
-        dialogs.showLoader();
+            dialogs.showLoader();
            
             viewModel.setIndex(2);
 
-            key = await firebase.getConversation(this.uid);
-
+            key = await firebase.getUserConversation(this.uid);
+            console.log("Key: " + key);
+            
             if (!key) {
-            } else {
-
+                console.log("CREATING CONVERSATION...")
+                key = await firebase.createConversation(this.uid);
             }
+            console.log("FETCHING CONVERSATION...")
+            conversation = await firebase.getConversation(key);
 
             Frame.topmost().navigate({
                 moduleName: "~/views/messages/direct-message-page/direct-message-page",
-                context: { messages: [{ message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }, { message: "This is message", type: "sent", time: "12:32 PM" }] }
+                context: conversation
             });
 
 
@@ -79,6 +85,7 @@ class StaffItem extends Observable {
 
     }
 }
+
 export default class StaffPage extends Observable {
     public viewModel: any;
     constructor() {

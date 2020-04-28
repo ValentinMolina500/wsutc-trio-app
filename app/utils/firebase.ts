@@ -1,11 +1,13 @@
 import * as firebase from "nativescript-plugin-firebase";
+import * as webApi from "nativescript-plugin-firebase/app";
+
 import { ObservableArray } from 'tns-core-modules/data/observable-array';
 import { LoginType, FirebasePasswordLoginOptions } from "nativescript-plugin-firebase";
 import Navigator from "~/utils/navigator";
 import { Pages } from "./pages";
 import Auth from "./authentication";
 import { NewsItem } from '../models/content';
-import {  ContentType, ContentArea } from "~/utils/content";
+import { ContentType, ContentArea } from "~/utils/content";
 
 export class Firebase {
     private isInit: boolean = false;
@@ -39,7 +41,7 @@ export class Firebase {
     public isAuthenticated(): Promise<firebase.User> {
         return firebase.getCurrentUser();
     }
-    public validateConversation(user,staff): Promise<any> {
+    public validateConversation(user, staff): Promise<any> {
 
         return firebase.getValue(`/students/${user.id}/conversation/${staff.id}`)
             .then(function(value) {
@@ -50,7 +52,7 @@ export class Firebase {
 
         return firebase.getCurrentUser();
     }
-    public feedListener(callback){
+    public feedListener(callback) {
         callback({
             type: ContentType.NEWS,
             title: "Reminder: Schedule Your Semester Visit",
@@ -90,18 +92,55 @@ export class Firebase {
             date: "1/22",
             location: "ZOOM",
             time: "3PM"
-        });                
+        });
     }
 
     public doLogout(): Promise<any> {
         return firebase.logout();
     }
 
-    public getConversation(uid: string): any {
+    public getUserConversation(uid: string): any {
         return firebase.getValue("/students/17413/conversations/" + uid)
-            .then((res) => {
-                console.log(res);
-            });
+            .then((res) => { return res.value });
+    }
+
+    public createConversation(uid: string): any {
+        let conversation;
+        conversation = {
+            creatorId: "17413",
+            recieverId: uid,
+            messages: [{ message: "TRIO is ready to help you!", senderId: "0000" }]
+        }
+
+        return firebase.push('/conversations/',
+            conversation
+        ).then((fbConversation) => {
+            conversation = { ...conversation, key: fbConversation.key };
+            return firebase.setValue('/conversations/' + conversation.key, conversation)
+                .then(() => {
+                    return firebase.setValue('/students/17413/conversations/' + uid, conversation.key)
+                        .then(() => {
+                            return conversation.key
+                        });
+                })
+
+        });
+    }
+
+    public getConversation(id: string): any {
+        return firebase.getValue('/conversations/' + id);
+    }
+
+    public sendMessage(conversationId, message, senderId) {
+        return firebase.push('/conversations/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId }) 
+    }
+
+    public getMessages(conversationId: string) {
+        // return firebase.query()
+    }
+
+    public addChildEventListener(callback, path) {
+        firebase.addChildEventListener(callback, path);
     }
 }
 
