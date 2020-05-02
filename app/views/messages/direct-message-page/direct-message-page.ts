@@ -5,10 +5,11 @@ import { Frame } from "tns-core-modules/ui/frame/frame";
 import vm from "./direct-message-vm";
 import dialogs from "~/utils/dialogs";
 
+let model;
 export function onLoaded(args: EventData) {
     let page = <Page>args.object;
-    page.bindingContext = new vm(page, page.navigationContext);
-    console.log(page.navigationContext);
+    page.bindingContext = vm;
+    page.bindingContext.init(page, page.navigationContext)
     dialogs.hideLoader();
 }
 

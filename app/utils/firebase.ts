@@ -8,6 +8,8 @@ import { Pages } from "./pages";
 import Auth from "./authentication";
 import { NewsItem } from '../models/content';
 import { ContentType, ContentArea } from "~/utils/content";
+import messagesSubject from "~/logic/messages/MessagesSubject";
+import DMViewModel from "~/views/messages/direct-message-page/direct-message-vm";
 
 export class Firebase {
     private isInit: boolean = false;
@@ -20,8 +22,8 @@ export class Firebase {
             }
         })
             .then(async () => {
-                //let auth = await Auth.isAuthenticated();
-                // auth ? console.log("Authenticated!") : Navigator.navigateFrame(Pages.LOGIN);
+                messagesSubject.setMessages();
+                messagesSubject.register(DMViewModel);
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
 

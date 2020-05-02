@@ -6,6 +6,12 @@ class Messages {
 	}
 }
 
+export interface Message {
+	message: string;
+	senderId: string;
+	updateTs: number;
+}
+
 const messages = new Messages();
 
 export default messages;
