@@ -23,6 +23,7 @@ export class Firebase {
             }
         })
             .then(async () => {
+                console.log("******* <3 :) *******")
                 messagesSubject.setMessages();
                 messagesSubject.register(DMViewModel);
             })

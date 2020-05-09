@@ -3,6 +3,8 @@ import messages, { Message } from "~/utils/messages";
 import { Observer } from "../utils/Observer";
 import utils from "./MessageUtils"
 
+
+let i:number = 0;
 export class MessagesSubject implements Subject
 {
 	private observers: Array<Observer> = [];
@@ -12,7 +14,7 @@ export class MessagesSubject implements Subject
 	public setMessages() {
 		if (!this.isSet) {
 			this.setMessagesListener();
-			this.isSet = false;
+			this.isSet = true;
 		}
 	}
 
@@ -26,20 +28,21 @@ export class MessagesSubject implements Subject
 
 	notifyObserver(): void {
 		this.observers.forEach((observer: Observer, index: number) => {
-			console.log('Updating obsever ' + index + '...' );
-			console.dir(this.messages);
       		observer.update(this.messages);
 		});
 	}
 
 	public setMessagesListener() {
 		messages.addMessagesListener((data) => {
-			let fbMessage = data.value as Message;
-			this.messages.push(fbMessage);
-			this.messages = this.messages.sort(utils.sortMessagesByTime);
+			if (data.type == "ChildAdded") {
+				let fbMessage = data.value as Message;
+				this.messages.push(fbMessage);
+				this.messages = this.messages.sort(utils.sortMessagesByTime);
 
-			this.notifyObserver();
-		}, "-M60o-Nfh6Y_TkYB-UjI");
+				this.notifyObserver();
+			}
+			
+		}, "-M6qDcstoJIoLzEQbQBs");
 	}
 }
 

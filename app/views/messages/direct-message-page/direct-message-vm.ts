@@ -55,7 +55,6 @@ class ViewModel extends Observable implements Observer  {
 
     public update(messages: Array<Message>)
     {
-        // this.messages = new ObservableArray(messages);
         this.set("messages", new ObservableArray(messages));
         if (this.feed != undefined) 
         {

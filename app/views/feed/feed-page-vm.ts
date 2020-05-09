@@ -14,7 +14,7 @@ declare let android;
 export default class FeedPage extends Observable {
     public feeds: Feeds;
     private page: Page;
-        
+       
     constructor(page) {
         super();
         this.page = page;
@@ -186,6 +186,5 @@ export default class FeedPage extends Observable {
             timestamp: "1 hour ago"
         },
     ])*/
-
 
 }
