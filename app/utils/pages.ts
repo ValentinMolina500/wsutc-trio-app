@@ -8,7 +8,8 @@ export enum Pages {
     HOME = "HOME",
     FEED = "FEED",
     SETTINGS = "SETTINGS",
-    STAFF_DETAILS = "STAFF_DETAILS"
+    STAFF_DETAILS = "STAFF_DETAILS",
+    REGISTER = "REGISTER"
 }
 
 const pages: Map<Pages, PageEntry> = new Map();
@@ -18,7 +19,7 @@ pages.set(Pages.HOME, { path: "~/views/home/home-page", secure: true });
 pages.set(Pages.FEED, { path: "~/views/feed/feed-page", secure: true });
 pages.set(Pages.SETTINGS, { path: "~/views/settings/settings-page", secure: true});
 pages.set(Pages.STAFF_DETAILS, { path: "~/views/staff/staff-details/staff-details-page", secure: true});
-
+pages.set(Pages.REGISTER, { path: "~/views/register/register-page", secure: false });
 
 export default pages;
 

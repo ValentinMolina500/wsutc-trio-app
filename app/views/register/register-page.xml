@@ -1,0 +1,37 @@
+<Page loaded="onLoaded" xmlns="http://schemas.nativescript.org/tns.xsd">
+
+	<ActionBar title="Sign Up">
+  		<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="onNavBtnTap"/>
+	</ActionBar>
+	<StackLayout class="container">
+		<Label class="register-heading" text="Register" />
+
+		<Label class="tf-text" text="Enter your WSU ID" />
+		<TextField class="id-text-field" text="{{ WSUID }}" keyboardType="number"/>
+		<Button class="submit-button" text="Submit" tap="{{ submit }}" />
+
+		<StackLayout height="1" marginTop="16" backgroundColor="#ecf4fa" />
+
+		<!-- <GridLayout columns="auto, *" rows="auto">
+			
+			<TextField text="valentin.molina@wsu.edu" col="1" row="0" />
+		</GridLayout> -->
+
+		<Label padding="16 16 0 4">
+			<FormattedString >
+				<Span  text="&#xf0e0; " class="fal" fontSize="18" fontWeight="bold"  />
+				<Span text="Email" fontSize="18" fontWeight="bold"/>
+			</FormattedString>
+		</Label>
+		<TextField text="valentin.molina@wsu.edu"  />
+
+
+		<Label padding="16 16 0 4">
+			<FormattedString >
+				<Span  text="&#xf084; " class="fal" fontSize="18"  />
+				<Span text="Password" fontSize="18" fontWeight="bold" />
+			</FormattedString>
+		</Label>
+		<TextField text="valentin.molina@wsu.edu"  />
+	</StackLayout>
+</Page>

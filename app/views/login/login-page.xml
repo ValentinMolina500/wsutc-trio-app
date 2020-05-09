@@ -27,15 +27,14 @@
             <Label tap="{{ change }}" row="3"  class="login-text" text="Login" />
             <TextField text="{{ email }}" class="tf" hint="Email" />
             <TextField text="{{ password }}"  class="tf-2" hint="Password" secure="true" />
-            <Label margin="16 0 0 32">
-                <FormattedString>
+            <Label margin="16 0 0 32" tap="{{ register }}">
+                <FormattedString >
                     <Span color="black" text="Don't have an account? " />
-                    <Span color="#c60c30" text="Register" />
+                    <Span color="#c60c30"  text="Register" />
                 </FormattedString>
             </Label>
         </StackLayout>
 
         <Button tap="{{ login }}" id="login-btn" row="4" colSpan="2" text="LOGIN" />
-        <!-- <Button tap="{{ change}}" text="Change" colSpan="2" row="5" id="change-btn" /> -->
     </GridLayout>
 </Page>

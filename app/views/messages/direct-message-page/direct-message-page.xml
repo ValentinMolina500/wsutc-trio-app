@@ -1,6 +1,6 @@
-<Page id="page" loaded="onLoaded">
+<Page id="page" navigatedTo="onNavigatedTo">
     <ActionBar class="action-bar" title="Stassia Feltes">
-        <GridLayout rows="auto" columns="auto, auto, *">
+        <GridLayout rows="auto" columns="auto, auto, *" tap="goBack">
             <Label tap="goBack" class="far" text="&#xf060;" fontSize="20" verticalAlignment="middle" />
             <Image tap="goBack" col="1" marginLeft="8" horizontalAlignment="left" borderRadius="100%" stretch="aspectFill" height="35" width="35" src="~/imgs/stassia.jpg" />
             <Label col="2" marginLeft="8" fontSize="20" verticalAlignment="middle" text="Stassia Feltes" />

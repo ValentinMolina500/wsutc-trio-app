@@ -4,7 +4,7 @@ import { Observer } from "../utils/Observer";
 import utils from "./MessageUtils"
 
 
-let i:number = 0;
+
 export class MessagesSubject implements Subject
 {
 	private observers: Array<Observer> = [];
@@ -44,6 +44,7 @@ export class MessagesSubject implements Subject
 			
 		}, "-M6qDcstoJIoLzEQbQBs");
 	}
+
 }
 
 const subject = new MessagesSubject();

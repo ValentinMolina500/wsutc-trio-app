@@ -75,7 +75,10 @@ class StaffItem extends Observable {
 
             Frame.topmost().navigate({
                 moduleName: "~/views/messages/direct-message-page/direct-message-page",
-                context: conversation
+                context: {
+                    staffKey: this.uid,
+                    conversationKey: key
+                }
             });
 
 

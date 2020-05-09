@@ -9,7 +9,9 @@ import Auth from "./authentication";
 import { NewsItem } from '../models/content';
 import { ContentType, ContentArea } from "~/utils/content";
 import messagesSubject from "~/logic/messages/MessagesSubject";
+import consersationsSubject from "~/logic/messages/ConversationsSubject";
 import DMViewModel from "~/views/messages/direct-message-page/direct-message-vm";
+import MessageVM from "~/views/messages/messages-vm";
 
 export class Firebase {
     private isInit: boolean = false;
@@ -22,9 +24,12 @@ export class Firebase {
             }
         })
             .then(async () => {
-                console.log("******* <3 :) *******")
-                messagesSubject.setMessages();
-                messagesSubject.register(DMViewModel);
+                // messagesSubject.setMessages();
+                // messagesSubject.register(DMViewModel);
+                // messagesSubject.register(MessageVM);
+                consersationsSubject.setConversationListeners();
+                consersationsSubject.register(MessageVM);
+                 consersationsSubject.register(DMViewModel);
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
 
@@ -144,6 +149,10 @@ export class Firebase {
 
     public addChildEventListener(callback, path) {
         firebase.addChildEventListener(callback, path);
+    }
+
+    public getCurrentUserConversations(id: number) {
+        return firebase.getValue("/students/" + id + "/conversations");
     }
 }
 

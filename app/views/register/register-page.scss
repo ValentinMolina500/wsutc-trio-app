@@ -1,0 +1,22 @@
+.register-heading {
+    font-weight: bold;
+    font-size: 24;
+    color: black;
+}
+
+.container {
+	margin: 16;
+}
+
+.id-text-field {
+	margin-top: 16;
+	font-size: 18;
+	text-align: center;
+}
+
+.submit-button {
+	background: #c60c30;  /* fallback for old browsers */
+	// background: linear-gradient(to right, #981e32, #c60c30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    font-weight: bold;
+}

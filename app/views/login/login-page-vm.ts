@@ -33,4 +33,8 @@ export default class LoginPage extends Observable {
     public change() {
         this.set("toggle", !this.toggle);
     }
+
+    public register(): void {
+        Navigator.navigateFrame(Pages.REGISTER);
+    }
 }
