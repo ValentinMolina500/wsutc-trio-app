@@ -7,7 +7,6 @@ import Authentication from "./authentication";
 export class Navigator {
     private frame: Frame;
     // private currentPage: Page;
-
     public navigateFrame(to: Pages) {
         let frame = Frame.topmost();
         frame.navigate(pages.get(to).path);

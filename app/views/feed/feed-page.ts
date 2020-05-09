@@ -6,6 +6,7 @@ import { ContentItem } from "~/utils/content";
 import Navigator from "~/utils/navigator";
 
 export function onNavigatedTo(args: EventData): void {
+    
     const page = <Page>args.object;
     setupFeed(page);
     // Navigator.setCurrentPage(page);

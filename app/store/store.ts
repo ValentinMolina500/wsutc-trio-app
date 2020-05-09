@@ -2,7 +2,9 @@ import { ObservableArray } from 'tns-core-modules/data/observable-array';
 import { Observable, EventData, Page } from "tns-core-modules/ui/page/page";
 import { NewsItem } from '../models/content';
 import { FeedsAdapter } from '../store/feed-adapter';
+import { ConversationAdapter } from '../store/conversation-adapter';
 import Firebase from "../utils/firebase";
+import { Conversation} from '../models/conversation';
 //https://github.com/jcmsalves/firebase-playground/tree/master/app/src/main/java/com/jcmsalves/firebaseplayground/realtimedatabase
 
 class ViewModel extends Observable {
@@ -24,24 +26,38 @@ class ViewModel extends Observable {
 
 
 export class myStore {
-    public feedsContext: FeedsAdapter; 
-    public homeViewModel: ViewModel; 
-    public idMap: Array<number>=[]; 
+    public feedsAdapter: FeedsAdapter;
+    public conversationsAdapter: ConversationAdapter;
+    public homeViewModel: ViewModel;
+    
+
     constructor() {
-        this.feedsContext = new FeedsAdapter();
+        this.conversationsAdapter = new ConversationAdapter();
+        this.feedsAdapter = new FeedsAdapter();
         this.homeViewModel = new ViewModel();
     }
-    public FeedsViewModel() {
+    
+    public getFeeds() {
         let callback = (result) => {
-            this.feedsContext.setFeeds(result);
+            this.feedsAdapter.updateFeed(result);
         }
         Firebase.feedListener(callback);
-        return this.feedsContext;
+        return this.feedsAdapter.getData();
     };
+
+    public getConversations() {
+        let callback = (result) => {
+            this.conversationsAdapter.updateConversation(result);
+        }
+        Firebase.conversationListener(callback);
+        return this.conversationsAdapter.getData();
+    };
+    
     public getHomeViewModel() {
         return this.homeViewModel;
     };
- }
+    
+}
 let Store = new myStore();
 export default Store;
 

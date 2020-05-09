@@ -1,11 +1,11 @@
 <Page backgroundColor="white" loaded="onLoaded" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo">
     <ActionBar class="action-bar" title="Messages" />
 
-    <ListView id="feed" items="{{ messages }}" itemTap="{{ onItemTap }}">
+    <ListView id="feed" items="{{ conversations }}" itemTap="{{ onItemTap }}">
         <ListView.itemTemplate>
         <StackLayout height="100%">
             <GridLayout rows="auto, auto, 1" columns="auto, *">
-                <Image height="65" rowSpan="2" width="65" stretch="aspectFill" borderRadius="100%" src="~/imgs/stassia.jpg" margin="16" />
+                <Image height="65" rowSpan="2" width="65" stretch="aspectFill" borderRadius="100%" src="{{img}}" margin="16" />
                 <Label col="1" row="0" class="staff-name" text="{{ name }}" />
                 <Label col="1" row="1" class="messages-text" text="{{ recentMessage }}" />
                 <StackLayout row="2" col="1" class="card-divider" />

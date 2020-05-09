@@ -5,8 +5,26 @@ import * as Calendar from "nativescript-calendar";
 import * as app from "tns-core-modules/application";
 import * as dialogs from "tns-core-modules/ui/dialogs";
 import { Frame } from "tns-core-modules/ui/frame";
+import { ObservableArray } from 'tns-core-modules/data/observable-array';
 
 declare let android;
+
+export class BaseArray<T> extends ObservableArray<T> {
+    constructor() {
+        super();
+    }
+    public findItem(itemT: T, field): T | number {
+        let item: T;
+        for (let i = 0, l = this.length; i < l; i++) {
+            let item: T = this.getItem(i);
+            if (item[field] === itemT[field]) {
+                return item;
+            }
+        }
+        return -1;
+    };
+
+}
 
 export class ContentItem extends Observable {
     public type: ContentType;
@@ -21,7 +39,6 @@ export class ContentItem extends Observable {
 
     constructor(item: any) {
         super();
-
         this.type = item.type;
         this.title = item.title;
         this.description = item.description;
@@ -71,7 +88,6 @@ export class NewsItem extends ContentItem {
 
     constructor(item: any) {
         super(item);
-
         this.link = item.link;
         this.smileCount = item.smileCount;
         this.surprisedCount = item.surprisedCount;

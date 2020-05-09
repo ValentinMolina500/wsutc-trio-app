@@ -7,18 +7,18 @@ import * as Calendar from "nativescript-calendar";
 import * as app from "tns-core-modules/application";
 import * as dialogs from "tns-core-modules/ui/dialogs";
 import Store from '../../store/store';//store adapter
-import { FeedsAdapter } from '../../store/feed-adapter';
+import { Feeds } from '../../store/feed-adapter';
 
 declare let android;
 
 export default class FeedPage extends Observable {
-    public content: FeedsAdapter;
+    public feeds: Feeds;
     private page: Page;
         
     constructor(page) {
         super();
         this.page = page;
-        this.content = Store.FeedsViewModel();
+        this.feeds = Store.getFeeds();
 
     }
     

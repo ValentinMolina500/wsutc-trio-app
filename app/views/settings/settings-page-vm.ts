@@ -13,6 +13,6 @@ export default class SettingsPage extends Observable {
         let page = button.page;
         
         Auth.logout();
-        // Navigator.navigate(Pages.LOGIN, page);
+        Navigator.navigate(Pages.LOGIN, page);
     }
 }

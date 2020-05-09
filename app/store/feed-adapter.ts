@@ -24,9 +24,14 @@ export class FeedsAdapter extends Observable {
             }
 
     };
+    public getData = () => {
+        return this.feeds;
+    };
     public selectFeeds(args: ItemEventData) {
         //rewrite
         console.log('Second ListView item tap');
     }
  }
+export interface Feeds extends ObservableArray < NewsItem > {
+}
 

@@ -10,6 +10,7 @@ import { NewsItem } from '../models/content';
 import { ContentType, ContentArea } from "~/utils/content";
 import messagesSubject from "~/logic/messages/MessagesSubject";
 import DMViewModel from "~/views/messages/direct-message-page/direct-message-vm";
+import { Conversation} from '../models/conversation';
 
 export class Firebase {
     private isInit: boolean = false;
@@ -96,7 +97,43 @@ export class Firebase {
             time: "3PM"
         });
     }
+    public conversationListener(callback: (Conversation) => void): any {
 
+        callback({
+            img: "https://firebasestorage.googleapis.com/v0/b/wsutc-trio-app.appspot.com/o/1034227-contact-us.png?alt=media",
+            staffId: 17413,
+            name: "Stassia Feltes",
+            recentMessage: "Hello, I am contacting you for your Semester Visit",
+            date: "2/3/23",
+            updateTs: 3
+        });
+        callback({
+            img: "https://firebasestorage.googleapis.com/v0/b/wsutc-trio-app.appspot.com/o/1034227-contact-us.png?alt=media",
+            staffId: 17414,
+            name: "Stassia Feltes",
+            recentMessage: "Hello, I am contacting you for your Semester Visit",
+            date: "2/3/22",
+            updateTs: 2
+        });
+        callback({
+            img: "https://firebasestorage.googleapis.com/v0/b/wsutc-trio-app.appspot.com/o/1034227-contact-us.png?alt=media",
+            staffId: 17413,
+            name: "Stassia Feltes",
+            recentMessage: "Hello, I am contacting you for your Semester Visit",
+            date: "2/3/21",
+            updateTs: 1
+        });
+        callback({
+            img: "https://firebasestorage.googleapis.com/v0/b/wsutc-trio-app.appspot.com/o/1034227-contact-us.png?alt=media",
+            staffId: 17411,
+            name: "Stassia Feltes",
+            recentMessage: "Hello, I am contacting you for your Semester Visit",
+            date: "2/3/20",
+            updateTs: 0
+        });
+
+
+    }
     public doLogout(): Promise<any> {
         return firebase.logout();
     }
@@ -134,7 +171,7 @@ export class Firebase {
     }
 
     public sendMessage(conversationId, message, senderId) {
-        return firebase.push('/conversations/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId }) 
+        return firebase.push('/conversations/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId })
     }
 
     public getMessages(conversationId: string) {
