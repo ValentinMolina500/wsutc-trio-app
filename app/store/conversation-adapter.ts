@@ -1,7 +1,7 @@
 import { Observable } from 'tns-core-modules/data/observable';
 //import { ObservableProperty } from '../observable-property-decorator';
 import { ItemEventData } from "tns-core-modules/ui/list-view";
-import { Conversation, Order, Find } from '../models/conversation';
+import { Conversation, Order } from '../models/conversation';
 import { BaseArray } from '../models/content';
 
 export class ConversationAdapter {

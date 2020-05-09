@@ -36,6 +36,3 @@ export function Order(a: Conversation, b: Conversation) {
     }
     return 0;
 }
-export function Find(conversation: Conversation) {
-    return conversation.staffId == this; 
-}

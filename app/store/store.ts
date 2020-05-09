@@ -29,7 +29,6 @@ export class myStore {
     public feedsAdapter: FeedsAdapter;
     public conversationsAdapter: ConversationAdapter;
     public homeViewModel: ViewModel;
-    
 
     constructor() {
         this.conversationsAdapter = new ConversationAdapter();

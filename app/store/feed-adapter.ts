@@ -12,7 +12,7 @@ export class FeedsAdapter extends Observable {
         super();
         this.feeds = new ObservableArray<NewsItem>();
     }
-    public setFeeds = (result) => {
+    public updateFeed = (result) => {
         let index = result.postId;
             if (!(this.idMap.get(index) >= 0)) {
                 let feed = new NewsItem(result)
