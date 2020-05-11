@@ -6,7 +6,6 @@ import { LoginType, FirebasePasswordLoginOptions } from "nativescript-plugin-fir
 import Navigator from "~/utils/navigator";
 import { Pages } from "./pages";
 import Auth from "./authentication";
-import { NewsItem } from '../models/content';
 import { ContentType, ContentArea } from "~/utils/content";
 import messagesSubject from "~/logic/messages/MessagesSubject";
 import DMViewModel from "~/views/messages/direct-message-page/direct-message-vm";
@@ -23,12 +22,10 @@ export class Firebase {
             }
         })
             .then(async () => {
-                console.log("******* <3 :) *******")
                 messagesSubject.setMessages();
                 messagesSubject.register(DMViewModel);
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
-
     }
 
     public doLogin(email: string, password: string): Promise<firebase.User> {
@@ -46,14 +43,11 @@ export class Firebase {
         return firebase.getCurrentUser();
     }
     public validateConversation(user, staff): Promise<any> {
-
         return firebase.getValue(`/students/${user.id}/conversation/${staff.id}`)
             .then(function(value) {
 
             })
             .catch(error => console.log("ErrorV: " + error));
-
-
         return firebase.getCurrentUser();
     }
     public feedListener(callback) {
@@ -99,7 +93,6 @@ export class Firebase {
         });
     }
     public conversationListener(callback: (Conversation) => void): any {
-
         callback({
             img: "https://firebasestorage.googleapis.com/v0/b/wsutc-trio-app.appspot.com/o/1034227-contact-us.png?alt=media",
             staffId: 17413,
@@ -132,8 +125,6 @@ export class Firebase {
             date: "2/3/20",
             updateTs: 0
         });
-
-
     }
     public doLogout(): Promise<any> {
         return firebase.logout();

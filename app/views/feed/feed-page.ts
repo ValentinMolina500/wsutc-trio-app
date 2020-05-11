@@ -6,13 +6,19 @@ import { ContentItem } from "~/utils/content";
 import Navigator from "~/utils/navigator";
 
 export function onNavigatedTo(args: EventData): void {
-    
     const page = <Page>args.object;
-    setupFeed(page);
-    // Navigator.setCurrentPage(page);
     page.bindingContext = new ViewModel(page);
 }
 
+
+
+export function typeOfContent(item: ContentItem) {
+    return item.type;
+}
+
+
+/*
+Navigator.setCurrentPage(page);
 function setupFeed(page: Page) {
     //let feed = <ListView>page.getViewById("feed");
     //feed.separatorColor = new Color('#eff0f2');
@@ -20,8 +26,4 @@ function setupFeed(page: Page) {
     if (android) {
         // feed.android.setVerticalScrollBarEnabled(false);
     }
-}
-
-export function typeOfContent(item: ContentItem) {
-    return item.type;
-}
+}*/

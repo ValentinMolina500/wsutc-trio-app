@@ -13,10 +13,6 @@ export function onLoaded(args: EventData) {
     dialogs.hideLoader();
 }
 
-export function goBack() {
-    Frame.topmost().goBack();
-}
-
 export function messageSelector(item)
 {
     return item.senderId == "17413" ? "sent" : "recieved";

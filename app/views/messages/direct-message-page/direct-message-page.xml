@@ -1,8 +1,8 @@
 <Page id="page" loaded="onLoaded">
     <ActionBar class="action-bar" title="Stassia Feltes">
         <GridLayout rows="auto" columns="auto, auto, *">
-            <Label tap="goBack" class="far" text="&#xf060;" fontSize="20" verticalAlignment="middle" />
-            <Image tap="goBack" col="1" marginLeft="8" horizontalAlignment="left" borderRadius="100%" stretch="aspectFill" height="35" width="35" src="~/imgs/stassia.jpg" />
+            <Label tap="goBack" col="0" class="far " text="&#xf060;" fontSize="20" verticalAlignment="middle" />
+            <Image tap="goBack" col="1" class=" ml-lg pl-lg " marginLeft="8" horizontalAlignment="left" borderRadius="100%" stretch="aspectFill" height="35" width="35" src="~/imgs/stassia.jpg" />
             <Label col="2" marginLeft="8" fontSize="20" verticalAlignment="middle" text="Stassia Feltes" />
         </GridLayout>
     </ActionBar>

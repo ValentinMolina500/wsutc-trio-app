@@ -1,41 +1,23 @@
 import { ObservableArray } from 'tns-core-modules/data/observable-array';
 import { Observable, EventData, Page } from "tns-core-modules/ui/page/page";
-import { NewsItem } from '../models/content';
+import { Feed } from '../models/feed';
 import { FeedsAdapter } from '../store/feed-adapter';
 import { ConversationAdapter } from '../store/conversation-adapter';
 import Firebase from "../utils/firebase";
-import { Conversation} from '../models/conversation';
+import { Conversation } from '../models/conversation';
+import HomeViewModel from '~/views/home/home-page-vm';
 //https://github.com/jcmsalves/firebase-playground/tree/master/app/src/main/java/com/jcmsalves/firebaseplayground/realtimedatabase
-
-class ViewModel extends Observable {
-    public listLoad: Boolean;
-    public currentIndex: number;
-    constructor() {
-        super();
-        this.listLoad = false;
-        this.currentIndex = 0;
-
-    }
-    public load(val: Boolean) {
-        this.set('listLoad', val);
-    }
-    public setIndex(index: number) {
-        this.set('currentIndex', index);
-    }
-}
-
 
 export class myStore {
     public feedsAdapter: FeedsAdapter;
     public conversationsAdapter: ConversationAdapter;
-    public homeViewModel: ViewModel;
+    public homeViewModel: HomeViewModel;
 
     constructor() {
         this.conversationsAdapter = new ConversationAdapter();
         this.feedsAdapter = new FeedsAdapter();
-        this.homeViewModel = new ViewModel();
     }
-    
+
     public getFeeds() {
         let callback = (result) => {
             this.feedsAdapter.updateFeed(result);
@@ -51,11 +33,15 @@ export class myStore {
         Firebase.conversationListener(callback);
         return this.conversationsAdapter.getData();
     };
-    
+
+    public setHomeViewModel(HomeViewModel: HomeViewModel) {
+        return this.homeViewModel = HomeViewModel;
+    };
+
     public getHomeViewModel() {
         return this.homeViewModel;
-    };
-    
+    }
+
 }
 let Store = new myStore();
 export default Store;
