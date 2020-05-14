@@ -15,9 +15,9 @@ export class ContentItem extends Observable {
     public description: string;
     public icon: string;
     public image: string;
-    public timestamp: string;
+    public timestamp: string;//format
     public area: ContentArea;
-    public staff: string;
+    public staff: string;//creator
     public postId: string;
 
     constructor(item: any) {
@@ -43,7 +43,7 @@ export class ContentItem extends Observable {
             view: Frame.topmost().page.getViewById(this.postId),
             actions: [
                 "Link",
-                "Share"
+                "Share"//later implement
             ]
         });
     }

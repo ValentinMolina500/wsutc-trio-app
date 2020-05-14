@@ -51,7 +51,17 @@ export class Firebase {
         return firebase.getCurrentUser();
     }
     public feedListener(callback) {
-        callback({
+        firebase.addChildEventListener(callback, "/posts").then(
+            listenerWrapper => {
+                var path = listenerWrapper.path;
+                var listeners = listenerWrapper.listeners; // an Array of listeners added
+                // you can store the wrapper somewhere to later call 'removeEventListeners'
+            }
+        );
+
+
+
+       /* callback({
             type: ContentType.NEWS,
             title: "Reminder: Schedule Your Semester Visit",
             description: "Remember as part as a TRIO student you are required to schedule a semester visit.",
@@ -90,7 +100,7 @@ export class Firebase {
             date: "1/22",
             location: "ZOOM",
             time: "3PM"
-        });
+        });*/
     }
     public conversationListener(callback: (Conversation) => void): any {
         callback({

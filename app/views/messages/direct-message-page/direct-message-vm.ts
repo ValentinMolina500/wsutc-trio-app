@@ -17,7 +17,7 @@ class ViewModel extends Observable implements Observer  {
 
     public init(page, conversation) {
         if (!this.isInit) {
-             this.feed = page.getViewById("feed");
+            this.feed = page.getViewById("feed");
             this.conversation = conversation.value;
             this.isInit = true;
         }

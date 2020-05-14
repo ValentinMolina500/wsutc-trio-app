@@ -7,7 +7,6 @@ export function onNavigatingTo(args: EventData): void {
 	let homeViewModel: HomeViewModel = new HomeViewModel(page);
 	page.bindingContext = homeViewModel;
 	console.log(page.bindingContext.page);
-
 	Store.setHomeViewModel(homeViewModel);
 }
 

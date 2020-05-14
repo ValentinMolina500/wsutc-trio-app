@@ -19,7 +19,7 @@ export class Conversation extends Observable {
         for (let key in data) {
             this[key] = data[key];
         }
-        //this.date = this.formatTime(data.date);
+        this.date = this.formatTime(data.date);
     };
     public formatTime(value: string) {
         //@ts-ignore

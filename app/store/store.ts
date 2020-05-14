@@ -20,6 +20,7 @@ export class myStore {
 
     public getFeeds() {
         let callback = (result) => {
+            
             this.feedsAdapter.updateFeed(result);
         }
         Firebase.feedListener(callback);
