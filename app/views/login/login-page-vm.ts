@@ -18,12 +18,12 @@ export default class LoginPage extends Observable {
     public login(args: EventData) {
         let button = <Button>args.object;
         let page = button.page;
-        //page.frame.navigate("~/views/home/home-page");
-        Navigator.navigate(Pages.HOME, page)
+        console.log('user.email');
         Authentication.login(this.email, this.password)
             .then((user) => {
-                console.log(user.email);
-
+                
+                Navigator.requestNavigateToBack();
+                
             })
             .catch((err) => {
                 console.log(err);

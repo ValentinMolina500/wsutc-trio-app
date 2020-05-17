@@ -14,20 +14,15 @@ export class FeedsAdapter extends Observable {
     }
     public updateFeed = (result) => {
         result.value.postId = result.key;
-        console.log(result.value);
-        let index = result.key;
-        
+        let index = result.key;      
         if (this.idMap.get(index) == undefined) {
             let feed = new Feed(result.value)
             let id = this.feeds.push(feed);
             this.idMap.set(index, id-1);
         } else {
-            console.log('index', this.idMap.get(index));
-            console.log('feed', this.feeds.getItem(this.idMap.get(index)));
             let feedTemp: Feed = <Feed>this.feeds.getItem(this.idMap.get(index));
             feedTemp.update(result.value);
         }
-
     };
     public getData = () => {
         return this.feeds;

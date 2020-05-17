@@ -10,7 +10,7 @@ export class Authentication {
     public async validateAuthentication(page: Page) {
         let auth = await this.isAuthenticated();
         if (!auth) {
-            Nav.navigate(Pages.LOGIN, page);
+           // Nav.navigate(Pages.LOGIN, page);
         }
         return auth;
     }
@@ -22,7 +22,7 @@ export class Authentication {
                     console.log('log', true);
                     resolve(true);
                 }).catch((error) => {
-                    console.log('log', false);
+                    console.log('log1', false);
                     resolve(false);
                 });
         });

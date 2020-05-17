@@ -20,6 +20,7 @@
     "nativescript-calendar": "^2.1.0",
     "nativescript-drop-down": "^5.0.4",
     "nativescript-email": "^1.5.5",
+    "nativescript-image-cache": "^1.1.6",
     "nativescript-materialdropdownlist": "^1.0.15",
     "nativescript-menu": "^1.1.3",
     "nativescript-plugin-firebase": "^10.3.3",

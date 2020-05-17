@@ -31,7 +31,7 @@
         <Label row="8" col="1" colSpan="3" margin="8 16 8 8" text="Edit Profile Picture" />
         <Label row="8" class="far right" text="&#xf054;" col="4" margin="16 0" />
 
-        <Button tap="{{ logout }}" class="logout-btn" rowSpan="10" colSpan="5" text="LOGOUT" />
+        <Button tap="{{ logout }}" class="logout-btn" row="9" colSpan="5" text="LOGOUT" />
 
     </GridLayout>
     <!-- </ScrollView> -->

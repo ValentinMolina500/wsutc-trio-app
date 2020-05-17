@@ -1,11 +1,11 @@
 <Page id="page" navigatingTo="onNavigatedTo" xmlns:RL="nativescript-ripple" xmlns:dd="nativescript-drop-down">
-    <ActionBar class="action-bar" title="What's New" marginBottom="4" />
+    <ActionBar tap="{{logout}}" class="action-bar" title="What's New" marginBottom="4" />
     <ListView id="feed" separatorColor="#eff0f2" items="{{ feeds }}" itemTemplateSelector="typeOfContent">
         <ListView.itemTemplates>
             <template key="NEWS">
                 <StackLayout>
                     <GridLayout class="card-container" rows="auto, auto, auto, auto, auto, 1, auto" columns="auto, *">
-                        <Image row="0" class="card-icon-img" rowSpan="2" src="{{ icon || defaultImage }}" />
+                        <Image  row="0" class="card-icon-img" rowSpan="2" src="{{ icon || defaultImage }}" />
                         <Label col="1" class="heading-info">
                             <FormattedString>
                                 <Span class="heading-name" text="{{ staff }}" />

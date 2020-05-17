@@ -1,16 +1,17 @@
 <Page actionBarHidden="true" loaded="onLoaded" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo">
-    <GridLayout>
-        <Tabs row="0" tabsPosition="bottom" selectedIndex="{{ currentIndex }}" visibility="{{ listLoad ? 'visible' : 'collapse' }}">
-            <TabStrip highlightColor="#c60c30">
+    <GridLayout >
+        <Tabs  row="0" tabsPosition="bottom" selectedIndex="{{ currentIndex }}" visibility="{{ listLoad ? 'visible' : 'collapse' }}">
+            <TabStrip height="50" highlightColor="#c60c30" isIconSizeFixed="false">
                 <TabStripItem >
                     <Label text="Home" />
-                    <!-- <Image src="font://&#xf015;" class="fas"></Image> -->
+                     <Image src="font://&#xf015;"  color="#777777" class="fas t-10 "></Image> 
                 </TabStripItem>
                 <TabStripItem>
                     <Label text="Staff" />
                 </TabStripItem>
                 <TabStripItem>
-                    <Label fontSize="16" class="fas" text="&#xf27a;" />
+                    <Image src="font://&#xf27a;"  color="#777777" class="fas t-10"  />
+                    <Label text="Message" />
                 </TabStripItem>
                 <TabStripItem>
                     <Label text="Settings" />

@@ -29,7 +29,6 @@ class StaffItem extends Observable {
     }
 
     public composeEmail(): void {
-        console.log("test");
         email.available()
             .then((available: boolean) => {
                 if (available) {
@@ -45,8 +44,6 @@ class StaffItem extends Observable {
     public async sendMessage() {
         let conversation;
         let key: string;
-
-        console.log(this.uid);
         if (!this.disabled) {
             console.log("TIMEOUT STARTED");
 
@@ -90,8 +87,6 @@ export default class StaffPage extends Observable {
     public viewModel: any;
     constructor() {
         super();
-
-        console.log("STAFF PAGE");
         viewModel = Store.getHomeViewModel();
     }
 

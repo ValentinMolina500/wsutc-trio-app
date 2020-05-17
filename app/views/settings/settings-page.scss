@@ -19,14 +19,17 @@ $bold-text-color: #48505b;
 .logout-btn {
     // horizontal-align: center;
     vertical-align: bottom;
-    margin: 24 48;
+    margin: 24 30;
     // background-color: #c60c30;
-    background: #ED213A;  /* fallback for old browsers */
-background: linear-gradient(to right, #981e32, #c60c30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #ED213A;
+    /* fallback for old browsers */
+    background: linear-gradient(to right, #981e32, #c60c30);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-radius: 100%;
     color: white;
     font-weight: bold;
-    height: 56;
+    height: 40;
+    width: 100;
 }
 
 .circles {

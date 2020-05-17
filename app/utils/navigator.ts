@@ -15,8 +15,7 @@ export class Navigator {
     public async navigate(to: Pages, page: Page) {
         let targetPage = pages.get(to);
         if (to == Pages.LOGIN) {
-            let frame = Frame.getFrameById("top-frame");
-            frame.navigate(targetPage.path);
+            this.navigateToLogin();
         } else if (targetPage.secure) {
             {
                 let authenticated = await Authentication.isAuthenticated();
@@ -27,6 +26,16 @@ export class Navigator {
         } else {
             page.frame.navigate(targetPage.path);
         }
+    }
+    public navigateToLogin() {
+        let targetPage = pages.get(Pages.LOGIN);
+        let frame = Frame.getFrameById("top-frame");
+        frame.navigate(targetPage.path);
+    }
+    
+    public requestNavigateToBack() {
+        let frame = Frame.topmost();
+        //frame.goBack();
     }
 
     public navigateContext(to: Pages, page: Page, context: any): void {

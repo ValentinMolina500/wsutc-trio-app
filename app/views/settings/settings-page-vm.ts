@@ -1,18 +1,21 @@
 import { Observable, EventData, Page } from "tns-core-modules/ui/page/page";
-import Navigator from "~/utils/navigator";
+import Nav from "~/utils/navigator";
 import { Pages } from "~/utils/pages";
 import Auth from "~/utils/authentication";
+import Store from '~/store/store';//store adapter
 
 export default class SettingsPage extends Observable {
+	private homeViewModel;
     constructor() {
         super();
+		this.homeViewModel = Store.getHomeViewModel();
     }
 
     public logout(args: EventData) {
         let button = <Page>args.object;
         let page = button.page;
-        
         Auth.logout();
-        Navigator.navigate(Pages.LOGIN, page);
+		//Nav.navigateToLogin();
+		this.homeViewModel.setIndex(0);
     }
 }
