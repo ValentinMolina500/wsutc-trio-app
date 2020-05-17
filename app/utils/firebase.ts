@@ -18,7 +18,7 @@ export class Firebase {
         return firebase.init({
             persist: true,
             onAuthStateChanged: (data: firebase.AuthStateData) => {
-                data.loggedIn ? console.log("Logged in as " + data.user.email) : Navigator.navigateFrame(Pages.LOGIN);
+               // data.loggedIn ? console.log("Logged in as " + data.user.email) : Navigator.navigateFrame(Pages.LOGIN);
             }
         })
             .then(async () => {

@@ -35,7 +35,7 @@ export class Navigator {
     
     public requestNavigateToBack() {
         let frame = Frame.topmost();
-        //frame.goBack();
+        frame.goBack();
     }
 
     public navigateContext(to: Pages, page: Page, context: any): void {

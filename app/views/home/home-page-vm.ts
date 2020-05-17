@@ -17,7 +17,7 @@ export default class HomeViewModel extends Observable {
 		console.log('auth', auth);
 		this.listLoad = auth;
 		if (!auth) {
-			Nav.navigateToLogin();	
+			//Nav.navigateToLogin();	
 		}
 		return auth;
 	}

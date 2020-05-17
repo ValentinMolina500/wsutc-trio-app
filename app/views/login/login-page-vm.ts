@@ -19,15 +19,14 @@ export default class LoginPage extends Observable {
         let button = <Button>args.object;
         let page = button.page;
         console.log('user.email');
-        Authentication.login(this.email, this.password)
+        Navigator.requestNavigateToBack();
+        /*Authentication.login(this.email, this.password)
             .then((user) => {
-                
-                Navigator.requestNavigateToBack();
-                
+               
             })
             .catch((err) => {
                 console.log(err);
-            });
+            });*/
     }
 
     public change() {

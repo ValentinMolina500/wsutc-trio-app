@@ -15,7 +15,11 @@ export default class SettingsPage extends Observable {
         let button = <Page>args.object;
         let page = button.page;
         Auth.logout();
-		//Nav.navigateToLogin();
-		this.homeViewModel.setIndex(0);
+        setTimeout(()=>{
+           this.homeViewModel.setIndex(0); 
+        },50)
+		Nav.navigateToLogin();
+		
+        
     }
 }
