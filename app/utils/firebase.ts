@@ -22,8 +22,8 @@ export class Firebase {
             }
         })
             .then(async () => {
-                messagesSubject.setMessages();
-                messagesSubject.register(DMViewModel);
+                // messagesSubject.setMessages();
+                // messagesSubject.register(DMV1iewModel);
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
     }
@@ -182,6 +182,15 @@ export class Firebase {
 
     public addChildEventListener(callback, path) {
         firebase.addChildEventListener(callback, path);
+    }
+
+    public messagesListener(callback) {
+        firebase.addChildEventListener(callback, "conversations/-M7ZvGOGRS6UJ5YqBdJI/messages").then(
+            listenerWrapper => {
+                var path = listenerWrapper.path;
+                var listeners = listenerWrapper.listeners; // an Array of listeners added
+                // you can store the wrapper somewhere to later call 'removeEventListeners'
+            })    
     }
 }
 

@@ -3,6 +3,7 @@ import { Observable, EventData, Page } from "tns-core-modules/ui/page/page";
 import { Feed } from '../models/feed';
 import { FeedsAdapter } from '../store/feed-adapter';
 import { ConversationAdapter } from '../store/conversation-adapter';
+import { MessagesAdapter } from './messages-adapter';
 import Firebase from "../utils/firebase";
 import { Conversation } from '../models/conversation';
 import HomeViewModel from '~/views/home/home-page-vm';
@@ -11,11 +12,13 @@ import HomeViewModel from '~/views/home/home-page-vm';
 export class myStore {
     public feedsAdapter: FeedsAdapter;
     public conversationsAdapter: ConversationAdapter;
+    public messagesAdapter: MessagesAdapter;
     public homeViewModel: HomeViewModel;
 
     constructor() {
         this.conversationsAdapter = new ConversationAdapter();
         this.feedsAdapter = new FeedsAdapter();
+        this.messagesAdapter = new MessagesAdapter();
     }
 
     public getFeeds() {
@@ -34,6 +37,21 @@ export class myStore {
         Firebase.conversationListener(callback);
         return this.conversationsAdapter.getData();
     };
+
+
+    public getMessages() {
+        let callback = (result) => {
+            if (result.type == "ChildAdded") {
+                console.log(result.value)
+                this.messagesAdapter.updateMessages(result);
+            }
+            
+        }
+        console.log("*****CALLLED")
+        Firebase.messagesListener(callback);
+        return this.messagesAdapter.getData();
+    }
+
 
     public setHomeViewModel(HomeViewModel: HomeViewModel) {
         return this.homeViewModel = HomeViewModel;

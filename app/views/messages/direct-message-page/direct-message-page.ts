@@ -8,12 +8,16 @@ import dialogs from "~/utils/dialogs";
 let model;
 export function onLoaded(args: EventData) {
     let page = <Page>args.object;
-    page.bindingContext = vm;
-    page.bindingContext.init(page, page.navigationContext)
-    dialogs.hideLoader();
+    page.bindingContext = new vm();
+    // page.bindingContext.init(page, page.navigationContext)
+    // dialogs.hideLoader();
 }
 
 export function messageSelector(item)
 {
     return item.senderId == "17413" ? "sent" : "recieved";
+}
+
+export function goBack() {
+	Frame.topmost().goBack();
 }
