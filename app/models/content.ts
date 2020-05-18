@@ -17,20 +17,14 @@ export class ContentItem extends Observable {
     public image: string;
     public timestamp: string;//format
     public area: ContentArea;
-    public staff: string;//creator
-    public postId: string;
+    public staffName: string;//creator
+    public postId: string;//Firebaseid
 
     constructor(item: any) {
         super();
-        this.type = item.type;
-        this.title = item.title;
-        this.description = item.description;
-        this.icon = item.icon;
-        this.image = item.image || null;
-        this.timestamp = item.timestamp;
-        this.area = item.area;
-        this.staff = item.staff;
-        this.postId = item.postId;
+        for (let key in item) {
+            this[key] = item[key];
+        }
     }
 
     public openMenu() {

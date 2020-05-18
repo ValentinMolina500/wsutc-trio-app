@@ -5,7 +5,7 @@ import messages, { Message } from "~/utils/messages";
 import { Observer } from "~/logic/utils/Observer";
 import { Frame } from "tns-core-modules/ui/frame/frame";
 
-class ViewModel extends Observable implements Observer  {
+class ViewModel extends Observable   {
     public messages: ObservableArray<any> = new ObservableArray();
     private isInit = false;
     private currentMessage: string = "";

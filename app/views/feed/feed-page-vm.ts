@@ -10,15 +10,9 @@ export default class FeedPage extends Observable {
     public defaultImage: string = Config.iconImage;
     //private page: Page;
        
-    constructor(page: Page) {
+    constructor() {
         super();
         //this.page = page;
         this.feeds = Store.getFeeds();
     }
-	public logout(args: EventData) {
-		let button = <Page>args.object;
-		let page = button.page;
-		Auth.logout();
-		//Nav.navigateToLogin();
-	}
 }
