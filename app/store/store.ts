@@ -6,6 +6,7 @@ import { ConversationAdapter } from '../store/conversation-adapter';
 import { MessagesAdapter } from './messages-adapter';
 import Firebase from "../utils/firebase";
 import { Conversation } from '../models/conversation';
+import { StaffAdapter } from "./staff-adapter";
 import HomeViewModel from '~/views/home/home-page-vm';
 //https://github.com/jcmsalves/firebase-playground/tree/master/app/src/main/java/com/jcmsalves/firebaseplayground/realtimedatabase
 
@@ -13,12 +14,14 @@ export class myStore {
     public feedsAdapter: FeedsAdapter;
     public conversationsAdapter: ConversationAdapter;
     public messagesAdapter: MessagesAdapter;
+    public staffAdapter: StaffAdapter
     public homeViewModel: HomeViewModel;
 
     constructor() {
         this.conversationsAdapter = new ConversationAdapter();
         this.feedsAdapter = new FeedsAdapter();
         this.messagesAdapter = new MessagesAdapter();
+        this.staffAdapter = new StaffAdapter();
     }
 
     public getFeeds() {
@@ -30,11 +33,23 @@ export class myStore {
         return this.feedsAdapter.getData();
     };
 
-    public getConversations() {
+    public async setConversations() {
         let callback = (result) => {
             this.conversationsAdapter.updateConversation(result);
+
+            Firebase.addChildEventListener((message) => {
+                this.conversationsAdapter.updateMessages(result.key, message.value)
+            }, '/conversations' + result.value + '/messages')
         }
-        Firebase.conversationListener(callback);
+
+        Firebase.getCurrentUserConversations(callback, "17413")
+    }
+
+    public getConversations() {
+        // let callback = (result) => {
+        //     this.conversationsAdapter.updateConversation(result);
+        // }
+        // Firebase.conversationListener(callback);
         return this.conversationsAdapter.getData();
     };
 
@@ -52,7 +67,15 @@ export class myStore {
         return this.messagesAdapter.getData();
     }
 
+    public async setStaff() {
+        let result = await Firebase.getStaff();
 
+        this.staffAdapter.updateStaff(result);
+    }
+
+    public getStaff() {
+        return this.staffAdapter.getData();
+    }
     public setHomeViewModel(HomeViewModel: HomeViewModel) {
         return this.homeViewModel = HomeViewModel;
     };

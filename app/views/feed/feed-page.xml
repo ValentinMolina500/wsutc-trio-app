@@ -8,7 +8,7 @@
                         <Image  row="0" class="card-icon-img" rowSpan="2" src="{{ icon || defaultImage }}" />
                         <Label col="1" class="heading-info">
                             <FormattedString>
-                                <Span class="heading-name" text="{{ staff }}" />
+                                <Span class="heading-name" text="{{ staffName }}" />
                                 <Span text="  " />
                                 <Span fontSize="12" class="fas type" text="&#xf0da; " />
                                 <Span class="type" text="{{ area }}" />

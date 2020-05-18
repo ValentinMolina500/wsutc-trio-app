@@ -10,6 +10,8 @@ import { ContentType, ContentArea } from "~/utils/content";
 import messagesSubject from "~/logic/messages/MessagesSubject";
 import DMViewModel from "~/views/messages/direct-message-page/direct-message-vm";
 import { Conversation} from '../models/conversation';
+import Store from '~/store/store';//store adapter
+
 
 export class Firebase {
     private isInit: boolean = false;
@@ -24,6 +26,8 @@ export class Firebase {
             .then(async () => {
                 // messagesSubject.setMessages();
                 // messagesSubject.register(DMV1iewModel);
+                Store.setStaff();
+                Store.setConversations();
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
     }
@@ -191,6 +195,14 @@ export class Firebase {
                 var listeners = listenerWrapper.listeners; // an Array of listeners added
                 // you can store the wrapper somewhere to later call 'removeEventListeners'
             })    
+    }
+
+    public getStaff() {
+        return firebase.getValue("/staff");
+    }
+
+    public getCurrentUserConversations(callback, id: string) {
+        return firebase.addChildEventListener(callback, '/students/' + id + "/conversations")
     }
 }
 

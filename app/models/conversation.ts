@@ -1,17 +1,21 @@
 import { Observable } from "tns-core-modules/ui/page/page";
+import { ObservableProperty } from '~/observable-property-decorator';
+import { ObservableArray } from 'tns-core-modules/data/observable-array';
 
 export class Conversation extends Observable {
-    public staffId: number;
-    public img: string;
-    public key: string;
-    public name: string;
-    public recentMessage: string;
-    public date: string;
-    public updateTs: number;
-    public index: string = "staffId";
+    // public staffId: number;
+    // public img: string;
+    // public key: string;
+    // public name: string;
+    // public recentMessage: string;
+    // public date: string;
+    // public updateTs: number;
+    // public index: string = "staffId";
+    @ObservableProperty() messages: ObservableArray<any>;
 
     constructor(data: Conversation) {
         super();
+        this.messages = new ObservableArray();
         this.update(data);
     }
 
@@ -19,8 +23,12 @@ export class Conversation extends Observable {
         for (let key in data) {
             this[key] = data[key];
         }
-        this.date = this.formatTime(data.date);
+        // this.date = this.formatTime(data.date);
     };
+
+    public updateMessages(message) {
+        this.messages.push(message);
+    }
     public formatTime(value: string) {
         //@ts-ignore
         // var formatter = new java.text.DecimalFormat("\#,\#\#0.\#\#");
@@ -28,11 +36,11 @@ export class Conversation extends Observable {
         return value; //formatter.format(num);
     };
 }
-export function Order(a: Conversation, b: Conversation) {
-    if (a.updateTs < b.updateTs) {
-        return 1;
-    } else if (a.updateTs > b.updateTs) {
-        return -1;
-    }
-    return 0;
-}
+// export function Order(a: Conversation, b: Conversation) {
+//     if (a.updateTs < b.updateTs) {
+//         return 1;
+//     } else if (a.updateTs > b.updateTs) {
+//         return -1;
+//     }
+//     return 0;
+// }
