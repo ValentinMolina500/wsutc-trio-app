@@ -8,11 +8,8 @@ import Store from '~/store/store';//store adapter
 export default class FeedPage extends Observable {
     public feeds: Feeds;
     public defaultImage: string = Config.iconImage;
-    //private page: Page;
-       
     constructor() {
         super();
-        //this.page = page;
         this.feeds = Store.getFeeds();
     }
 }

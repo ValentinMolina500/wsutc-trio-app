@@ -27,8 +27,8 @@ export class Conversation extends Observable {
     };
 
     public updateMessages(message) {
-        console.log("**********")
-        console.log(message);
+        //console.log("**********")
+       // console.log(message);
         this.messages.push(message);
     }
     public formatTime(value: string) {

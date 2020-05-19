@@ -3,27 +3,38 @@ import { Observable } from 'tns-core-modules/data/observable';
 //import { ObservableProperty } from '../observable-property-decorator';
 import { ItemEventData } from "tns-core-modules/ui/list-view";
 import { Feed } from '../models/feed';
+import Cache from "~/utils/image-cache";
 
-export class FeedsAdapter extends Observable {
+export class FeedsAdapter {
     public feeds: ObservableArray<Feed>;
     private idMap: Map<number, number> = new Map();
-    public listLoad: boolean = false;
     constructor() {
-        super();
         this.feeds = new ObservableArray<Feed>();
     }
-    public updateFeed = (result) => {
-        result.value.postId = result.key;
-        let index = result.key;      
-        if (this.idMap.get(index) == undefined) {
-            let feed = new Feed(result.value)
-            let id = this.feeds.push(feed);
-            this.idMap.set(index, id-1);
+
+    public updateFeed(result: any) {
+        let feedTemp = this.findFeed(result);
+        console.log('ll------', result.key, feedTemp);
+        if (!feedTemp) {
+            this.pushFeed(result);
         } else {
-            let feedTemp: Feed = <Feed>this.feeds.getItem(this.idMap.get(index));
+            //@ts-ignore
             feedTemp.update(result.value);
         }
     };
+
+    public findFeed(result: any) {
+        let id = this.idMap.get(result.key);
+        return (id == undefined) ? false : this.feeds.getItem(id);       
+    };
+    public async pushFeed(result: any) {
+        let tempFeed = result.value;
+        tempFeed.postId = result.key;
+        tempFeed.image = await Cache.getImageByUrl(tempFeed.image);
+        let id = this.feeds.push(new Feed(tempFeed));
+        this.idMap.set(tempFeed.postId, id-1);
+    };
+
     public getData = () => {
         return this.feeds;
     };

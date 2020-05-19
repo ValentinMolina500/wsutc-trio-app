@@ -1,11 +1,14 @@
-import { EventData, Page } from "tns-core-modules/ui/page/page";
+import { EventData, NavigatedData, Page } from "tns-core-modules/ui/page/page";
 import ViewModel from "./feed-page-vm";
 import { ContentItem } from "~/utils/content";
-let viewModel: ViewModel = new ViewModel();
 
-export function onNavigatedTo(args: EventData): void {
+export function onNavigatedTo(args: NavigatedData): void {
+	if (args.isBackNavigation) {
+		return;
+	}
+
     const page = <Page>args.object;
-	page.bindingContext = viewModel;
+	page.bindingContext = new ViewModel();;
 }
 
 export function typeOfContent(item: ContentItem) {

@@ -8,7 +8,7 @@ export default class MessagesPage extends Observable {
 
 	constructor() {
 		super();
-		this.staff = Store.getStaff();
+		//this.staff = Store.getStaff();
 
 		this.conversations = Store.getConversations();
 		// this.conversations = Store.getConversations().map(v => {

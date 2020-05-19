@@ -176,7 +176,13 @@ export class Firebase {
         return firebase.getValue('/conversations/' + id);
     }
 
-    public sendMessage(conversationId, message, senderId) {
+    public sendMessage(update,conversationId, message, senderId) {
+
+ 
+       // firebase.update('/services/' + cData.service.info.fsid, );
+
+       // return firebase.push('/staff/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId })
+
         return firebase.push('/conversations/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId })
     }
 
