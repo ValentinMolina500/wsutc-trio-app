@@ -204,6 +204,10 @@ export class Firebase {
     public getCurrentUserConversations(callback, id: string) {
         return firebase.addChildEventListener(callback, '/students/' + id + "/conversations")
     }
+
+    public staffListener(callback) {
+        firebase.addChildEventListener(callback, "/staff/");
+    }
 }
 
 let singleton = new Firebase();

@@ -3,6 +3,7 @@ import { Observable } from 'tns-core-modules/data/observable';
 import { ItemEventData } from "tns-core-modules/ui/list-view";
 import { Conversation } from '../models/conversation';
 import { BaseArray } from '../models/base-array';
+import Store from "./store";
 
 export class ConversationAdapter {
     // public data: BaseArray<Conversation>;
@@ -33,7 +34,7 @@ export class ConversationAdapter {
 
     public updateConversation(item) {
         console.log(item);
-        this.conversationsMap.set(item.key, { userKey: item.key, conversation: new Conversation(item)} )
+        this.conversationsMap.set(item.key, { userKey: item.key, conversation: new Conversation(item), } )
         this.conversationsArray.push(this.conversationsMap.get(item.key));
     }
 
@@ -41,14 +42,33 @@ export class ConversationAdapter {
         let conversation = this.conversationsMap.get(key).conversation;
 
         conversation.updateMessages(item);
-
-        // this.conversationsMap.set(key, { messages });
     }
 
     public getData() {
-        return this.conversationsArray;
+        console.log("THIS IS CONVERSATION");
+        console.log(this.conversationsArray.getItem(0));
+        // { userKey: 17412, conversation: Conversation }
+        return this.conversationsArray.map(value => {
+            console.log(value.conversation.messages);
+            return {
+                name: (() => { for (let i = 0; i < Store.getStaff().length; i++) { if (Store.getStaff().getItem(i).wsuId == value.userKey) return Store.getStaff().getItem(i).name } })(),
+                recentMessage: value.conversation.messages.length != 0 ? value.conversation.messages.getItem(value.conversation.messages.length - 1).message : "Tap to send message",
+                // date: value.conversation.messages.getItem(value.conversation.messages.length - 1).updateTs,
+                key: value.userKey
+            }
+        });
+
+    }
+
+    public getMessages(id) {
+        return this.conversationsMap.get(id).conversation.messages;
     }
 }
+
+
+// [13, 15, 17]
+
+
 
 
 

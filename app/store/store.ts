@@ -39,10 +39,10 @@ export class myStore {
 
             Firebase.addChildEventListener((message) => {
                 this.conversationsAdapter.updateMessages(result.key, message.value)
-            }, '/conversations' + result.value + '/messages')
+            }, '/conversations/' + result.value + '/messages')
         }
 
-        Firebase.getCurrentUserConversations(callback, "17413")
+        Firebase.getCurrentUserConversations(callback, "17413");
     }
 
     public getConversations() {
@@ -54,23 +54,28 @@ export class myStore {
     };
 
 
-    public getMessages() {
-        let callback = (result) => {
-            if (result.type == "ChildAdded") {
-                console.log(result.value)
-                this.messagesAdapter.updateMessages(result);
-            }
+    public getMessages(id) {
+        // let callback = (result) => {
+        //     if (result.type == "ChildAdded") {
+        //         console.log(result.value)
+        //         this.messagesAdapter.updateMessages(result);
+        //     }
             
-        }
-        console.log("*****CALLLED")
-        Firebase.messagesListener(callback);
-        return this.messagesAdapter.getData();
+        // }
+        // console.log("*****CALLLED")
+        // Firebase.messagesListener(callback);
+        // return this.messagesAdapter.getData();
+
+        return this.conversationsAdapter.getMessages(id);
     }
 
-    public async setStaff() {
-        let result = await Firebase.getStaff();
 
-        this.staffAdapter.updateStaff(result);
+    public async setStaff() {
+        // let result = await Firebase.getStaff();
+        Firebase.staffListener((result) => {
+            this.staffAdapter.updateStaff(result);
+
+        })
     }
 
     public getStaff() {

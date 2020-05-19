@@ -8,7 +8,7 @@ import dialogs from "~/utils/dialogs";
 let model;
 export function onLoaded(args: EventData) {
     let page = <Page>args.object;
-    page.bindingContext = new vm();
+    page.bindingContext = new vm(page.navigationContext.key);
     // page.bindingContext.init(page, page.navigationContext)
     // dialogs.hideLoader();
 }

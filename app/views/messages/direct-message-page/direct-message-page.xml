@@ -1,4 +1,4 @@
-<Page id="page" loaded="onLoaded">
+<Page id="page" navigatedTo="onLoaded">
     <ActionBar class="action-bar" title="Stassia Feltes">
         <GridLayout tap="goBack" width="auto"   rows="auto" columns="auto, auto, *">
             <Label  col="0" class="far " text="&#xf060;" fontSize="20" verticalAlignment="middle" />

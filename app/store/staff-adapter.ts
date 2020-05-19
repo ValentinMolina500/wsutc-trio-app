@@ -12,8 +12,8 @@ export class StaffAdapter extends Observable {
 	}
 
 	public updateStaff(result) {
-		Object.keys(result.value).map(key => {
-			this.staff.push(result.value[key]);
+		// Object.keys(result.value).map(key => {
+			this.staff.push(result.value);
 
 			this.staff = new ObservableArray(this.staff.sort((a, b) => {
 				if (a.name < b.name) {
@@ -24,7 +24,7 @@ export class StaffAdapter extends Observable {
 					return 0;
 				}
 			}));
-		})
+		// })
 		
 	}
 

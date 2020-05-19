@@ -8,10 +8,10 @@ import Store from '~/store/store';//store adapter
 
 export default class ViewModel extends Observable   {
     public messages: any;
-    constructor() {
+    constructor(key) {
         super();
 
-        this.messages = Store.getMessages();
+        this.messages = Store.getMessages(key);
     }
     // public messages: ObservableArray<any> = new ObservableArray();
     // private isInit = false;

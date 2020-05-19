@@ -27,6 +27,8 @@ export class Conversation extends Observable {
     };
 
     public updateMessages(message) {
+        console.log("**********")
+        console.log(message);
         this.messages.push(message);
     }
     public formatTime(value: string) {
@@ -36,6 +38,14 @@ export class Conversation extends Observable {
         return value; //formatter.format(num);
     };
 }
+
+// Val 
+
+// Hung
+
+
+
+
 // export function Order(a: Conversation, b: Conversation) {
 //     if (a.updateTs < b.updateTs) {
 //         return 1;
