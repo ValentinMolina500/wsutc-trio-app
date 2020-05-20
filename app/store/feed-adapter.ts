@@ -2,46 +2,40 @@ import { ObservableArray } from 'tns-core-modules/data/observable-array';
 import { Observable } from 'tns-core-modules/data/observable';
 //import { ObservableProperty } from '../observable-property-decorator';
 import { ItemEventData } from "tns-core-modules/ui/list-view";
-import { Feed } from '../models/feed';
+import { Feed, Order } from '../models/feed';
 import Cache from "~/utils/image-cache";
+import { BaseArray } from '../models/base-array';
 
-export class FeedsAdapter {
-    public feeds: ObservableArray<Feed>;
+export class FeedsAdapter extends Observable {
+    public feeds: BaseArray<Feed>;
     private idMap: Map<number, number> = new Map();
     constructor() {
-        this.feeds = new ObservableArray<Feed>();
+        super();
+        this.feeds = new BaseArray<Feed>();
     }
 
-    public updateFeed(result: any) {
-        let feedTemp = this.findFeed(result);
-        console.log('ll------', result.key, feedTemp);
-        if (!feedTemp) {
-            this.pushFeed(result);
+    public updateFeed = async (result: any) => {
+        let feed: Feed = await this.newFeed(result)
+        let tempFeed = this.feeds.findItem(feed, feed.index);
+        if (typeof (tempFeed) === "number") {
+            this.feeds.push(feed);
         } else {
-            //@ts-ignore
-            feedTemp.update(result.value);
+            tempFeed.update(feed);
         }
+        this.feeds.sort(Order);
     };
 
-    public findFeed(result: any) {
-        let id = this.idMap.get(result.key);
-        return (id == undefined) ? false : this.feeds.getItem(id);       
-    };
-    public async pushFeed(result: any) {
+    public async newFeed(result: any) {
         let tempFeed = result.value;
         tempFeed.postId = result.key;
+        tempFeed.icon = await Cache.getImageByUrl(tempFeed.icon);
         tempFeed.image = await Cache.getImageByUrl(tempFeed.image);
-        let id = this.feeds.push(new Feed(tempFeed));
-        this.idMap.set(tempFeed.postId, id-1);
+        return new Feed(tempFeed);
     };
 
     public getData = () => {
-        return this.feeds;
+        return this.feeds
     };
-    public selectFeeds(args: ItemEventData) {
-        //rewrite
-        console.log('Second ListView item tap');
-    }
 }
 export interface Feeds extends ObservableArray<Feed> {
 }

@@ -26,7 +26,6 @@ export class myStore {
 
     public getFeeds() {
         let callback = (result) => {
-            
             this.feedsAdapter.updateFeed(result);
         }
         Firebase.feedListener(callback);
@@ -60,7 +59,7 @@ export class myStore {
         //         console.log(result.value)
         //         this.messagesAdapter.updateMessages(result);
         //     }
-            
+
         // }
         // console.log("*****CALLLED")
         // Firebase.messagesListener(callback);

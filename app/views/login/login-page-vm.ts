@@ -17,16 +17,14 @@ export default class LoginPage extends Observable {
 
     public login(args: EventData) {
         let button = <Button>args.object;
-        let page = button.page;
-        console.log('user.email');
-        Navigator.requestNavigateToBack();
-        /*Authentication.login(this.email, this.password)
+        let page = button.page;     
+        Authentication.login(this.email, this.password)
             .then((user) => {
-               
+                Navigator.navigateToHome();
             })
             .catch((err) => {
                 console.log(err);
-            });*/
+            });
     }
 
     public change() {

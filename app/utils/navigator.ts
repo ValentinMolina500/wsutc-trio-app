@@ -1,6 +1,7 @@
 import { Frame, Page, getFrameById } from "tns-core-modules/ui/frame";
 import pages, { Pages } from "~/utils/pages";
 import Authentication from "./authentication";
+import { NavigationEntry } from "tns-core-modules/ui/frame";
 /**
  * Handles navigating between pages
  */
@@ -28,9 +29,20 @@ export class Navigator {
         }
     }
     public navigateToLogin() {
-        let targetPage = pages.get(Pages.LOGIN);
         let frame = Frame.getFrameById("top-frame");
-        frame.navigate(targetPage.path);
+        const navigationEntry: NavigationEntry = {
+            moduleName: pages.get(Pages.LOGIN).path,
+            clearHistory: true
+        };
+        frame.navigate(navigationEntry);
+    }
+    public navigateToHome() {
+        const frame = getFrameById("top-frame");
+        const navigationEntry: NavigationEntry = {
+            moduleName: pages.get(Pages.HOME).path,
+            clearHistory: true
+        };
+        frame.navigate(navigationEntry);
     }
     
     public requestNavigateToBack() {

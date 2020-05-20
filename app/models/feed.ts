@@ -18,6 +18,8 @@ export class Feed extends ContentItem {
     @ObservableProperty() surprisedCount: number;
     @ObservableProperty() hasSmiled: boolean;
     @ObservableProperty() hasSurprised: boolean;
+    public updateTs: number;
+    public index: string = "postId";
 
     constructor(item: any) {
         super(item);
@@ -33,6 +35,7 @@ export class Feed extends ContentItem {
         this.surprisedCount=item.surprisedCount;
         this.hasSmiled = item.hasSmiled || false;
         this.hasSurprised = item.hasSurpried || false;
+        this.updateTs = item.updateTs;
     }
 
     public doSmile() {
@@ -65,5 +68,15 @@ export class Feed extends ContentItem {
     }
 
 }
+
+export function Order(a: Feed, b: Feed) {
+     if (a.updateTs < b.updateTs) {
+         return 1;
+     } else if (a.updateTs > b.updateTs) {
+         return -1;
+     }
+     return 0;
+ }
+
 
 

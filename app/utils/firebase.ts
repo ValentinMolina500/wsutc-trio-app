@@ -62,50 +62,8 @@ export class Firebase {
                 // you can store the wrapper somewhere to later call 'removeEventListeners'
             }
         );
-
-
-
-       /* callback({
-            type: ContentType.NEWS,
-            title: "Reminder: Schedule Your Semester Visit",
-            description: "Remember as part as a TRIO student you are required to schedule a semester visit.",
-            icon: "~/imgs/stassia.jpg",
-            timestamp: "1 week ago",
-            area: ContentArea.NEWS,
-            staff: "Stassia Feltes",
-            postId: "193804",
-            smileCount: 12,
-            surprisedCount: 9
-        });
-        callback({
-            area: ContentArea.CARRER,
-            description: "Come join our resume workshop with Alisa Thompson.",
-            date: "4/15",
-            icon: "~/imgs/oliva.jpg",
-            image: "~/imgs/resume.jpg",
-            location: "FLOYD 251",
-            staff: "Oliva Primera",
-            time: "2:15PM",
-            timestamp: "1 hour ago",
-            postId: "3434",
-            type: ContentType.EVENT,
-            title: "Resume Workshop with Alisa Thompson",
-        });
-        callback({
-            area: "Financial",
-            description: "There will be a Study Abroad Info session at 3PM today via Zoom meeting ID: 405-018-945 with the Pullman campus.\n\nIf you are interested join the meeting! The deadline to apply to study abroad in Rome is Feb 3rd at noon.",
-            icon: "~/imgs/jennifer.jpg",
-            image: "~/imgs/rome.png",
-            postId: "2323223",
-            staff: "Jennifer Silva",
-            timestamp: "4 days ago",
-            type: ContentType.EVENT,
-            title: "Study in ROME info session",
-            date: "1/22",
-            location: "ZOOM",
-            time: "3PM"
-        });*/
     }
+
     public conversationListener(callback: (Conversation) => void): any {
         callback({
             img: "https://firebasestorage.googleapis.com/v0/b/wsutc-trio-app.appspot.com/o/1034227-contact-us.png?alt=media",
@@ -141,6 +99,7 @@ export class Firebase {
         });
     }
     public doLogout(): Promise<any> {
+        
         return firebase.logout();
     }
 

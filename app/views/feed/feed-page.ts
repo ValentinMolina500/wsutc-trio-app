@@ -6,7 +6,6 @@ export function onNavigatedTo(args: NavigatedData): void {
 	if (args.isBackNavigation) {
 		return;
 	}
-
     const page = <Page>args.object;
 	page.bindingContext = new ViewModel();;
 }

@@ -10,8 +10,9 @@ export class ImageCache {
 
     public cacheGetImage(url: string): Promise<string> {
         cache.maxRequests = 5;
-        cache.enableDownload();
+      
         return new Promise(function(resolve, reject) {
+            cache.enableDownload();
             let cachedImageSource;
             const myImage = cache.get(url);
             if (myImage) {
