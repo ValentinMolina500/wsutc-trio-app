@@ -32,6 +32,16 @@ export class myStore {
         return this.feedsAdapter.getData();
     };
 
+    public setStaffListener() {
+        Firebase.staffListener((result) => {
+            this.staffAdapter.updateStaff(result);
+        })
+    }
+
+    public getStaff() {
+        return this.staffAdapter.getData();
+    }
+
     public async setConversations() {
         let callback = (result) => {
             this.conversationsAdapter.updateConversation(result);
@@ -69,17 +79,9 @@ export class myStore {
     }
 
 
-    public async setStaff() {
-        // let result = await Firebase.getStaff();
-        Firebase.staffListener((result) => {
-            this.staffAdapter.updateStaff(result);
+ 
 
-        })
-    }
-
-    public getStaff() {
-        return this.staffAdapter.getData();
-    }
+  
     public setHomeViewModel(HomeViewModel: HomeViewModel) {
         return this.homeViewModel = HomeViewModel;
     };

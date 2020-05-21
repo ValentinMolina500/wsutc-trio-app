@@ -33,7 +33,6 @@ export class ConversationAdapter {
     }
 
     public updateConversation(item) {
-        console.log(item);
         this.conversationsMap.set(item.key, { userKey: item.key, conversation: new Conversation(item), } )
         this.conversationsArray.push(this.conversationsMap.get(item.key));
     }
@@ -45,11 +44,8 @@ export class ConversationAdapter {
     }
 
     public getData() {
-        console.log("THIS IS CONVERSATION");
-        console.log(this.conversationsArray.getItem(0));
         // { userKey: 17412, conversation: Conversation }
         return this.conversationsArray.map(value => {
-            console.log(value.conversation.messages);
             return {
                 name: (() => { for (let i = 0; i < Store.getStaff().length; i++) { if (Store.getStaff().getItem(i).wsuId == value.userKey) return Store.getStaff().getItem(i).name } })(),
                 recentMessage: value.conversation.messages.length != 0 ? value.conversation.messages.getItem(value.conversation.messages.length - 1).message : "Tap to send message",

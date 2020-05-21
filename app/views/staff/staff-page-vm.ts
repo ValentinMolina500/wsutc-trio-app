@@ -1,22 +1,10 @@
 import { Observable, EventData } from "tns-core-modules/ui/page/page";
-import { Button } from "tns-core-modules/ui/button/button";
-import Navigator from "~/utils/navigator";
-import { Pages } from "~/utils/pages";
-import { ItemEventData } from "tns-core-modules/ui/list-view/list-view";
-import * as email from "nativescript-email";
 import Store from '../../store/store';//store adapter
-import firebase from "~/utils/firebase";
-import { Frame } from "tns-core-modules/ui/frame/frame";
-import dialogs from "~/utils/dialogs";
-
-
-let viewModel;
 
 export default class StaffPage extends Observable {
     public staff;
     constructor() {
         super();
-
         this.staff = Store.getStaff();
     }
 }

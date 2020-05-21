@@ -1,14 +1,10 @@
 import { Observable } from "tns-core-modules/ui/page/page";
 import Navigator from "~/utils/navigator";
 import { Menu } from "nativescript-menu";
-import * as Calendar from "nativescript-calendar";
 import * as app from "tns-core-modules/application";
-import * as dialogs from "tns-core-modules/ui/dialogs";
-import { Frame } from "tns-core-modules/ui/frame";
-import { ObservableArray } from 'tns-core-modules/data/observable-array';
-import { ContentType, ContentArea } from "./strings";
 import { ContentItem } from "./content";
 import { ObservableProperty } from '~/observable-property-decorator';
+import Cache from "~/utils/image-cache";
 
 declare let android;
 
@@ -23,12 +19,9 @@ export class Feed extends ContentItem {
 
     constructor(item: any) {
         super(item);
-        this.link = item.link;
-        this.smileCount = item.smileCount;
-        this.surprisedCount = item.surprisedCount;
-        this.hasSmiled = item.hasSmiled || false;
-        this.hasSurprised = item.hasSurpried || false;
+        this.update(item);
     }
+    
     public update(item: any) {
         this.link = item.link;
         this.smileCount = item.smileCount;
@@ -37,7 +30,6 @@ export class Feed extends ContentItem {
         this.hasSurprised = item.hasSurpried || false;
         this.updateTs = item.updateTs;
     }
-
     public doSmile() {
                 if (app.android) {
             let view = app.android.startActivity.getWindow().getDecorView();
@@ -68,7 +60,13 @@ export class Feed extends ContentItem {
     }
 
 }
-
+export async function newImageCacheFeedFactory(result: any) {
+    let tempFeed = result.value;
+    tempFeed.postId = result.key;
+    tempFeed.icon = await Cache.getImageByUrl(tempFeed.icon);
+    tempFeed.image = await Cache.getImageByUrl(tempFeed.image);
+    return new Feed(tempFeed);
+};
 export function Order(a: Feed, b: Feed) {
      if (a.updateTs < b.updateTs) {
          return 1;

@@ -1,102 +1,101 @@
-<Page id="page" navigatingTo="onNavigatedTo" xmlns:RL="nativescript-ripple" xmlns:dd="nativescript-drop-down">
+<Page id="page" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo" xmlns:RL="nativescript-ripple" xmlns:dd="nativescript-drop-down">
     <ActionBar class="action-bar" title="What's New" marginBottom="4" />
-    <ListView id="feed" separatorColor="#eff0f2" items="{{ feeds }}" itemTemplateSelector="typeOfContent">
+    
+    <ListView id="feed" separatorColor="#eff0f2" items="{{ feeds }}" itemTemplateSelector="typeOfContent" >
         <ListView.itemTemplates>
             <template key="NEWS">
-                <StackLayout>
-                    <GridLayout class="card-container" rows="auto, auto, auto, auto, auto, 1, auto" columns="auto, *">
-                        <Image  row="0" class="card-icon-img" rowSpan="2" src="{{ icon || defaultImage }}" />
-                        <Label col="1" class="heading-info">
-                            <FormattedString>
-                                <Span class="heading-name" text="{{ staffName }}" />
-                                <Span text="  " />
-                                <Span fontSize="12" class="fas type" text="&#xf0da; " />
-                                <Span class="type" text="{{ area }}" />
-                            </FormattedString>
-                        </Label>
-                        <!-- <Label colSpan="2" rowSpan="2" padding="16" verticalAlignment="middle" horizontalAlignment="right" class="fas gray" text="&#xf0c1;" /> -->
-                        <RL:Ripple id="{{ postId }}" tap="{{ openMenu }}" colSpan="2" rowSpan="2" verticalAlignment="middle" horizontalAlignment="right">
-                            <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
+                <GridLayout class="card-container" rows="auto, auto, auto, auto, auto, 1, auto" columns="auto, *">
+                    <Image row="0" class="card-icon-img" rowSpan="2" src="{{ icon || defaultImage }}" />
+                    <Label col="1" class="heading-info">
+                        <FormattedString>
+                            <Span class="heading-name" text="{{ staffName }}" />
+                            <Span text="  " />
+                            <Span fontSize="12" class="fas type" text="&#xf0da; " />
+                            <Span class="type" text="{{ area }}" />
+                        </FormattedString>
+                    </Label>
+                    <!-- <Label colSpan="2" rowSpan="2" padding="16" verticalAlignment="middle" horizontalAlignment="right" class="fas gray" text="&#xf0c1;" /> -->
+                    <RL:Ripple id="{{ postId }}" tap="{{ openMenu }}" colSpan="2" rowSpan="2" verticalAlignment="middle" horizontalAlignment="right">
+                        <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
+                    </RL:Ripple>
+                    <!-- <dd:DropDown items="{{ ddItems }}" colSpan="2" rowSpan="2" class="drop-down" /> -->
+                    <Label col="1" row="1" class="posted-time" text="{{ timestamp }}" />
+                    <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
+                    <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
+                    <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
+                    <StackLayout row="5" colSpan="2" class="card-divider" />
+                    <GridLayout row="6" colSpan="2" columns="*, *" height="auto">
+                        <RL:Ripple col="0" tap="{{ doSmile }}">
+                            <Label class="{{ hasSmiled ? 'card-active-text' : 'card-time-text' }}" padding="16" textAlign="center">
+                                <FormattedString>
+                                    <Span class="far" text="&#xf5c2;  " />
+                                    <Span text="{{ smileCount }}" />
+                                </FormattedString>
+                            </Label>
                         </RL:Ripple>
-                        <!-- <dd:DropDown items="{{ ddItems }}" colSpan="2" rowSpan="2" class="drop-down" /> -->
-                        <Label col="1" row="1" class="posted-time" text="{{ timestamp }}" />
-                        <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
-                        <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
-                        <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
-                        <StackLayout row="5" colSpan="2" class="card-divider" />
-                        <GridLayout row="6" colSpan="2" columns="*, *" height="auto">
-                            <RL:Ripple col="0" tap="{{ doSmile }}">
-                                <Label class="{{ hasSmiled ? 'card-active-text' : 'card-time-text' }}" padding="16" textAlign="center">
-                                    <FormattedString>
-                                        <Span class="far" text="&#xf5c2;  " />
-                                        <Span text="{{ smileCount }}" />
-                                    </FormattedString>
-                                </Label>
-                            </RL:Ripple>
-                            <RL:Ripple col="1" tap="{{ doSurprise }}">
-                                <Label class="{{ hasSurprised ? 'card-active-text' : 'card-time-text' }}" padding="16" col="1">
-                                    <FormattedString>
-                                        <Span class="far" text="&#xf59a;  " />
-                                        <Span text="{{ surprisedCount }}" />
-                                    </FormattedString>
-                                </Label>
-                            </RL:Ripple>
-                            <!-- <Label col="2">
+                        <RL:Ripple col="1" tap="{{ doSurprise }}">
+                            <Label class="{{ hasSurprised ? 'card-active-text' : 'card-time-text' }}" padding="16" col="1">
+                                <FormattedString>
+                                    <Span class="far" text="&#xf59a;  " />
+                                    <Span text="{{ surprisedCount }}" />
+                                </FormattedString>
+                            </Label>
+                        </RL:Ripple>
+                        <!-- <Label col="2">
                                 <FormattedString>
                                     <Span class="far" text="&#xf073;  " />
                                     <Span text="{{ date }}" />
                                 </FormattedString>
                             </Label> -->
-                        </GridLayout>
                     </GridLayout>
-                </StackLayout>
+                </GridLayout>
             </template>
             <template key="EVENT">
-                <StackLayout>
-                    <GridLayout class="card-container" rows="auto, auto, auto, auto, auto, 1, auto" columns="auto, *">
-                        <Image row="0" class="card-icon-img" rowSpan="2" src="{{ icon || '~/imgs/wsutc-logo-v2.png' }}" />
-                        <Label col="1" class="heading-info">
-                            <FormattedString>
-                                <Span class="heading-name" text="{{ staff }}" />
-                                <Span text="  " />
-                                <Span fontSize="12" class="fas type" text="&#xf0da;  " />
-                                <Span class="type" text="{{ area }}" />
-                            </FormattedString>
-                        </Label>
-                        <!-- <Label colSpan="2" rowSpan="2" margin="16" verticalAlignment="middle" horizontalAlignment="right" class="fas gray" text="&#xf736;" /> -->
-                        <RL:Ripple id="{{ postId }}" tap="{{ openMenu }}" colSpan="2" rowSpan="2" verticalAlignment="middle" horizontalAlignment="right">
-                            <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
-                        </RL:Ripple>
-                        <Label col="1" row="1" class="posted-time" text="{{ timestamp }}" />
-                        <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
-                        <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
-                        <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
-                        <StackLayout row="5" colSpan="2" class="card-divider" />
-                        <RL:Ripple tap="{{ eventAdd }}" row="6" colSpan="2">
-                            <GridLayout padding="16" class="card-time-text" columns="*, *, *, auto" height="auto">
-                                <Label>
-                                    <FormattedString>
-                                        <Span class="fas" text="&#xf3c5;  " />
-                                        <Span text="{{ location }}" />
-                                    </FormattedString>
-                                </Label>
-                                <Label col="1">
-                                    <FormattedString>
-                                        <Span class="far" text="&#xf017;  " />
-                                        <Span text="{{ time }}" />
-                                    </FormattedString>
-                                </Label>
-                                <Label col="2">
-                                    <FormattedString>
-                                        <Span class="far" text="&#xf073;  " />
-                                        <Span text="{{ date }}" />
-                                    </FormattedString>
-                                </Label>
-                            </GridLayout>
-                        </RL:Ripple>
-                    </GridLayout>
-                </StackLayout>
+                <GridLayout class="card-container" rows="auto, auto, auto, auto, auto, 1, auto" columns="auto, *">
+                    <Image row="0" class="card-icon-img" rowSpan="2" src="{{ icon || '~/imgs/wsutc-logo-v2.png' }}" />
+                    <Label col="1" class="heading-info">
+                        <FormattedString>
+                            <Span class="heading-name" text="{{ staff }}" />
+                            <Span text="  " />
+                            <Span fontSize="12" class="fas type" text="&#xf0da;  " />
+                            <Span class="type" text="{{ area }}" />
+                        </FormattedString>
+                    </Label>
+                    <!-- <Label colSpan="2" rowSpan="2" margin="16" verticalAlignment="middle" horizontalAlignment="right" class="fas gray" text="&#xf736;" /> -->
+                    <RL:Ripple id="{{ postId }}" tap="{{ openMenu }}" colSpan="2" rowSpan="2" verticalAlignment="middle" horizontalAlignment="right">
+                        <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
+                    </RL:Ripple>
+                    <Label col="1" row="1" class="posted-time" text="{{ timestamp }}" />
+                    <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
+                    <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
+                    <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
+                    <StackLayout row="5" colSpan="2" class="card-divider" />
+                    <RL:Ripple tap="{{ eventAdd }}" row="6" colSpan="2">
+                        <GridLayout padding="16" class="card-time-text" columns="*, *, *, auto" height="auto">
+                            <Label>
+                                <FormattedString>
+                                    <Span class="fas" text="&#xf3c5;  " />
+                                    <Span text="{{ location }}" />
+                                </FormattedString>
+                            </Label>
+                            <Label col="1">
+                                <FormattedString>
+                                    <Span class="far" text="&#xf017;  " />
+                                    <Span text="{{ time }}" />
+                                </FormattedString>
+                            </Label>
+                            <Label col="2">
+                                <FormattedString>
+                                    <Span class="far" text="&#xf073;  " />
+                                    <Span text="{{ date }}" />
+                                </FormattedString>
+                            </Label>
+                        </GridLayout>
+                    </RL:Ripple>
+                </GridLayout>
             </template>
         </ListView.itemTemplates>
     </ListView>
+
+    
 </Page>

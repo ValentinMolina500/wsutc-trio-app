@@ -9,8 +9,9 @@ import { BaseArray } from '~/models/base-array';
 import Firebase from "~/utils/firebase";
 import { Feed, Order } from '~/models/feed';
 import Cache from "~/utils/image-cache";
+import { ObservableProperty } from '~/observable-property-decorator'; 
 export default class FeedPage extends Observable {
-	// public feeds: Feeds;
+	@ObservableProperty() loaded: boolean;
 	public feeds: BaseArray<Feed>;
 
 	public defaultImage: string = Config.iconImage;

@@ -26,8 +26,8 @@ export class Firebase {
             .then(async () => {
                 // messagesSubject.setMessages();
                 // messagesSubject.register(DMV1iewModel);
-                Store.setStaff();
-                Store.setConversations();
+                //Store.setStaffListener();
+                //Store.setConversations();
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
     }
@@ -46,6 +46,23 @@ export class Firebase {
     public isAuthenticated(): Promise<firebase.User> {
         return firebase.getCurrentUser();
     }
+    public feedListener(callback) {
+        firebase.addChildEventListener(callback, "/posts")
+        /*.then(
+            listenerWrapper => {
+                var path = listenerWrapper.path;
+                var listeners = listenerWrapper.listeners; // an Array of listeners added
+                // you can store the wrapper somewhere to later call 'removeEventListeners'
+            }
+        );*/
+    }
+
+    public staffListener(callback) {
+        firebase.addChildEventListener(callback, "/staff");
+    }
+
+
+
     public validateConversation(user, staff): Promise<any> {
         return firebase.getValue(`/students/${user.id}/conversation/${staff.id}`)
             .then(function(value) {
@@ -53,15 +70,6 @@ export class Firebase {
             })
             .catch(error => console.log("ErrorV: " + error));
         return firebase.getCurrentUser();
-    }
-    public feedListener(callback) {
-        firebase.addChildEventListener(callback, "/posts").then(
-            listenerWrapper => {
-                var path = listenerWrapper.path;
-                var listeners = listenerWrapper.listeners; // an Array of listeners added
-                // you can store the wrapper somewhere to later call 'removeEventListeners'
-            }
-        );
     }
 
     public conversationListener(callback: (Conversation) => void): any {
@@ -170,9 +178,7 @@ export class Firebase {
         return firebase.addChildEventListener(callback, '/students/' + id + "/conversations")
     }
 
-    public staffListener(callback) {
-        firebase.addChildEventListener(callback, "/staff/");
-    }
+
 }
 
 let singleton = new Firebase();
