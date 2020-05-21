@@ -30,7 +30,7 @@ export class Firebase {
                 // messagesSubject.setMessages();
                 // messagesSubject.register(DMV1iewModel);
                 // Store.setStaffListener();
-                Store.setConversations();
+                // Store.setConversations();
 
                 StaffSubject.register(StaffPage);
                 StaffSubject.register(MessagesPage);

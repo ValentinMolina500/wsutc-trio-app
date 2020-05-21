@@ -32,25 +32,23 @@ export class myStore {
         return this.feedsAdapter.getData();
     };
 
-<<<<<<< HEAD
-    public setStaffListener() {
-        Firebase.staffListener((result) => {
-            this.staffAdapter.updateStaff(result);
-        })
-    }
+    // public setStaffListener() {
+    //     Firebase.staffListener((result) => {
+    //         this.staffAdapter.updateStaff(result);
+    //     })
+    // }
 
-    public getStaff() {
-        return this.staffAdapter.getData();
-    }
+    // public getStaff() {
+    //     return this.staffAdapter.getData();
+    // }
 
-    public async setConversations() {
-        let callback = (result) => {
-            this.conversationsAdapter.updateConversation(result);
-=======
     // public async setConversations() {
     //     let callback = (result) => {
     //         this.conversationsAdapter.updateConversation(result);
->>>>>>> fix-conversations
+
+    // public async setConversations() {
+    //     let callback = (result) => {
+    //         this.conversationsAdapter.updateConversation(result);
 
     //         Firebase.addChildEventListener((message) => {
     //             this.conversationsAdapter.updateMessages(result.key, message.value)
@@ -65,8 +63,7 @@ export class myStore {
     // };
 
 
-<<<<<<< HEAD
-    public getMessages(id) {
+    // public getMessages(id) {
         // let callback = (result) => {
         //     if (result.type == "ChildAdded") {
         //         console.log(result.value)
@@ -77,19 +74,15 @@ export class myStore {
         // console.log("*****CALLLED")
         // Firebase.messagesListener(callback);
         // return this.messagesAdapter.getData();
-=======
     // public getMessages(id) {
->>>>>>> fix-conversations
 
     //     return this.conversationsAdapter.getMessages(id);
     // }
 
 
-<<<<<<< HEAD
  
 
   
-=======
     // public async setStaff() {
     //     // let result = await Firebase.getStaff();
     //     Firebase.staffListener((result) => {
@@ -101,7 +94,7 @@ export class myStore {
     // public getStaff() {
     //     return this.staffAdapter.getData();
     // }
->>>>>>> fix-conversations
+    
     public setHomeViewModel(HomeViewModel: HomeViewModel) {
         return this.homeViewModel = HomeViewModel;
     };
