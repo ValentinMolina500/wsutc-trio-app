@@ -13,10 +13,9 @@ export class Conversation extends Observable {
     // public index: string = "staffId";
     @ObservableProperty() messages: ObservableArray<any>;
 
-    constructor(data: Conversation) {
+    constructor() {
         super();
         this.messages = new ObservableArray();
-        this.update(data);
     }
 
     public update(data: Conversation) {
@@ -37,6 +36,18 @@ export class Conversation extends Observable {
         //if (!num) { return 0 }
         return value; //formatter.format(num);
     };
+
+    public getRecentMessage() {
+        let lastMessage = this.messages.getItem(this.messages.length - 1);
+
+        let message = lastMessage ? lastMessage.message : "Loading...";
+        let date = lastMessage ? lastMessage.updateTs : "Loading...";
+
+        return {
+            recentMessage: message,
+            date
+        }
+    }
 }
 
 // Val 

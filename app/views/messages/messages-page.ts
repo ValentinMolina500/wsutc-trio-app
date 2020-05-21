@@ -11,7 +11,9 @@ export function onNavigatingTo(args: NavigatedData): void {
     //     return;
     // }
     let page = <Page>args.object;
-    page.bindingContext = new ViewModel();
+    page.bindingContext = ViewModel;
+    
+ 
     // page.bindingContext = fromObject({
     //     conversations: [],
     //     onItemTap: function(args: ItemEventData) {

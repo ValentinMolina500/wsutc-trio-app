@@ -8,18 +8,29 @@ import Store from '../../store/store';//store adapter
 import firebase from "~/utils/firebase";
 import { Frame } from "tns-core-modules/ui/frame/frame";
 import dialogs from "~/utils/dialogs";
-
+import { ObservableProperty } from '~/observable-property-decorator';
+import { ObservableArray } from 'tns-core-modules/data/observable-array';
 
 let viewModel;
 
-export default class StaffPage extends Observable {
+export class StaffPage extends Observable {
     public staff;
+
     constructor() {
         super();
 
-        this.staff = Store.getStaff();
+        this.staff = new ObservableArray<any>();
+    }
+
+    public updateStaff(staff) {
+    	this.staff = staff;
+    	this.set("staff", new ObservableArray(staff));
     }
 }
+
+let s = new StaffPage();
+
+export default s;
 // class StaffItem extends Observable {
 //     private email: string;
 //     private name: string;
