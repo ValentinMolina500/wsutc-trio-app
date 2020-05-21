@@ -26,8 +26,8 @@ export class Firebase {
             .then(async () => {
                 // messagesSubject.setMessages();
                 // messagesSubject.register(DMV1iewModel);
-                //Store.setStaffListener();
-                //Store.setConversations();
+                Store.setStaffListener();
+                Store.setConversations();
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
     }
