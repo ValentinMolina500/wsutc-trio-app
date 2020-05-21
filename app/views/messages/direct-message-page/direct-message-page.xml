@@ -1,9 +1,9 @@
 <Page id="page" navigatedTo="onLoaded">
-    <ActionBar class="action-bar" title="Stassia Feltes">
+    <ActionBar class="action-bar">
         <GridLayout tap="goBack" width="auto"   rows="auto" columns="auto, auto, *">
             <Label  col="0" class="far " text="&#xf060;" fontSize="20" verticalAlignment="middle" />
-            <Image tap="goBack" col="1" class=" ml-lg pl-lg " marginLeft="8" horizontalAlignment="left" borderRadius="100%" stretch="aspectFill" height="35" width="35" src="~/imgs/stassia.jpg" />
-            <Label col="2" marginLeft="8" fontSize="20" verticalAlignment="middle" text="Stassia Feltes" />
+            <Image tap="goBack" col="1" class=" ml-lg pl-lg " marginLeft="8" horizontalAlignment="left" borderRadius="100%" stretch="aspectFill" height="35" width="35" src="{{ image }}" />
+            <Label col="2" marginLeft="8" fontSize="20" verticalAlignment="middle" text="{{ name }}" />
         </GridLayout>
     </ActionBar>
     <ScrollView verticalAlignment="bottom">

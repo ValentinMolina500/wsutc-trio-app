@@ -8,11 +8,19 @@ import Store from '~/store/store';//store adapter
 
 export default class ViewModel extends Observable   {
     public messages: any;
-    constructor(key) {
+    public name;
+    public image;
+    public currentMessage = "";
+    public conversationKey;    
+    constructor({ messages, name, image, conversationKey } ) {
         super();
 
-        this.messages = Store.getMessages(key);
+        this.messages = messages;
+        this.name = name;
+        this.image = image;
+        this.conversationKey = conversationKey;
     }
+
     // public messages: ObservableArray<any> = new ObservableArray();
     // private isInit = false;
     // private currentMessage: string = "";
@@ -29,11 +37,12 @@ export default class ViewModel extends Observable   {
     //         this.isInit = true;
     //     }
     // }
-    // public sendMessage() {
-    //     console.log(this.currentMessage);        
-    //     firebase.sendMessage(this.conversation.key, this.currentMessage, "17413");
-    //     this.set("currentMessage", "");
-    // }
+
+    public sendMessage() {
+        console.log(this.currentMessage);        
+        firebase.sendMessage(this.conversationKey, this.currentMessage, "17413");
+        this.set("currentMessage", "");
+    }
 
     // public update(messages: Array<Message>)
     // {
@@ -49,9 +58,7 @@ export default class ViewModel extends Observable   {
     // }
 }
 
-// let singleton = new ViewModel();
 
-// export default singleton;
 
 /*      
 

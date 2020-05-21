@@ -1,6 +1,11 @@
 import { Observable } from "tns-core-modules/ui/page/page";
 import Cache from "~/utils/image-cache";
 import { ObservableProperty } from '~/observable-property-decorator';
+import Store from "~/store/store";
+import { Pages } from "~/utils/pages";
+import Navigator from "~/utils/navigator";
+import ConversationSubject from "~/logic/ConversationsSubject";
+import Firebase from "~/utils/firebase";
 
 export class Staff extends Observable {
 	@ObservableProperty() name: string;
@@ -20,6 +25,18 @@ export class Staff extends Observable {
 		this.name = data.name;
 		this.image = data.image;
 	};
+
+	public sendMessage(): void {
+		console.log("wsuId: " + this.wsuId);
+		if (!ConversationSubject.doesConversationExist(this.wsuId)) {
+			console.log("Creating conversation...");
+			Firebase.createConversation(this.wsuId);
+			
+
+		} else {
+			Navigator.navigateFrame(Pages.DIRECT_MESSAGES);
+		}
+	}
 }
 export async function newImageCacheStaffFactory(result: any) {
 	let tempStaff = result.value;
@@ -38,4 +55,4 @@ export function Order(a: Staff, b: Staff) {
 
 
 
-
+	

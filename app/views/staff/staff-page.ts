@@ -6,7 +6,7 @@ import { android } from "tns-core-modules/application/application";
 export function onNavigatingTo(args: EventData) {
     let page = <Page>args.object;
     setupFeed(page);
-    page.bindingContext = new ViewModel();
+    page.bindingContext = ViewModel;
 }
 
 

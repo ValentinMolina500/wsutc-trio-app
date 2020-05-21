@@ -18,10 +18,10 @@ export class myStore {
     public homeViewModel: HomeViewModel;
 
     constructor() {
-        this.conversationsAdapter = new ConversationAdapter();
+        // this.conversationsAdapter = new ConversationAdapter();
         this.feedsAdapter = new FeedsAdapter();
         this.messagesAdapter = new MessagesAdapter();
-        this.staffAdapter = new StaffAdapter();
+        // this.staffAdapter = new StaffAdapter();
     }
 
     public getFeeds() {
@@ -32,6 +32,7 @@ export class myStore {
         return this.feedsAdapter.getData();
     };
 
+<<<<<<< HEAD
     public setStaffListener() {
         Firebase.staffListener((result) => {
             this.staffAdapter.updateStaff(result);
@@ -45,24 +46,26 @@ export class myStore {
     public async setConversations() {
         let callback = (result) => {
             this.conversationsAdapter.updateConversation(result);
+=======
+    // public async setConversations() {
+    //     let callback = (result) => {
+    //         this.conversationsAdapter.updateConversation(result);
+>>>>>>> fix-conversations
 
-            Firebase.addChildEventListener((message) => {
-                this.conversationsAdapter.updateMessages(result.key, message.value)
-            }, '/conversations/' + result.value + '/messages')
-        }
+    //         Firebase.addChildEventListener((message) => {
+    //             this.conversationsAdapter.updateMessages(result.key, message.value)
+    //         }, '/conversations/' + result.value + '/messages')
+    //     }
 
-        Firebase.getCurrentUserConversations(callback, "17413");
-    }
+    //     Firebase.getCurrentUserConversations(callback, "17413");
+    // }
 
-    public getConversations() {
-        // let callback = (result) => {
-        //     this.conversationsAdapter.updateConversation(result);
-        // }
-        // Firebase.conversationListener(callback);
-        return this.conversationsAdapter.getData();
-    };
+    // public getConversations() {
+    //     return this.conversationsAdapter.getData();
+    // };
 
 
+<<<<<<< HEAD
     public getMessages(id) {
         // let callback = (result) => {
         //     if (result.type == "ChildAdded") {
@@ -74,14 +77,31 @@ export class myStore {
         // console.log("*****CALLLED")
         // Firebase.messagesListener(callback);
         // return this.messagesAdapter.getData();
+=======
+    // public getMessages(id) {
+>>>>>>> fix-conversations
 
-        return this.conversationsAdapter.getMessages(id);
-    }
+    //     return this.conversationsAdapter.getMessages(id);
+    // }
 
 
+<<<<<<< HEAD
  
 
   
+=======
+    // public async setStaff() {
+    //     // let result = await Firebase.getStaff();
+    //     Firebase.staffListener((result) => {
+    //         this.staffAdapter.updateStaff(result);
+
+    //     })
+    // }
+
+    // public getStaff() {
+    //     return this.staffAdapter.getData();
+    // }
+>>>>>>> fix-conversations
     public setHomeViewModel(HomeViewModel: HomeViewModel) {
         return this.homeViewModel = HomeViewModel;
     };
@@ -89,6 +109,10 @@ export class myStore {
     public getHomeViewModel() {
         return this.homeViewModel;
     }
+
+    // public doesConversationExist(wsuId): boolean {
+    //     return this.conversationsAdapter.doesConversationExist(wsuId)
+    // }
 
 }
 let Store = new myStore();

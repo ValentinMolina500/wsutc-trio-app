@@ -11,7 +11,10 @@ import messagesSubject from "~/logic/messages/MessagesSubject";
 import DMViewModel from "~/views/messages/direct-message-page/direct-message-vm";
 import { Conversation} from '../models/conversation';
 import Store from '~/store/store';//store adapter
-
+import StaffSubject from "~/logic/StaffSubject";
+import StaffPage from "~/views/staff/staff-page-vm";
+import ConversationSubject from "~/logic/ConversationsSubject";
+import MessagesPage from "~/views/messages/messages-vm";
 
 export class Firebase {
     private isInit: boolean = false;
@@ -26,8 +29,16 @@ export class Firebase {
             .then(async () => {
                 // messagesSubject.setMessages();
                 // messagesSubject.register(DMV1iewModel);
-                Store.setStaffListener();
+                // Store.setStaffListener();
                 Store.setConversations();
+
+                StaffSubject.register(StaffPage);
+                StaffSubject.register(MessagesPage);
+                ConversationSubject.register(MessagesPage);
+                StaffSubject.setStaffListener();
+                ConversationSubject.setConversationsListener();
+        
+                // Store.setConversations();
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
     }
@@ -143,7 +154,7 @@ export class Firebase {
         return firebase.getValue('/conversations/' + id);
     }
 
-    public sendMessage(update,conversationId, message, senderId) {
+    public sendMessage(conversationId, message, senderId) {
 
  
        // firebase.update('/services/' + cData.service.info.fsid, );
