@@ -33,8 +33,10 @@ export class Firebase {
                 // Store.setConversations();
 
                 StaffSubject.register(StaffPage);
+                StaffSubject.register(DMViewModel);
                 StaffSubject.register(MessagesPage);
                 ConversationSubject.register(MessagesPage);
+                ConversationSubject.register(DMViewModel);
                 StaffSubject.setStaffListener();
                 ConversationSubject.setConversationsListener();
         

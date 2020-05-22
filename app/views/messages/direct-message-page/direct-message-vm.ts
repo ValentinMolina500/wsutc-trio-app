@@ -5,20 +5,42 @@ import messages, { Message } from "~/utils/messages";
 import { Observer } from "~/logic/utils/Observer";
 import { Frame } from "tns-core-modules/ui/frame/frame";
 import Store from '~/store/store';//store adapter
+import { ObservableProperty } from '~/observable-property-decorator';
+import { Staff } from "~/models/staff";
 
-export default class ViewModel extends Observable   {
-    public messages: any;
+export class DirectMessagePage extends Observable   {
+    @ObservableProperty() messages: any;
     public name;
     public image;
     public currentMessage = "";
-    public conversationKey;    
-    constructor({ messages, name, image, conversationKey } ) {
+    public conversationKey; 
+
+    public staff;
+    public conversations;   
+    constructor() {
         super();
 
-        this.messages = messages;
-        this.name = name;
-        this.image = image;
-        this.conversationKey = conversationKey;
+        this.messages = new ObservableArray();
+        this.name = "";
+        this.image = "";
+        this.conversationKey = "";
+    }
+
+    public setPage({ wsuId }) {
+
+        this.conversations.forEach((value, key) => {
+            if (key == wsuId) {
+                this.set("messages", value.conversation.messages);
+                this.conversationKey = value.conversationKey;
+            }    
+        });
+
+        this.staff.forEach((staff: Staff) => {
+            if (wsuId == staff.wsuId) {
+                this.set("name", staff.name);
+                this.set("image", staff.image);
+            }
+        })
     }
 
     // public messages: ObservableArray<any> = new ObservableArray();
@@ -39,26 +61,25 @@ export default class ViewModel extends Observable   {
     // }
 
     public sendMessage() {
-        console.log(this.currentMessage);        
         firebase.sendMessage(this.conversationKey, this.currentMessage, "17413");
         this.set("currentMessage", "");
     }
 
-    // public update(messages: Array<Message>)
-    // {
-    //     this.set("messages", new ObservableArray(messages));
-    //     if (this.feed != undefined) 
-    //     {
-    //         this.feed.scrollToIndex(this.feed.items.length - 1);
-    //     }
-    // }
+    public updateStaff(staff) {
+        this.staff = staff;
+    }
 
-    // public goBack(){
-    //     Frame.topmost().goBack();
-    // }
+    public updateConversations(conversations) {
+        console.log("I'm GETTING CALLED");
+        this.conversations = conversations;
+
+           
+    }
 }
 
+let s = new DirectMessagePage();
 
+export default s;
 
 /*      
 

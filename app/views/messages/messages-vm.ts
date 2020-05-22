@@ -18,7 +18,9 @@ export class MessagesPage extends Observable {
 		let temp = [];
 
 		conversations.forEach(value => {
-			temp.push({ ...this.findStaff(value.wsuId), ...value.conversation.getRecentMessage(), conversation: value.conversation, conversationKey: value.conversationKey });
+			const { recentMessage, date } = value.conversation;
+
+			temp.push({ ...this.findStaff(value.wsuId), recentMessage, date, conversation: value.conversation, conversationKey: value.conversationKey });
 		});
 
 		this.set("conversations", new ObservableArray(temp.sort(this.sort)));
@@ -30,7 +32,8 @@ export class MessagesPage extends Observable {
 
 		let temp = []
 		this.get("conversations").forEach(value => {
-			temp.push({ ...this.findStaff(value.wsuId), ...value.conversation.getRecentMessage(), conversation: value.conversation, conversationKey: value.conversationKey })
+			const { recentMessage, date } = value.conversation;
+			temp.push({ ...this.findStaff(value.wsuId), recentMessage, date, conversation: value.conversation, conversationKey: value.conversationKey })
 		})
 
 		this.set("conversations", new ObservableArray(temp.sort(this.sort)));

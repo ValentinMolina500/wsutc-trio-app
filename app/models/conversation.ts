@@ -12,6 +12,8 @@ export class Conversation extends Observable {
     // public updateTs: number;
     // public index: string = "staffId";
     @ObservableProperty() messages: ObservableArray<any>;
+    public recentMessage: string;
+    public date: string;
 
     constructor() {
         super();
@@ -28,6 +30,8 @@ export class Conversation extends Observable {
     public updateMessages(message) {
         //console.log("**********")
        // console.log(message);
+        this.recentMessage = message.message;
+        this.date = message.updateTs;
         this.messages.push(message);
     }
     public formatTime(value: string) {
@@ -47,6 +51,10 @@ export class Conversation extends Observable {
             recentMessage: message,
             date
         }
+    }
+
+    public getMessages() {
+        return this.messages;
     }
 }
 

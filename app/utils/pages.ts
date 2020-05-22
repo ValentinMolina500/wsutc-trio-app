@@ -18,7 +18,7 @@ pages.set(Pages.HOME, { path: "~/views/home/home-page", secure: true });
 pages.set(Pages.FEED, { path: "~/views/feed/feed-page", secure: true });
 pages.set(Pages.SETTINGS, { path: "~/views/settings/settings-page", secure: true});
 pages.set(Pages.STAFF_DETAILS, { path: "~/views/staff/staff-details/staff-details-page", secure: true });
-pages.set(Pages.DIRECT_MESSAGES, { path: "~/views/messages/direct-messages/direct-messages", secure: true });
+pages.set(Pages.DIRECT_MESSAGES, { path: "~/views/messages/direct-message-page/direct-message-page", secure: true });
 
 export default pages;
 

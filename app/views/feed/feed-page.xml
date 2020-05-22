@@ -4,6 +4,7 @@
     <ListView id="feed" separatorColor="#eff0f2" items="{{ feeds }}" itemTemplateSelector="typeOfContent" >
         <ListView.itemTemplates>
             <template key="NEWS">
+                <StackLayout>
                 <GridLayout class="card-container" rows="auto, auto, auto, auto, auto, 1, auto" columns="auto, *">
                     <Image row="0" class="card-icon-img" rowSpan="2" src="{{ icon || defaultImage }}" />
                     <Label col="1" class="heading-info">
@@ -49,8 +50,10 @@
                             </Label> -->
                     </GridLayout>
                 </GridLayout>
+            </StackLayout>
             </template>
             <template key="EVENT">
+                <StackLayout>
                 <GridLayout class="card-container" rows="auto, auto, auto, auto, auto, 1, auto" columns="auto, *">
                     <Image row="0" class="card-icon-img" rowSpan="2" src="{{ icon || '~/imgs/wsutc-logo-v2.png' }}" />
                     <Label col="1" class="heading-info">
@@ -93,6 +96,7 @@
                         </GridLayout>
                     </RL:Ripple>
                 </GridLayout>
+            </StackLayout>
             </template>
         </ListView.itemTemplates>
     </ListView>

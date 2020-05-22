@@ -26,7 +26,7 @@ export class ConversationsSubject extends Observable {
 			this.notifyObservers();
 
 			Firebase.addChildEventListener((message) => {
-				if (message.type == "ChildAdded") {
+				if (message.type == "ChildAdded") {			
 					this.conversations.get(result.key).conversation.updateMessages(message.value)
 					this.notifyObservers();
 				}

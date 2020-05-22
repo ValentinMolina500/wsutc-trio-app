@@ -9,8 +9,9 @@ let model;
 export function onLoaded(args: EventData) {
     let page = <Page>args.object;
 
-    page.bindingContext = new vm(page.navigationContext);
+    page.bindingContext = vm;
 
+    vm.setPage(page.navigationContext);
 }
 
 export function messageSelector(item)

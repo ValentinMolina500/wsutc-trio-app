@@ -7,7 +7,6 @@ import { NavigationEntry } from "tns-core-modules/ui/frame";
  */
 export class Navigator {
     private frame: Frame;
-    // private currentPage: Page;
     public navigateFrame(to: Pages) {
         let frame = Frame.topmost();
         frame.navigate(pages.get(to).path);
@@ -60,13 +59,12 @@ export class Navigator {
         })
     }
 
-    // public setCurrentPage(page: Page) {
-    //     this.currentPage = page;
-    // }
-
-    // public getCurrentPage(page: Page) {
-    //     return this.currentPage;
-    // }
+    public navigateFrameWithContext(to: Pages, context: any): void {
+        Frame.topmost().navigate({
+            moduleName: pages.get(to).path,
+            context: context,
+        })
+    }
 }
 
 

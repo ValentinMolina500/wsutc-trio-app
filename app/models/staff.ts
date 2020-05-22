@@ -13,9 +13,11 @@ export class Staff extends Observable {
 	@ObservableProperty() image: string;
 	public index: string = "wsuId";
 	public wsuId: string;
+	public showMoreInfo;
 
 	constructor(data: Staff) {
 		super();
+		this.showMoreInfo = false;
 		this.update(data);
 		this.wsuId = data.wsuId;
 	}
@@ -31,13 +33,16 @@ export class Staff extends Observable {
 		if (!ConversationSubject.doesConversationExist(this.wsuId)) {
 			console.log("Creating conversation...");
 			Firebase.createConversation(this.wsuId);
-			
-
 		} else {
-			Navigator.navigateFrame(Pages.DIRECT_MESSAGES);
+			Navigator.navigateFrameWithContext(Pages.DIRECT_MESSAGES, { wsuId: this.wsuId });
 		}
 	}
+
+	public toggleMoreInfo() {
+		this.set("showMoreInfo", !this.showMoreInfo);
+	}
 }
+
 export async function newImageCacheStaffFactory(result: any) {
 	let tempStaff = result.value;
 	tempStaff.image = await Cache.getImageByUrl(tempStaff.image);

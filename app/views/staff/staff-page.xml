@@ -3,14 +3,21 @@
     <ListView id="list-view" items="{{ staff }}">
         <ListView.itemTemplate>
             <StackLayout>
-                <GridLayout rows="auto, auto, 1, auto" columns="auto, *" class="card-container">
+                <GridLayout tap="{{ toggleMoreInfo }}" rows="auto, auto, auto, 1, auto" columns="auto, *" class="card-container">
                     <Image row="0" class="card-icon-img" rowSpan="2" src="{{ image }}" />
+                    <Label row="0" colSpan="2" class="far chevron-down" text="{{ showMoreInfo ? '&#xf054;' : '&#xf078;' }}" />
                     <Label class="staff-name" row="0" col="1" text="{{ name }}" />
 
-                    <Label class="{{ position == 'TRIO President' ? 'staff-position-pres' : 'staff-position' }}" row="1" col="1" text="{{ position }}" />
-                    <StackLayout row="2" colSpan="2" class="card-divider" />
+                    <Label class="staff-position" row="1" col="1" text="{{ position }}" />
 
-                    <GridLayout  colSpan="3" row="3" rows="*" columns="*, *">
+                    <GridLayout visibility="{{ showMoreInfo ? 'visible' : 'collapsed' }}" class="{{ showMoreInfo ? 'more-info' : '' }}" row="2" colSpan="2" rows="auto, auto">
+                        <Label margin="0 16 4 16" text="Email: valentin.molina@wsu.edu" />
+                        <Label row="1" margin="4 16 8 16" text="{{ 'WSU ID: ' + wsuId }}"  />
+                    </GridLayout>
+
+                    <StackLayout row="3" colSpan="2" class="card-divider" />
+
+                    <GridLayout  colSpan="3" row="4" rows="*" columns="*, *">
                         <!-- <Label id="message-icon" class="fal" col="2" text="&#xf4a6;" /> -->
                         <RL:Ripple col="1">
                             <Label padding="12 16" id="calendar-icon" class="fal"  text="&#xf073;" />
