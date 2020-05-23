@@ -71,4 +71,4 @@ export class Navigator {
 
 const singleton = new Navigator();
 
-export default singleton;
+export default singleton;    

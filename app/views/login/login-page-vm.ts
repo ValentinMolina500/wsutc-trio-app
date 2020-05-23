@@ -3,6 +3,7 @@ import { Button } from "tns-core-modules/ui/button";
 import Navigator from "~/utils/navigator";
 import { Pages } from "~/utils/pages";
 import Authentication from "~/utils/authentication";
+import { Frame, Page, getFrameById } from "tns-core-modules/ui/frame";
 
 export default class LoginPage extends Observable {
     public email: string = "luis.delatorre@wsu.edu";
@@ -29,5 +30,9 @@ export default class LoginPage extends Observable {
 
     public change() {
         this.set("toggle", !this.toggle);
+    }
+
+    public navigateToRegister() {
+        Frame.topmost().navigate("~/views/register/register-page");
     }
 }

@@ -3,7 +3,7 @@
     <ListView id="list-view" items="{{ staff }}">
         <ListView.itemTemplate>
             <StackLayout>
-                <GridLayout tap="{{ toggleMoreInfo }}" rows="auto, auto, auto, 1, auto" columns="auto, *" class="card-container">
+                <GridLayout rows="auto, auto, auto, 1, auto" columns="auto, *" class="card-container">
                     <Image row="0" class="card-icon-img" rowSpan="2" src="{{ image }}" />
                     <Label row="0" colSpan="2" class="far chevron-down" text="{{ showMoreInfo ? '&#xf054;' : '&#xf078;' }}" />
                     <Label class="staff-name" row="0" col="1" text="{{ name }}" />

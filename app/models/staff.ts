@@ -37,10 +37,6 @@ export class Staff extends Observable {
 			Navigator.navigateFrameWithContext(Pages.DIRECT_MESSAGES, { wsuId: this.wsuId });
 		}
 	}
-
-	public toggleMoreInfo() {
-		this.set("showMoreInfo", !this.showMoreInfo);
-	}
 }
 
 export async function newImageCacheStaffFactory(result: any) {

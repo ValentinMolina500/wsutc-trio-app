@@ -27,7 +27,7 @@ export class DirectMessagePage extends Observable   {
     }
 
     public setPage({ wsuId }) {
-
+        console.log("THIS IS WSUID: " + wsuId);
         this.conversations.forEach((value, key) => {
             if (key == wsuId) {
                 this.set("messages", value.conversation.messages);

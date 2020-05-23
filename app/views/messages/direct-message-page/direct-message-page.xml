@@ -1,4 +1,4 @@
-<Page id="page" navigatedTo="onLoaded">
+<Page id="page" navigatingTo="onLoaded">
     <ActionBar class="action-bar">
         <GridLayout tap="goBack" width="auto"   rows="auto" columns="auto, auto, *">
             <Label  col="0" class="far " text="&#xf060;" fontSize="20" verticalAlignment="middle" />

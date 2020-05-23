@@ -27,7 +27,7 @@
             <Label tap="{{ change }}" row="3"  class="login-text" text="Login" />
             <TextField text="{{ email }}" class="tf" hint="Email" />
             <TextField text="{{ password }}"  class="tf-2" hint="Password" secure="true" />
-            <Label margin="16 0 0 32">
+            <Label tap="{{ navigateToRegister }}" margin="16 0 0 32">
                 <FormattedString>
                     <Span color="black" text="Don't have an account? " />
                     <Span color="#c60c30" text="Register" />

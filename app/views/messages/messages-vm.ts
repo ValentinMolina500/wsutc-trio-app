@@ -20,7 +20,7 @@ export class MessagesPage extends Observable {
 		conversations.forEach(value => {
 			const { recentMessage, date } = value.conversation;
 
-			temp.push({ ...this.findStaff(value.wsuId), recentMessage, date, conversation: value.conversation, conversationKey: value.conversationKey });
+			temp.push({ ...this.findStaff(value.wsuId), wsuId: value.wsuId, recentMessage, date, conversation: value.conversation, conversationKey: value.conversationKey });
 		});
 
 		this.set("conversations", new ObservableArray(temp.sort(this.sort)));
@@ -33,7 +33,7 @@ export class MessagesPage extends Observable {
 		let temp = []
 		this.get("conversations").forEach(value => {
 			const { recentMessage, date } = value.conversation;
-			temp.push({ ...this.findStaff(value.wsuId), recentMessage, date, conversation: value.conversation, conversationKey: value.conversationKey })
+			temp.push({ ...this.findStaff(value.wsuId), wsuId: value.wsuId, recentMessage, date, conversation: value.conversation, conversationKey: value.conversationKey })
 		})
 
 		this.set("conversations", new ObservableArray(temp.sort(this.sort)));
@@ -45,7 +45,6 @@ export class MessagesPage extends Observable {
 				return {
 					name: this.staff[i].name,
 					image: this.staff[i].image,
-					wsuId: this.staff[i].wsuId
 				};
 			}
 		}
@@ -60,7 +59,7 @@ export class MessagesPage extends Observable {
 	public onItemTap(args: ItemEventData) {
 		console.log("*******************")
 		console.log(this.conversations[args.index]);
-		Frame.topmost().navigate({ moduleName: "~/views/messages/direct-message-page/direct-message-page", context: { messages: this.conversations.getItem(args.index).conversation.messages, name: this.conversations.getItem(args.index).name, image: this.conversations.getItem(args.index).image, conversationKey: this.conversations.getItem(args.index).conversationKey  }});
+		Frame.topmost().navigate({ moduleName: "~/views/messages/direct-message-page/direct-message-page", context: { wsuId: this.conversations.getItem(args.index).wsuId } });
 	}
 
 	private sort(a, b) {

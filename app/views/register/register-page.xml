@@ -1,0 +1,19 @@
+<Page loaded="onLoaded">
+	<ActionBar title="Register" />
+
+	<StackLayout>
+		<Label class="heading" text="Register" />
+
+		<Label class="label" text="Email" />
+		<TextField keyboardType="email" text="{{ email }}" class="input"/>
+
+
+		<Label class="label" text="Password" />
+		<TextField text="{{ password }}" secure="true" class="input"/>
+
+		<Label class="label" text="WSU ID" />
+		<TextField keyboardType="number" text="{{ wsuId }}" class="input"/>
+
+		<Button tap="{{ submit }}" class="submit-btn" text="Submit" />
+	</StackLayout>
+</Page>

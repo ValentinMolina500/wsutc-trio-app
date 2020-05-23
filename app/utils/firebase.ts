@@ -191,7 +191,9 @@ export class Firebase {
         return firebase.addChildEventListener(callback, '/students/' + id + "/conversations")
     }
 
-
+    public createStudent(student): Promise<any> {
+        return firebase.setValue('/students/' + student.wsuId, student);
+    }
 }
 
 let singleton = new Firebase();
