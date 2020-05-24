@@ -7,6 +7,7 @@
                      <Image src="font://&#xf015;"  color="#777777" class="fas t-10 "></Image> 
                 </TabStripItem>
                 <TabStripItem>
+                    <Image src="font://&#xf0c0;"  color="#777777" class="fas t-10"  />
                     <Label text="Staff" />
                 </TabStripItem>
                 <TabStripItem>
@@ -14,6 +15,7 @@
                     <Label text="Message" />
                 </TabStripItem>
                 <TabStripItem>
+                    <Image src="font://&#xf085;"  color="#777777" class="fas t-10"  />
                     <Label text="Settings" />
                 </TabStripItem>
             </TabStrip>
