@@ -45,7 +45,11 @@ export class Conversation extends Observable {
         let lastMessage = this.messages.getItem(this.messages.length - 1);
 
         let message = lastMessage ? lastMessage.message : "Loading...";
-        let date = lastMessage ? lastMessage.updateTs : "Loading...";
+        // let date = lastMessage ? Number(lastMessage.updateTs) : "Loading..."; 
+        let date = 12345;
+
+
+        // date = this.formatDate(date);
 
         return {
             recentMessage: message,

@@ -32,7 +32,10 @@ export class Staff extends Observable {
 		console.log("wsuId: " + this.wsuId);
 		if (!ConversationSubject.doesConversationExist(this.wsuId)) {
 			console.log("Creating conversation...");
-			Firebase.createConversation(this.wsuId);
+			Firebase.createConversation(this.wsuId)
+				.then(() => {
+					Navigator.navigateFrameWithContext(Pages.DIRECT_MESSAGES, { wsuId: this.wsuId });
+				})
 		} else {
 			Navigator.navigateFrameWithContext(Pages.DIRECT_MESSAGES, { wsuId: this.wsuId });
 		}

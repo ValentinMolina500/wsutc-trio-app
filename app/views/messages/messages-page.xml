@@ -9,7 +9,7 @@
                 <Label col="1" row="0" class="staff-name" text="{{ name }}" />
                 <Label col="1" row="1" class="messages-text" text="{{ recentMessage }}" />
                 <StackLayout row="2" col="1" class="card-divider" />
-                <Label col="1" rowSpan="2" class="date-text" text="{{ date }}" />
+                <Label col="1" rowSpan="2" class="date-text" text="{{ displayDate }}" />
             </GridLayout>
             <!-- <GridLayout rows="auto, auto, 1" columns="auto, *">
                 <Image height="65" rowSpan="2" width="65" stretch="aspectFill" borderRadius="100%" src="~/imgs/jennifer.jpg" margin="16" />

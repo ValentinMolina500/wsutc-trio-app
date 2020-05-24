@@ -20,7 +20,15 @@ export class MessagesPage extends Observable {
 		conversations.forEach(value => {
 			const { recentMessage, date } = value.conversation;
 
-			temp.push({ ...this.findStaff(value.wsuId), wsuId: value.wsuId, recentMessage, date, conversation: value.conversation, conversationKey: value.conversationKey });
+			temp.push({ 
+				...this.findStaff(value.wsuId), 
+				wsuId: value.wsuId, 
+				recentMessage, 
+				date,
+				displayDate: this.formatTimestamp(date),
+				conversation: value.conversation, 
+				conversationKey: value.conversationKey 
+			});
 		});
 
 		this.set("conversations", new ObservableArray(temp.sort(this.sort)));
@@ -68,6 +76,43 @@ export class MessagesPage extends Observable {
 		} else {
 			return 1;
 		}
+	}
+
+	private formatTimestamp(date) {
+		let dateObject = new Date(date);
+		let currentDate = new Date();
+
+		let diff = currentDate.getTime() - dateObject.getTime();
+
+		// 24 hrs in milliseconds
+		if (diff < 86400000) {
+			return this.formatTime(dateObject);
+		}
+
+		return this.formatDate(dateObject);
+	}
+
+	private formatDate(date: Date) {
+		return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
+	} 
+
+	private formatTime(date: Date) {
+		let string = "";
+		let hours = date.getHours(); 
+		let minutes = date.getMinutes();
+		let minutesString = "";
+		let period = "AM";
+
+		if (hours > 12) {
+			hours -= 12;
+			period = "PM";
+		}
+
+		if (minutes < 10) {
+			minutesString += "0";
+		}
+
+		return `${hours}:${minutesString + minutes} ${period}`;
 	}
 }
 
