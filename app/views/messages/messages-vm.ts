@@ -6,6 +6,7 @@ import { ObservableArray } from 'tns-core-modules/data/observable-array';
 export class MessagesPage extends Observable {
 	public conversations;
 	public staff;
+	public hasConversations = false;
 
 	constructor() {
 		super();
@@ -32,6 +33,12 @@ export class MessagesPage extends Observable {
 		});
 
 		this.set("conversations", new ObservableArray(temp.sort(this.sort)));
+
+		if (this.conversations.length == 0) {
+			this.set("hasConversations", false);
+		} else {
+			this.set("hasConversations", true);
+		}
 	}
 
 	public updateStaff(staff) {
@@ -45,6 +52,12 @@ export class MessagesPage extends Observable {
 		})
 
 		this.set("conversations", new ObservableArray(temp.sort(this.sort)));
+
+		if (this.conversations.length == 0) {
+			this.set("hasConversations", false);
+		} else {
+			this.set("hasConversations", true);
+		}
 	}
 
 	public findStaff(wsuId) {

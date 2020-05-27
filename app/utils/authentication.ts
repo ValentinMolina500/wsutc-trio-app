@@ -2,6 +2,11 @@ import Firebase from "./firebase";
 import Nav from "~/utils/navigator";
 import { Pages } from "~/utils/pages";
 import { Page } from "tns-core-modules/ui/page/page";
+import UserSubject from "~/logic/UserSubject";
+import * as dialogs from "tns-core-modules/ui/dialogs"; 
+import ConversationSubject from "~/logic/ConversationsSubject"
+import StaffSubject from "~/logic/StaffSubject";
+
 export class Authentication {
     public login(email: string, password: string) {
         return Firebase.doLogin(email, password);
@@ -20,7 +25,19 @@ export class Authentication {
             Firebase.isAuthenticated()
                 .then((user) => {
                     console.log('log', true);
-                    resolve(true);
+
+                    /* Set current user */
+                    UserSubject.getCurrentUser(user.uid)
+                        .then((currentUser) => {
+                            console.log(currentUser);
+                            UserSubject.setCurrentUser(currentUser.value);
+                            StaffSubject.setStaffListener(currentUser.value.role);
+
+                            ConversationSubject.setConversationsListener(currentUser.value.wsuId, currentUser.value.role);
+                            resolve(true);
+                        })
+
+
                 }).catch((error) => {
                     console.log('log1', false);
                     resolve(false);

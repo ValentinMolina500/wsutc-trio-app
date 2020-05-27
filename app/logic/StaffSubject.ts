@@ -15,12 +15,23 @@ export class StaffSubject {
 		})
 	}
 
-	public setStaffListener() {
-		Firebase.staffListener((result) => {
-			this.staff.push(new Staff(result.value));
+	public setStaffListener(role) {
+		let reciever;
 
-			this.notifyObservers();
-		});
+		if (role == "students") {
+			reciever = "staff";
+		} else {
+			reciever = "students";
+		}
+		
+		Firebase.staffListener((result) => {
+			if (result.type == "ChildAdded") {
+				this.staff.push(new Staff(result.value));
+
+				this.notifyObservers();
+			}
+			
+		}, reciever);
 	}
 }
 

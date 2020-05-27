@@ -13,6 +13,7 @@ export class Staff extends Observable {
 	@ObservableProperty() image: string;
 	public index: string = "wsuId";
 	public wsuId: string;
+	public role;
 	public showMoreInfo;
 
 	constructor(data: Staff) {
@@ -23,9 +24,10 @@ export class Staff extends Observable {
 	}
 
 	public update(data: Staff) {
-		this.position = data.position;
+		this.position = data.position || "Student";
 		this.name = data.name;
 		this.image = data.image;
+		this.role = data.role;
 	};
 
 	public sendMessage(): void {

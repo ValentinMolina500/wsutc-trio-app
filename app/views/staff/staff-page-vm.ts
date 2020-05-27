@@ -21,7 +21,6 @@ export class StaffPage extends Observable {
     public updateStaff(staff) {
     	this.staff = staff;
     	this.set("staff", new ObservableArray(staff));
-
     }
 }
 
@@ -121,3 +120,4 @@ export default s;
 //         Navigator.navigateContext(Pages.STAFF_DETAILS, page, this.staff[args.index]);
 //     }
 // }
+

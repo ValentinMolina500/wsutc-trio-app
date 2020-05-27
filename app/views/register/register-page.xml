@@ -4,6 +4,9 @@
 	<StackLayout>
 		<Label class="heading" text="Register" />
 
+		<Label class="label" text="Full Name" />
+		<TextField  text="{{ name }}" class="input"/>
+
 		<Label class="label" text="Email" />
 		<TextField keyboardType="email" text="{{ email }}" class="input"/>
 

@@ -5,7 +5,8 @@ import { Conversation } from "~/models/conversation";
 export class ConversationsSubject extends Observable {
 	private observers: Array<any> = [];
 	public conversations: Map<any, any> = new Map();
-	public number = 42;
+	public wsuId = "";
+
 	constructor() {
 		super();
 	}
@@ -20,7 +21,7 @@ export class ConversationsSubject extends Observable {
 		})
 	}
 
-	public setConversationsListener() {
+	public setConversationsListener(wsuId, role) {
 		let callback = (result) => {
 			this.conversations.set(result.key, { wsuId: result.key, conversationKey: result.value, conversation: new Conversation() });
 			this.notifyObservers();
@@ -34,7 +35,8 @@ export class ConversationsSubject extends Observable {
 			}, '/conversations/' + result.value + '/messages');
 		}
 
-		Firebase.getCurrentUserConversations(callback, "17413");
+		console.log("ROLE!");
+		Firebase.getCurrentUserConversations(callback, wsuId, role);
 	}
 
 	public doesConversationExist(wsuId) {
@@ -48,6 +50,10 @@ export class ConversationsSubject extends Observable {
 		})
 
 		return found;
+	}
+
+	public updateCurrentUser(user) {
+		this.wsuId = user.wsuId;
 	}
 }
 

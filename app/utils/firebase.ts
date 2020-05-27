@@ -15,9 +15,13 @@ import StaffSubject from "~/logic/StaffSubject";
 import StaffPage from "~/views/staff/staff-page-vm";
 import ConversationSubject from "~/logic/ConversationsSubject";
 import MessagesPage from "~/views/messages/messages-vm";
+import UserSubject from "~/logic/UserSubject";
+import SettingsPage from "~/views/settings/settings-page-vm";
 
 export class Firebase {
     private isInit: boolean = false;
+    public wsuId = "";
+    public role = "";
 
     public init(): any {
         return firebase.init({
@@ -37,9 +41,12 @@ export class Firebase {
                 StaffSubject.register(MessagesPage);
                 ConversationSubject.register(MessagesPage);
                 ConversationSubject.register(DMViewModel);
-                StaffSubject.setStaffListener();
-                ConversationSubject.setConversationsListener();
-        
+
+
+                UserSubject.register(SettingsPage);
+                UserSubject.register(ConversationSubject);
+                UserSubject.register(DMViewModel);
+                UserSubject.register(this);
                 // Store.setConversations();
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
@@ -70,8 +77,8 @@ export class Firebase {
         );*/
     }
 
-    public staffListener(callback) {
-        firebase.addChildEventListener(callback, "/staff");
+    public staffListener(callback, role) {
+        firebase.addChildEventListener(callback, `/${role}`);
     }
 
 
@@ -132,7 +139,7 @@ export class Firebase {
     public createConversation(uid: string): any {
         let conversation;
         conversation = {
-            creatorId: "17413",
+            creatorId: this.wsuId,
             recieverId: uid,
             messages: [{ message: "TRIO is ready to help you!", senderId: "0000" }]
         }
@@ -143,9 +150,17 @@ export class Firebase {
             conversation = { ...conversation, key: fbConversation.key };
             return firebase.setValue('/conversations/' + conversation.key, conversation)
                 .then(() => {
-                    return firebase.setValue('/students/17413/conversations/' + uid, conversation.key)
+                    return firebase.setValue('/' + this.role + '/' + this.wsuId + '/conversations/' + uid, conversation.key)
                         .then(() => {
-                            return conversation.key
+                            let receiver;
+
+                            if (this.role == 'students') {
+                                receiver = 'staff';
+                            } else {
+                                receiver = 'students';
+                            }
+
+                            return firebase.setValue(`/${receiver}/${uid}/conversations/${this.wsuId}`, conversation.key);
                         });
                 })
 
@@ -156,14 +171,14 @@ export class Firebase {
         return firebase.getValue('/conversations/' + id);
     }
 
-    public sendMessage(conversationId, message, senderId) {
+    public sendMessage(conversationId, message, senderId, receiverId, receiverRole) {
 
  
        // firebase.update('/services/' + cData.service.info.fsid, );
 
        // return firebase.push('/staff/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId })
 
-        return firebase.push('/conversations/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId })
+        return firebase.push('/conversations/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId, receiverId, receiverRole })
     }
 
     public getMessages(conversationId: string) {
@@ -187,12 +202,43 @@ export class Firebase {
         return firebase.getValue("/staff");
     }
 
-    public getCurrentUserConversations(callback, id: string) {
-        return firebase.addChildEventListener(callback, '/students/' + id + "/conversations")
+    public getCurrentUserConversations(callback, id: string, role) {
+        return firebase.addChildEventListener(callback, '/' + role +'/' + id + "/conversations")
     }
 
     public createStudent(student): Promise<any> {
         return firebase.setValue('/students/' + student.wsuId, student);
+    }
+
+    public createUser(user) {
+        let { email, password } = user;
+        return firebase.createUser({ email, password })
+    }
+    
+    public addUserToMaster(user, uid) {
+        return firebase.setValue('/master/' + uid, {
+            wsuId: user.wsuId,
+            name: user.name,
+            role: user.role
+        });
+    }
+
+    public addStudent(user) {
+        const { password, ...rest } = user;
+        return firebase.setValue('/students/' + user.wsuId, rest);
+    }
+
+    public getCurrentUser(uid: string) {
+        return firebase.getValue('/master/' + uid);
+    }
+
+    public getUser(role, wsuId) {
+        return firebase.getValue('/' + role +'/' + wsuId);
+    }
+
+    public updateCurrentUser(user) {
+        this.wsuId = user.wsuId;
+        this.role = user.role;
     }
 }
 

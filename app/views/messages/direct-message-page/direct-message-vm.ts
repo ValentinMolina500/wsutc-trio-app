@@ -14,9 +14,12 @@ export class DirectMessagePage extends Observable   {
     public image;
     public currentMessage = "";
     public conversationKey; 
-
+    public wsuId;
     public staff;
     public conversations;   
+    public recieverId;
+    public recieverRole;
+
     constructor() {
         super();
 
@@ -39,6 +42,8 @@ export class DirectMessagePage extends Observable   {
             if (wsuId == staff.wsuId) {
                 this.set("name", staff.name);
                 this.set("image", staff.image);
+                this.set("recieverId", staff.wsuId)
+                this.set("recieverRole", staff.role);
             }
         })
     }
@@ -61,7 +66,7 @@ export class DirectMessagePage extends Observable   {
     // }
 
     public sendMessage() {
-        firebase.sendMessage(this.conversationKey, this.currentMessage, "17413");
+        firebase.sendMessage(this.conversationKey, this.currentMessage, this.wsuId, this.recieverId, this.recieverRole);
         this.set("currentMessage", "");
     }
 
@@ -70,10 +75,21 @@ export class DirectMessagePage extends Observable   {
     }
 
     public updateConversations(conversations) {
-        console.log("I'm GETTING CALLED");
-        this.conversations = conversations;
+        this.conversations = conversations;     
+    }
 
-           
+    // public messageSelector(item) {
+        
+    //     console.log("SENDERID:" + item.senderId);
+    //     console.log(this.wsuId);
+    //     return item.senderId == this.wsuId ? "sent" : "recieved";
+    // }
+
+    public updateCurrentUser(user) {
+        // this.wsuId = user.wsuId;
+       this.wsuId = user.wsuId;  
+
+       this.set("messageSelector", (item) => { return item.senderId == this.wsuId ? "sent" : "recieved"; })
     }
 }
 

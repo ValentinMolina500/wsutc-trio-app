@@ -3,5 +3,5 @@ import ViewModel from "./settings-page-vm";
 
 export function onLoaded(args: EventData) {
     let page = <Page>args.object;
-    page.bindingContext = new ViewModel();
+    page.bindingContext =  ViewModel;
 }

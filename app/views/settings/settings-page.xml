@@ -14,14 +14,15 @@
     <!-- <ScrollView height="100%"> -->
     <GridLayout color="#48505b" backgroundColor="white" margin="8" rows="auto, auto, auto, auto, auto, auto, auto, auto, auto, *" columns="auto, *, *, *, auto">
         <Label class="heading" colSpan="4" text="Current User" />
+        
         <Label color="#a3b1ca" row="1" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf007;" />
-        <Label row="1" col="1" colSpan="3" margin="8 16 8 8" text="Valentin Molina" />
+        <Label row="1" col="1" colSpan="3" margin="8 16 8 8" text="{{ name }}" />
         <Label color="#a3b1ca" row="2" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf0e0;" />
-        <Label row="2" col="1" colSpan="3" margin="8 16 8 8" text="valentin.molina@wsu.edu" />
+        <Label row="2" col="1" colSpan="3" margin="8 16 8 8" text="{{ email }}" />
         <Label color="#a3b1ca" row="3" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf2c2;" />
-        <Label row="3" col="1" colSpan="3" margin="8 16 8 8" text="03316783" />
+        <Label row="3" col="1" colSpan="3" margin="8 16 8 8" text="{{ wsuId }}" />
         <Label color="#a3b1ca" row="4" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf507;" />
-        <Label row="4" col="1" colSpan="3" margin="8 16 8 8" text="TRIO Staff" />
+        <Label row="4" col="1" colSpan="3" margin="8 16 8 8" text="{{ role }}" />
         <StackLayout row="5" colSpan="5" margin="8 0" backgroundColor="#ececec" height="1" />
         <Label row="6" class="heading" colSpan="4" text="Preferences" />
         <Label color="#a3b1ca" row="7" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf0f3;" />

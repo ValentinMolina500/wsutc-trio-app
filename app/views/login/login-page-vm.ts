@@ -4,10 +4,14 @@ import Navigator from "~/utils/navigator";
 import { Pages } from "~/utils/pages";
 import Authentication from "~/utils/authentication";
 import { Frame, Page, getFrameById } from "tns-core-modules/ui/frame";
+import fireabse from "~/utils/firebase";
+import UserSubject from "~/logic/UserSubject";
+import * as dialogs from "tns-core-modules/ui/dialogs"; 
+import ConversationSubject from "~/logic/ConversationsSubject";
 
 export default class LoginPage extends Observable {
-    public email: string = "luis.delatorre@wsu.edu";
-    public password: string = "Medalla6571";
+    public email: string = "fumiko.denham@wsu.edu";
+    public password: string = "1234567";
     public toggle: boolean = true;
 
     constructor() {
@@ -18,14 +22,13 @@ export default class LoginPage extends Observable {
 
     public login(args: EventData) {
         let button = <Button>args.object;
-        let page = button.page;     
-        Authentication.login(this.email, this.password)
-            .then((user) => {
+        let page = button.page;  
+
+        Authentication.login(this.email.trim(), this.password.trim())
+            .then(() => {
                 Navigator.navigateToHome();
             })
-            .catch((err) => {
-                console.log(err);
-            });
+           
     }
 
     public change() {

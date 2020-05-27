@@ -9,7 +9,7 @@ export default class HomeViewModel extends Observable {
 		super();
 		this.currentIndex = 0;
 		this.listLoad = true;
-		//this.validateAuthentication(page);		
+		this.validateAuthentication(page);		
 	}
 
 	public async validateAuthentication(page: Page) {
@@ -17,7 +17,7 @@ export default class HomeViewModel extends Observable {
 		console.log('auth', auth);
 		this.listLoad = auth;
 		if (!auth) {
-			//Nav.navigateToLogin();	
+			Nav.navigateToLogin();	
 		}
 		return auth;
 	}

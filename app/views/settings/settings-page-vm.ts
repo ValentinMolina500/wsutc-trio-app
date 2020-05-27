@@ -4,8 +4,10 @@ import { Pages } from "~/utils/pages";
 import Auth from "~/utils/authentication";
 import Store from '~/store/store';//store adapter
 
-export default class SettingsPage extends Observable {
+class SettingsPage extends Observable {
 	private homeViewModel;
+    public currentUser = {};
+
     constructor() {
         super();
 		this.homeViewModel = Store.getHomeViewModel();
@@ -21,4 +23,16 @@ export default class SettingsPage extends Observable {
         //},50)
 		Nav.navigateToLogin();
     }
+
+    public updateCurrentUser(user) {
+        this.set("name", user.name);
+        this.set("email", user.email);
+        this.set("wsuId", user.wsuId);
+        this.set("role", user.role);
+        this.set("image", user.image);
+    }
 }
+
+let s = new SettingsPage();
+
+export default s;
