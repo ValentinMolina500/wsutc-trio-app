@@ -8,7 +8,7 @@
                 </TabStripItem>
                 <TabStripItem>
                     <Image src="font://&#xf0c0;"  color="#777777" class="fas t-10"  />
-                    <Label text="Staff" />
+                    <Label text="{{ role == 'students' ? 'Staff' : 'Students' }}" />
                 </TabStripItem>
                 <TabStripItem>
                     <Image src="font://&#xf27a;"  color="#777777" class="fas t-10"  />

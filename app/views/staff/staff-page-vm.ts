@@ -22,6 +22,10 @@ export class StaffPage extends Observable {
     	this.staff = staff;
     	this.set("staff", new ObservableArray(staff));
     }
+
+    public updateCurrentUser(user) {
+    	this.set("role", user.role);
+    }
 }
 
 let s = new StaffPage();

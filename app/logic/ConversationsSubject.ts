@@ -6,6 +6,8 @@ export class ConversationsSubject extends Observable {
 	private observers: Array<any> = [];
 	public conversations: Map<any, any> = new Map();
 	public wsuId = "";
+	public isSet = false;
+	public listeners = [];
 
 	constructor() {
 		super();
@@ -22,6 +24,7 @@ export class ConversationsSubject extends Observable {
 	}
 
 	public setConversationsListener(wsuId, role) {
+
 		let callback = (result) => {
 			this.conversations.set(result.key, { wsuId: result.key, conversationKey: result.value, conversation: new Conversation() });
 			this.notifyObservers();
@@ -33,9 +36,11 @@ export class ConversationsSubject extends Observable {
 				}
 				
 			}, '/conversations/' + result.value + '/messages');
+
 		}
 
 		console.log("ROLE!");
+
 		Firebase.getCurrentUserConversations(callback, wsuId, role);
 	}
 

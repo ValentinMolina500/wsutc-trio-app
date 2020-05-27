@@ -47,6 +47,7 @@ export class Firebase {
                 UserSubject.register(ConversationSubject);
                 UserSubject.register(DMViewModel);
                 UserSubject.register(this);
+                UserSubject.register(StaffPage);
                 // Store.setConversations();
             })
             .catch((err) => (console.log("Error initing firebase " + err)));

@@ -1,7 +1,7 @@
 import firebase from "~/utils/firebase";
 
 class UserSubject {
-	public currentUser = {};
+	public currentUser: any = {};
 	public observers = [];
 
 	public getCurrentUser(uid: string) {
@@ -26,6 +26,10 @@ class UserSubject {
 	public setCurrentUser(user) {
 		this.currentUser = user;
 		this.notifyObservers();
+	}
+
+	public getRole() {
+		return this.currentUser.role;
 	}
 }
 
