@@ -6,6 +6,7 @@ import { Pages } from "~/utils/pages";
 import Navigator from "~/utils/navigator";
 import ConversationSubject from "~/logic/ConversationsSubject";
 import Firebase from "~/utils/firebase";
+import * as email from "nativescript-email";
 
 export class Staff extends Observable {
 	@ObservableProperty() name: string;
@@ -15,6 +16,7 @@ export class Staff extends Observable {
 	public wsuId: string;
 	public role;
 	public showMoreInfo;
+	public email: string;
 
 	constructor(data: Staff) {
 		super();
@@ -41,6 +43,21 @@ export class Staff extends Observable {
 		} else {
 			Navigator.navigateFrameWithContext(Pages.DIRECT_MESSAGES, { wsuId: this.wsuId });
 		}
+	}
+
+	public sendEmail(): void {
+		console.log("EMAIL!!!")
+		email.available().then((emailAvailable) => {
+			if (emailAvailable) {
+				email.compose({
+					body: "\n\nVia TRIO App",
+					//@ts-ignore
+					to: [],
+				}).then(() => {
+
+				})
+			}
+		})
 	}
 }
 

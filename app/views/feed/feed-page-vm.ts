@@ -7,12 +7,12 @@ import Auth from "~/utils/authentication";
 import Store from '~/store/store';//store adapter
 import { BaseArray } from '~/models/base-array';
 import Firebase from "~/utils/firebase";
-import { Feed, Order } from '~/models/feed';
+import { FeedItem } from '~/models/feed';
 import Cache from "~/utils/image-cache";
 import { ObservableProperty } from '~/observable-property-decorator'; 
 export default class FeedPage extends Observable {
 	@ObservableProperty() loaded: boolean;
-	public feeds: BaseArray<Feed>;
+	public feeds: BaseArray<any>;
 
 	public defaultImage: string = Config.iconImage;
 	constructor() {

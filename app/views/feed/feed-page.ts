@@ -17,6 +17,6 @@ export function onNavigatedTo(args: NavigatedData): void {
 	setTimeout(() => { viewModel.loaded = true; }, 8000)
 	
 }
-export function typeOfContent(item: ContentItem) {
+export function typeOfContent(item) {
     return item.type;
 }

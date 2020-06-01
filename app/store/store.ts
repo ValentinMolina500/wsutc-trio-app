@@ -1,6 +1,6 @@
 import { ObservableArray } from 'tns-core-modules/data/observable-array';
 import { Observable, EventData, Page } from "tns-core-modules/ui/page/page";
-import { Feed } from '../models/feed';
+import { FeedItem } from '../models/feed';
 import { FeedsAdapter } from '../store/feed-adapter';
 import { ConversationAdapter } from '../store/conversation-adapter';
 import { MessagesAdapter } from './messages-adapter';

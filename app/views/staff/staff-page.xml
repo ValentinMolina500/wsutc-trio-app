@@ -18,8 +18,8 @@
 
                     <GridLayout  colSpan="3" row="4" rows="*" columns="*, *">
                         <!-- <Label id="message-icon" class="fal" col="2" text="&#xf4a6;" /> -->
-                        <RL:Ripple col="1">
-                            <Label padding="12 16" id="calendar-icon" class="fal"  text="&#xf073;" />
+                        <RL:Ripple tap="{{ sendEmail }}" col="1">
+                            <Label padding="12 16"  id="calendar-icon" class="fal"  text="&#xf0e0;" />
                         </RL:Ripple>
                         
                         <RL:Ripple  tap="{{ sendMessage }}" col="0">

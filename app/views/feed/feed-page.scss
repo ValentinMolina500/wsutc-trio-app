@@ -19,6 +19,13 @@ $time-text-color: #ccd6e3;
     width: 45;
 }
 
+.card-icon-instagram {
+    margin: 16 16 8 16;
+    stretch: aspectFill;
+    height: 45;
+    width: 45;
+}
+
 .heading-info {
     vertical-align: bottom;
     font-weight: bold;
@@ -45,8 +52,15 @@ $time-text-color: #ccd6e3;
     text-wrap: true;
 }
 
+.open-ig {
+    color: #a3b1ca;
+}
 .card-description-text {
     margin: 0 16 16 16;
+}
+
+.card-description-text-instagram {
+    margin: 8 16 16 16;
 }
 
 // .card-description-text-no-img {

@@ -17,6 +17,7 @@ import ConversationSubject from "~/logic/ConversationsSubject";
 import MessagesPage from "~/views/messages/messages-vm";
 import UserSubject from "~/logic/UserSubject";
 import SettingsPage from "~/views/settings/settings-page-vm";
+import { PostType } from "~/models/feed";
 
 export class Firebase {
     private isInit: boolean = false;
@@ -31,24 +32,17 @@ export class Firebase {
             }
         })
             .then(async () => {
-                // messagesSubject.setMessages();
-                // messagesSubject.register(DMV1iewModel);
-                // Store.setStaffListener();
-                // Store.setConversations();
-
                 StaffSubject.register(StaffPage);
                 StaffSubject.register(DMViewModel);
                 StaffSubject.register(MessagesPage);
                 ConversationSubject.register(MessagesPage);
                 ConversationSubject.register(DMViewModel);
 
-
                 UserSubject.register(SettingsPage);
                 UserSubject.register(ConversationSubject);
                 UserSubject.register(DMViewModel);
                 UserSubject.register(this);
                 UserSubject.register(StaffPage);
-                // Store.setConversations();
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
     }
@@ -69,13 +63,13 @@ export class Firebase {
     }
     public feedListener(callback) {
         firebase.addChildEventListener(callback, "/posts")
-        /*.then(
+        .then(
             listenerWrapper => {
                 var path = listenerWrapper.path;
                 var listeners = listenerWrapper.listeners; // an Array of listeners added
                 // you can store the wrapper somewhere to later call 'removeEventListeners'
             }
-        );*/
+        );
     }
 
     public staffListener(callback, role) {
