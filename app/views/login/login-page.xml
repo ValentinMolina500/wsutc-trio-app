@@ -1,27 +1,8 @@
 <Page backgroundColor="white" actionBarHidden="true" loaded="onLoaded" 
     xmlns:svg="nativescript-svg">
-    <!-- <GridLayout rows="2*, *, *, *" columns="*, *">
-
-        <GridLayout rows="auto, auto" row="1" colSpan="2">    
-            <Label row="0" class="raleway-bold login-heading" text="LOGIN" />
-            <Label row="1" class="raleway-bold register-text" text="Don't have an Account? Register" />
-        </GridLayout>
-        <GridLayout colSpan="2" row="1" rows="auto, auto" verticalAlignment="bottom">
-            <Label row="0" class="raleway email-txt" text="Email" />
-            <TextField text="{{ email }}" keyboardType="email" row="1" class="email-tf" />
-        </GridLayout>
-
-        <GridLayout colSpan="2" row="2" rows="auto, auto" verticalAlignment="top">
-            <Label row="0" class="raleway email-txt" text="Password" />
-            <TextField text="{{ password }}" secure="true" row="1" class="email-tf" />
-        </GridLayout>
-        <Button colSpan="2" tap="{{ login }}" row="3" text="LOGIN" id="login-btn" />
-        <Image class="trio-logo" row="0" col="0" colSpan="2" src="~/imgs/trio-logo.jpg" />
-        <Image class="wsu-logo" row="0" colSpan="2" src="~/imgs/wsutc-logo.png" />
-    </GridLayout> -->
+  
     <GridLayout class="page" rows="24, *, *, *, *" columns="*, *">
-        <Image row="1" rowSpan="4" verticalAlignment="top" colSpan="2" src="{{ toggle ? '~/imgs/drawing-2.png' : '~/imgs/trendy-login.png' }}" />
-        <Image row="1" margin="88 16 0 16" verticalAlignment="bottom" colSpan="2" horizontalAlignment="center" src="~/imgs/wsutc-logo.png" />
+        <Image row="1" margin="88 16 0 0" verticalAlignment="top" colSpan="2" horizontalAlignment="center" src="~/imgs/wsutc-logo.png" />
         <Image row="2" margin="0 32" horizontalAlignment="center" colSpan="2" src="~/imgs/trio-logo.jpg" />
         <StackLayout row="3" rowSpan="2" colSpan="2">
             <Label tap="{{ change }}" row="3"  class="login-text" text="Login" />
@@ -36,6 +17,12 @@
         </StackLayout>
 
         <Button tap="{{ login }}" id="login-btn" row="4" colSpan="2" text="LOGIN" />
-        <!-- <Button tap="{{ change}}" text="Change" colSpan="2" row="5" id="change-btn" /> -->
     </GridLayout>
 </Page>
+<!-- 
+<Page actionBarHidden="true" loaded="onLoaded">
+    <GridLayout rows="auto, *">
+        <StackLayout height="88" />
+        <Label row="1" class="inter-var login-heading" text="Login" />
+    </GridLayout>
+</Page> -->

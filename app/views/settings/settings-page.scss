@@ -23,7 +23,7 @@ $bold-text-color: #48505b;
     // background-color: #c60c30;
     background: #ED213A;
     /* fallback for old browsers */
-    background: linear-gradient(to right, #981e32, #c60c30);
+    background: linear-gradient(to right, #c60c30, #f72f36);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-radius: 100%;
     color: white;
@@ -35,4 +35,12 @@ $bold-text-color: #48505b;
 .circles {
     vertical-align: bottom;
     margin: 0;
+}
+
+.profile-pic {
+    height: 100;
+    width: 100;
+    border-radius: 100%;
+    horizontal-align: center;
+    margin: 8 0;
 }

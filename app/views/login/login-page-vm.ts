@@ -28,6 +28,13 @@ export default class LoginPage extends Observable {
             .then(() => {
                 Navigator.navigateToHome();
             })
+            .catch(() => {
+                dialogs.alert({
+                    message: "Incorrect email/password!",
+                    okButtonText: "OK",
+                    title: "Invalid Credentials"
+                })
+            })
            
     }
 

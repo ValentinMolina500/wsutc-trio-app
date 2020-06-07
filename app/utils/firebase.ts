@@ -1,6 +1,6 @@
 import * as firebase from "nativescript-plugin-firebase";
 import * as webApi from "nativescript-plugin-firebase/app";
-
+import * as fs from "tns-core-modules/file-system";
 import { ObservableArray } from 'tns-core-modules/data/observable-array';
 import { LoginType, FirebasePasswordLoginOptions } from "nativescript-plugin-firebase";
 import Navigator from "~/utils/navigator";
@@ -18,6 +18,11 @@ import MessagesPage from "~/views/messages/messages-vm";
 import UserSubject from "~/logic/UserSubject";
 import SettingsPage from "~/views/settings/settings-page-vm";
 import { PostType } from "~/models/feed";
+import { UploadFileResult } from "nativescript-plugin-firebase/storage/storage";
+import { ImageSource } from "tns-core-modules/image-source/image-source";
+import { ImageAsset } from "tns-core-modules/image-asset/image-asset";
+import { knownFolders } from "tns-core-modules/file-system";
+import * as dialogs from "tns-core-modules/ui/dialogs";
 
 export class Firebase {
     private isInit: boolean = false;
@@ -29,6 +34,12 @@ export class Firebase {
             persist: true,
             onAuthStateChanged: (data: firebase.AuthStateData) => {
                // data.loggedIn ? console.log("Logged in as " + data.user.email) : Navigator.navigateFrame(Pages.LOGIN);
+            },
+            onPushTokenReceivedCallback: (token) => {
+                console.log("pushtoken: " + token);
+                firebase.update(`${this.role}/${this.wsuId}`, {
+                    pushtoken: token
+                })
             }
         })
             .then(async () => {
@@ -173,7 +184,7 @@ export class Firebase {
 
        // return firebase.push('/staff/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId })
 
-        return firebase.push('/conversations/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId, receiverId, receiverRole })
+        return firebase.push('/conversations/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId, receiverId, receiverRole, senderRole: this.role })
     }
 
     public getMessages(conversationId: string) {
@@ -234,6 +245,57 @@ export class Firebase {
     public updateCurrentUser(user) {
         this.wsuId = user.wsuId;
         this.role = user.role;
+    }
+
+    public uploadProfilePicture(imageAsset: ImageAsset) {
+    /* Save image to file-system */
+   return  ImageSource.fromAsset(imageAsset)
+    
+        .then((imageSource: ImageSource): any => {
+            const folderPath: string = knownFolders.documents().path;
+            const fileName: string = `${this.wsuId}_${new Date().getTime()}.jpg`;
+            const filePath: string = folderPath.concat(fileName);
+            const saved: boolean = imageSource.saveToFile(filePath, "jpg");
+
+            if (saved) {
+                return firebase.storage.uploadFile({
+                    remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`,
+                    localFile: fs.File.fromPath(filePath),
+                    metadata: {
+                        contentType: 'image/jpeg'
+                    }
+                })
+                .then((res: UploadFileResult) => {
+                    return firebase.storage.getDownloadUrl({
+                        remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`
+                    })
+                })
+            } else {
+                return dialogs.alert({
+                    title: "Error Saving Image!"
+                })
+            }
+
+        });
+    //    ImageSource.fromAsset(image)
+    //     .then((value: ImageSource) => {
+    //         return firebase.storage.uploadFile({
+    //             remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`,
+    //             localFile: value
+    //         })
+    //         .then((res: UploadFileResult) => {
+    //             return firebase.storage.getDownloadUrl({
+    //                 remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`
+    //             })
+    //         })
+    //     })
+        
+    }
+
+    public updateProfilePicture(imagePath: string) {
+        firebase.update(`${this.role}/${this.wsuId}`, {
+            image: imagePath
+        })
     }
 }
 

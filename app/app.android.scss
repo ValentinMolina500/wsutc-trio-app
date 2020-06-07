@@ -1,7 +1,8 @@
 // Place any CSS rules you want to apply only on Android here
 $wsu-crimson: #981e32;
 $default-font: "Roboto-Regular";
-$red-accent: #c60c30;
+// $red-accent: #c60c30;
+$red-accent: #f72f36;
 $lightgray: #ecf4fa;
 
 .fab {
@@ -17,6 +18,11 @@ $lightgray: #ecf4fa;
     font-family: "Font Awesome 5 Free", "fa-regular-400";
     // font-weight: 400;
 }
+
+.inter-var {
+    font-family: "Inter" !important;
+}
+
 
 .fal {
     font-family: "fa-light-300";
@@ -58,7 +64,7 @@ Tabs.bottom-nav {
 }
 
 .action-bar {
-    background-color: $wsu-crimson;
+    background-color: #c60c30;
     color: white;
 }
 

@@ -4,18 +4,18 @@
             <TabStrip height="50" highlightColor="#c60c30" isIconSizeFixed="false">
                 <TabStripItem >
                     <Label text="Home" />
-                     <Image src="font://&#xf015;"  color="#777777" class="fas t-10 "></Image> 
+                     <Image src="font://&#xf015;"  color="#777777" class="fas"></Image> 
                 </TabStripItem>
                 <TabStripItem>
-                    <Image src="font://&#xf0c0;"  color="#777777" class="fas t-10"  />
+                    <Image src="font://&#xf0c0;"  color="#777777" class="fas"  />
                     <Label text="{{ role == 'students' ? 'Staff' : 'Students' }}" />
                 </TabStripItem>
                 <TabStripItem>
-                    <Image src="font://&#xf27a;"  color="#777777" class="fas t-10"  />
+                    <Image src="font://&#xf27a;"  color="#777777" class="fas"  />
                     <Label text="Message" />
                 </TabStripItem>
                 <TabStripItem>
-                    <Image src="font://&#xf085;"  color="#777777" class="fas t-10"  />
+                    <Image src="font://&#xf085;"  color="#777777" class="fas"  />
                     <Label text="Settings" />
                 </TabStripItem>
             </TabStrip>
