@@ -68,13 +68,13 @@
                         <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
                     </RL:Ripple>
                     <!-- <dd:DropDown items="{{ ddItems }}" colSpan="2" rowSpan="2" class="drop-down" /> -->
-                    <Label col="1" row="1" class="posted-time" text="{{ timestamp }}" />
+                    <Label col="1" row="1" class="posted-time" text="{{ visibleTimestamp }}" />
                     <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
                     <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="@trio_wsutc" />
                     <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
                     <StackLayout row="5" colSpan="2" class="card-divider" />
                     <GridLayout row="6" colSpan="2" columns="*" height="auto">
-                        <RL:Ripple>
+                        <RL:Ripple tap="{{ openLink }}">
                             <Label padding="16" class="open-ig" textAlignment="center">
                                 <FormattedString>
                                     <Span  text="Open in Instagram " />

@@ -42,8 +42,6 @@ export class ConversationsSubject extends Observable {
 			})
 		}
 
-		console.log("ROLE!");
-
 		Firebase.getCurrentUserConversations(callback, wsuId, role)
 			.then((listenersWrapper) => {
 				this.listeners.push(listenersWrapper)

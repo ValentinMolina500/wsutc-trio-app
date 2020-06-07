@@ -9,7 +9,7 @@
 
     <ScrollView >
         <GridLayout rows="*,auto" columns="*,50" height="100%">
-            <ListView row="0" colSpan="2" margin="8" separatorColor="transparent" width="100%" id="feed" items="{{ messages }}" itemTemplateSelector="{{ messageSelector }}">
+            <ListView color="#48505b" row="0" colSpan="2" margin="8" separatorColor="transparent" width="100%" id="feed" items="{{ messages }}" itemTemplateSelector="{{ messageSelector }}">
                 <ListView.itemTemplates>
                     <template key="recieved">
                         <StackLayout>

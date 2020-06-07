@@ -28,8 +28,6 @@ export class Conversation extends Observable {
     };
 
     public updateMessages(message) {
-        //console.log("**********")
-       // console.log(message);
         this.recentMessage = message.message;
         this.date = message.updateTs;
         this.messages.push(message);
