@@ -11,7 +11,7 @@ import ConversationSubject from "~/logic/ConversationsSubject";
 
 export default class LoginPage extends Observable {
     public email: string = "fumiko.denham@wsu.edu";
-    public password: string = "1234567";
+    public password: string = "123456789";
     public toggle: boolean = true;
 
     constructor() {

@@ -9,7 +9,7 @@ import Auth from "./authentication";
 import { ContentType, ContentArea } from "~/utils/content";
 import messagesSubject from "~/logic/messages/MessagesSubject";
 import DMViewModel from "~/views/messages/direct-message-page/direct-message-vm";
-import { Conversation} from '../models/conversation';
+import { Conversation } from '../models/conversation';
 import Store from '~/store/store';//store adapter
 import StaffSubject from "~/logic/StaffSubject";
 import StaffPage from "~/views/staff/staff-page-vm";
@@ -33,7 +33,7 @@ export class Firebase {
         return firebase.init({
             persist: true,
             onAuthStateChanged: (data: firebase.AuthStateData) => {
-               // data.loggedIn ? console.log("Logged in as " + data.user.email) : Navigator.navigateFrame(Pages.LOGIN);
+                // data.loggedIn ? console.log("Logged in as " + data.user.email) : Navigator.navigateFrame(Pages.LOGIN);
             },
             onPushTokenReceivedCallback: (token) => {
                 console.log("pushtoken: " + token);
@@ -74,13 +74,13 @@ export class Firebase {
     }
     public feedListener(callback) {
         firebase.addChildEventListener(callback, "/posts")
-        .then(
-            listenerWrapper => {
-                var path = listenerWrapper.path;
-                var listeners = listenerWrapper.listeners; // an Array of listeners added
-                // you can store the wrapper somewhere to later call 'removeEventListeners'
-            }
-        );
+            .then(
+                listenerWrapper => {
+                    var path = listenerWrapper.path;
+                    var listeners = listenerWrapper.listeners; // an Array of listeners added
+                    // you can store the wrapper somewhere to later call 'removeEventListeners'
+                }
+            );
     }
 
     public staffListener(callback, role) {
@@ -91,7 +91,7 @@ export class Firebase {
 
     public validateConversation(user, staff): Promise<any> {
         return firebase.getValue(`/students/${user.id}/conversation/${staff.id}`)
-            .then(function(value) {
+            .then(function (value) {
 
             })
             .catch(error => console.log("ErrorV: " + error));
@@ -133,7 +133,7 @@ export class Firebase {
         });
     }
     public doLogout(): Promise<any> {
-        
+
         return firebase.logout();
     }
 
@@ -179,10 +179,10 @@ export class Firebase {
 
     public sendMessage(conversationId, message, senderId, receiverId, receiverRole) {
 
- 
-       // firebase.update('/services/' + cData.service.info.fsid, );
 
-       // return firebase.push('/staff/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId })
+        // firebase.update('/services/' + cData.service.info.fsid, );
+
+        // return firebase.push('/staff/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId })
 
         return firebase.push('/conversations/' + conversationId + '/messages/', { updateTs: firebase.ServerValue.TIMESTAMP, message, senderId, receiverId, receiverRole, senderRole: this.role })
     }
@@ -201,7 +201,7 @@ export class Firebase {
                 var path = listenerWrapper.path;
                 var listeners = listenerWrapper.listeners; // an Array of listeners added
                 // you can store the wrapper somewhere to later call 'removeEventListeners'
-            })    
+            })
     }
 
     public getStaff() {
@@ -209,7 +209,7 @@ export class Firebase {
     }
 
     public getCurrentUserConversations(callback, id: string, role) {
-        return firebase.addChildEventListener(callback, '/' + role +'/' + id + "/conversations")
+        return firebase.addChildEventListener(callback, '/' + role + '/' + id + "/conversations")
     }
 
     public createStudent(student): Promise<any> {
@@ -220,7 +220,7 @@ export class Firebase {
         let { email, password } = user;
         return firebase.createUser({ email, password })
     }
-    
+
     public addUserToMaster(user, uid) {
         return firebase.setValue('/master/' + uid, {
             wsuId: user.wsuId,
@@ -239,7 +239,7 @@ export class Firebase {
     }
 
     public getUser(role, wsuId) {
-        return firebase.getValue('/' + role +'/' + wsuId);
+        return firebase.getValue('/' + role + '/' + wsuId);
     }
 
     public updateCurrentUser(user) {
@@ -248,48 +248,47 @@ export class Firebase {
     }
 
     public uploadProfilePicture(imageAsset: ImageAsset) {
-    /* Save image to file-system */
-   return  ImageSource.fromAsset(imageAsset)
-    
-        .then((imageSource: ImageSource): any => {
-            const folderPath: string = knownFolders.documents().path;
-            const fileName: string = `${this.wsuId}_${new Date().getTime()}.jpg`;
-            const filePath: string = folderPath.concat(fileName);
-            const saved: boolean = imageSource.saveToFile(filePath, "jpg");
+        /* Save image to file-system */
+        return ImageSource.fromAsset(imageAsset)
+            .then((imageSource: ImageSource): any => {
+                const folderPath: string = knownFolders.documents().path;
+                const fileName: string = `${this.wsuId}_${new Date().getTime()}.jpg`;
+                const filePath: string = folderPath.concat(fileName);
+                const saved: boolean = imageSource.saveToFile(filePath, "jpg");
 
-            if (saved) {
-                return firebase.storage.uploadFile({
-                    remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`,
-                    localFile: fs.File.fromPath(filePath),
-                    metadata: {
-                        contentType: 'image/jpeg'
-                    }
-                })
-                .then((res: UploadFileResult) => {
-                    return firebase.storage.getDownloadUrl({
-                        remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`
+                if (saved) {
+                    return firebase.storage.uploadFile({
+                        remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`,
+                        localFile: fs.File.fromPath(filePath),
+                        metadata: {
+                            contentType: 'image/jpeg'
+                        }
                     })
-                })
-            } else {
-                return dialogs.alert({
-                    title: "Error Saving Image!"
-                })
-            }
+                        .then((res: UploadFileResult) => {
+                            return firebase.storage.getDownloadUrl({
+                                remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`
+                            })
+                        })
+                } else {
+                    return dialogs.alert({
+                        title: "Error Saving Image!"
+                    })
+                }
 
-        });
-    //    ImageSource.fromAsset(image)
-    //     .then((value: ImageSource) => {
-    //         return firebase.storage.uploadFile({
-    //             remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`,
-    //             localFile: value
-    //         })
-    //         .then((res: UploadFileResult) => {
-    //             return firebase.storage.getDownloadUrl({
-    //                 remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`
-    //             })
-    //         })
-    //     })
-        
+            });
+        //    ImageSource.fromAsset(image)
+        //     .then((value: ImageSource) => {
+        //         return firebase.storage.uploadFile({
+        //             remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`,
+        //             localFile: value
+        //         })
+        //         .then((res: UploadFileResult) => {
+        //             return firebase.storage.getDownloadUrl({
+        //                 remoteFullPath: `${this.role}_profile_pics/${this.wsuId}.jpg`
+        //             })
+        //         })
+        //     })
+
     }
 
     public updateProfilePicture(imagePath: string) {

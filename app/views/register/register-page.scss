@@ -1,7 +1,12 @@
 .heading {
-	margin: 16 16 0 16;
-	font-size: 24;
+	font-size: 20;
 	color: #060606;
+	margin-bottom:8;
+}
+
+.input-heading {
+	color:  #718096;
+	font-size: 18;
 }
 
 .label {
@@ -16,4 +21,40 @@
 	margin: 0 16;
 	color: white;
 	background-color: #c60c30;
+}
+
+.register-container {
+	background: #fff;
+	vertical-align: top;
+	padding: 16;
+	border-radius: 5;
+}
+
+Page {
+	background: #ecf4fa;
+}
+
+TextField {
+	margin-bottom: 8;
+	color: #060606;
+}
+
+Button {
+	margin-top: 8;
+}
+
+.tooltip-off {
+	visibility: collapse;
+}
+
+.tooltip {
+	color: #B00020;
+	animation-name: appear;
+	animation-duration: 2s;
+
+}
+
+@keyframes appear {
+	from { opacity: 0; visibility: collapse; }
+	to { opacity: 1; visibility: visible; }
 }

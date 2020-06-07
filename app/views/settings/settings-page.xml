@@ -28,11 +28,11 @@
         <Label color="#a3b1ca" row="8" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf0f3;" />
         <Label row="8" col="1" colSpan="3" margin="8 16 8 8" text="Allow Notifications" />
         <Switch row="8" color="#c60c30" col="4" margin="0 16" />
-        <Label color="#a3b1ca" row="9" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf3e0;" />
+        <Label tap="{{ changeProfilePicture }}" color="#a3b1ca" row="9" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf3e0;" />
 
         <!-- <RL:Ripple row="8" col="0" colSpan="4" padding="8 16 8 8"/> -->
         <Label tap="{{ changeProfilePicture }}" row="9" col="1" colSpan="3" margin="8 16 8 8" text="Edit Profile Picture" />
-        <Label row="9" class="far right" text="&#xf054;" col="4" margin="16 0" />
+        <Label tap="{{ changeProfilePicture }}" row="9" class="far right" text="&#xf054;" col="4" margin="16 0" />
 
         <Button tap="{{ logout }}" class="logout-btn" row="10" colSpan="5" text="LOGOUT" />
 

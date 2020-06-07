@@ -1,7 +1,7 @@
 <Page loaded="onLoaded">
-	<ActionBar title="Register" />
+	<ActionBar class="action-bar" title="Create Account" />
 
-	<StackLayout>
+	<!-- <StackLayout>
 		<Label class="heading" text="Register" />
 
 		<Label class="label" text="Full Name" />
@@ -18,5 +18,31 @@
 		<TextField keyboardType="number" text="{{ wsuId }}" class="input"/>
 
 		<Button tap="{{ submit }}" class="submit-btn" text="Submit" />
-	</StackLayout>
+	</StackLayout> -->
+	<GridLayout rows="*" columns="*">
+		<StackLayout class="register-container">
+			<Label class="heading" text="Register" />
+
+			<Label class="input-heading" text="Full Name" />
+			<Label class="{{ nameError ? 'tooltip' : 'tooltip-off' }}" text="Name is required!" />
+			<TextField text="{{ name }}" />
+
+			<Label class="input-heading" text="WSU ID" />
+			<Label class="{{ wsuIdError ? 'tooltip' : 'tooltip-off' }}" text="WSU Id is required!" />
+			<TextField keyboardType="number" text="{{ wsuId }}" />
+			
+
+			<Label class="input-heading" text="Email" />
+			<Label class="{{ emailError ? 'tooltip' : 'tooltip-off' }}" text="Email is required!" />
+			<TextField keyboardType="email" text="{{ email }}" />
+
+			<Label class="input-heading" text="Password" />
+			<Label class="{{ passwordError ? 'tooltip' : 'tooltip-off' }}" text="Password is required!" />
+			<Label class="{{ invalidPasswordLengthError ? 'tooltip' : 'tooltip-off' }}" text="Password must be at least 6 characters long!" />
+			<TextField secure="true" text="{{ password }}"/>
+
+			<ActivityIndicator visibility="{{ loading ? 'visible' : 'collapsed' }}" busy="{{ loading }}" color="#c60c30" />
+			<Button text="Next" tap="{{ submit }}" isEnabled="{{ btnDisabled }}"  />
+		</StackLayout>
+	</GridLayout>
 </Page>
