@@ -24,6 +24,8 @@ export class ConversationsSubject extends Observable {
 	}
 
 	public setConversationsListener(wsuId, role) {
+		if (this.isSet) return;
+		this.isSet = true;
 
 		let callback = (result) => {
 			this.conversations.set(result.key, { wsuId: result.key, conversationKey: result.value, conversation: new Conversation() });
@@ -33,15 +35,19 @@ export class ConversationsSubject extends Observable {
 				if (message.type == "ChildAdded") {			
 					this.conversations.get(result.key).conversation.updateMessages(message.value)
 					this.notifyObservers();
-				}
-				
-			}, '/conversations/' + result.value + '/messages');
-
+				}	
+			}, '/conversations/' + result.value + '/messages')
+			.then((listenerWrapper) => {
+				this.listeners.push(listenerWrapper);
+			})
 		}
 
 		console.log("ROLE!");
 
-		Firebase.getCurrentUserConversations(callback, wsuId, role);
+		Firebase.getCurrentUserConversations(callback, wsuId, role)
+			.then((listenersWrapper) => {
+				this.listeners.push(listenersWrapper)
+			})
 	}
 
 	public doesConversationExist(wsuId) {
@@ -59,6 +65,17 @@ export class ConversationsSubject extends Observable {
 
 	public updateCurrentUser(user) {
 		this.wsuId = user.wsuId;
+	}
+
+	/* When user logs out, remove event listeners and clear conversations */
+	public logout(): void {
+		this.listeners.forEach((listenerWrapper) => {
+			Firebase.removeEventListeners(listenerWrapper.listeners, listenerWrapper.path);
+		})
+
+		this.isSet = false;
+		this.conversations = new Map();
+		this.notifyObservers();
 	}
 }
 

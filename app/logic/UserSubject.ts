@@ -1,4 +1,6 @@
 import firebase from "~/utils/firebase";
+import ConversationSubject from "./ConversationsSubject";
+import StaffSubject from "./StaffSubject";
 
 class UserSubject {
 	public currentUser: any = {};
@@ -30,6 +32,11 @@ class UserSubject {
 
 	public getRole() {
 		return this.currentUser.role;
+	}
+
+	public logout(): void {
+		ConversationSubject.logout();
+		StaffSubject.logout();
 	}
 }
 

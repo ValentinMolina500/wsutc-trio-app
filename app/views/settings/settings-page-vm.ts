@@ -8,6 +8,7 @@ import * as imagepicker from "nativescript-imagepicker";
 import * as camera from "nativescript-camera";
 import firebase from "../../utils/firebase";
 import { ImageAsset } from "tns-core-modules/image-asset/image-asset";
+import UserSubject from "~/logic/UserSubject";
 
 class SettingsPage extends Observable {
 	private homeViewModel;
@@ -22,7 +23,7 @@ class SettingsPage extends Observable {
         let button = <Page>args.object;
         let page = button.page;
         Auth.logout();
-
+        UserSubject.logout();
         //setTimeout(()=>{
            // this.homeViewModel.setIndex(0); 
         //},50)

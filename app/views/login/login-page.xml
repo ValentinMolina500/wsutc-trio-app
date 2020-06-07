@@ -1,8 +1,8 @@
 <Page backgroundColor="white" actionBarHidden="true" loaded="onLoaded" 
     xmlns:svg="nativescript-svg">
   
-    <GridLayout class="page" rows="24, *, *, *, *" columns="*, *">
-        <Image row="1" margin="88 16 0 0" verticalAlignment="top" colSpan="2" horizontalAlignment="center" src="~/imgs/wsutc-logo.png" />
+    <GridLayout class="page" rows="24, auto, *, *, *" columns="*, *">
+        <Image row="1" margin="88 16 0 0" height="64" verticalAlignment="top" colSpan="2" horizontalAlignment="center" src="~/imgs/wsutc-logo.png" />
         <Image row="2" margin="0 32" horizontalAlignment="center" colSpan="2" src="~/imgs/trio-logo.jpg" />
         <StackLayout row="3" rowSpan="2" colSpan="2">
             <Label tap="{{ change }}" row="3"  class="login-text" text="Login" />

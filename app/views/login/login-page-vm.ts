@@ -25,7 +25,8 @@ export default class LoginPage extends Observable {
         let page = button.page;  
 
         Authentication.login(this.email.trim(), this.password.trim())
-            .then(() => {
+            .then(async () => {
+                // let auth = Authentication.isAuthenticated();
                 Navigator.navigateToHome();
             })
             .catch(() => {

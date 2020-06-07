@@ -84,7 +84,7 @@ export class Firebase {
     }
 
     public staffListener(callback, role) {
-        firebase.addChildEventListener(callback, `/${role}`);
+        return firebase.addChildEventListener(callback, `/${role}`);
     }
 
 
@@ -192,7 +192,7 @@ export class Firebase {
     }
 
     public addChildEventListener(callback, path) {
-        firebase.addChildEventListener(callback, path);
+        return firebase.addChildEventListener(callback, path);
     }
 
     public messagesListener(callback) {
@@ -296,6 +296,10 @@ export class Firebase {
         firebase.update(`${this.role}/${this.wsuId}`, {
             image: imagePath
         })
+    }
+
+    public removeEventListeners(listeners, path) {
+        firebase.removeEventListeners(listeners, path);
     }
 }
 

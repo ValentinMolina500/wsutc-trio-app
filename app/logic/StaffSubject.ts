@@ -4,6 +4,8 @@ import Firebase from "~/utils/firebase";
 export class StaffSubject {
 	private observers: Array<any> = [];
 	private staff: Array<Staff> = [];
+	private listeners = [];
+	public isSet: boolean = false;
 
 	public register(o) {
 		this.observers.push(o)
@@ -16,8 +18,10 @@ export class StaffSubject {
 	}
 
 	public setStaffListener(role) {
-		let reciever;
+		if (this.isSet) return;
 
+		let reciever;
+		this.isSet = true;
 		if (role == "students") {
 			reciever = "staff";
 		} else {
@@ -31,7 +35,20 @@ export class StaffSubject {
 				this.notifyObservers();
 			}
 			
-		}, reciever);
+		}, reciever)
+		.then((listenersWrapper) => {
+			this.listeners.push(listenersWrapper);
+		})
+	}
+
+	public logout(): void {
+		this.listeners.forEach((listenerWrapper) => {
+			Firebase.removeEventListeners(listenerWrapper.listeners, listenerWrapper.path);
+		})
+
+		this.staff = [];
+		this.notifyObservers();
+		this.isSet = false;
 	}
 }
 
