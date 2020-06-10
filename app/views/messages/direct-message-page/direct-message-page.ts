@@ -16,9 +16,12 @@ export function onLoaded(args: EventData) {
     // }
     page.bindingContext = vm;
 
-    vm.setPage(page.navigationContext);
+    vm.setPage(page.navigationContext, page);
 }
 
+export function onLoaded2() {
+    vm.scrollFeed();
+}
 // export function messageSelector(item)
 // {
 //     return item.senderId == "17413" ? "sent" : "recieved";
@@ -26,4 +29,9 @@ export function onLoaded(args: EventData) {
 
 export function goBack() {
 	Frame.topmost().goBack();
+}
+
+export function onNavigatedTo(args: EventData) {
+   
+	vm.trackAndroidKeyboard();
 }

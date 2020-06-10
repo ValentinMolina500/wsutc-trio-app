@@ -18,11 +18,13 @@ import MessagesPage from "~/views/messages/messages-vm";
 import UserSubject from "~/logic/UserSubject";
 import SettingsPage from "~/views/settings/settings-page-vm";
 import { PostType } from "~/models/feed";
+import FeedPage from "~/views/feed/feed-page-vm";
 import { UploadFileResult } from "nativescript-plugin-firebase/storage/storage";
 import { ImageSource } from "tns-core-modules/image-source/image-source";
 import { ImageAsset } from "tns-core-modules/image-asset/image-asset";
 import { knownFolders } from "tns-core-modules/file-system";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+import PostsSubject from "~/logic/PostsSubject";
 
 export class Firebase {
     private isInit: boolean = false;
@@ -35,12 +37,15 @@ export class Firebase {
             onAuthStateChanged: (data: firebase.AuthStateData) => {
                 // data.loggedIn ? console.log("Logged in as " + data.user.email) : Navigator.navigateFrame(Pages.LOGIN);
             },
-            onPushTokenReceivedCallback: (token) => {
-                console.log("pushtoken: " + token);
-                firebase.update(`${this.role}/${this.wsuId}`, {
-                    pushtoken: token
-                })
+            onMessageReceivedCallback: () => {
+
             }
+            // onPushTokenReceivedCallback: (token) => {
+            //     console.log("pushtoken: " + token);
+            //     firebase.update(`${this.role}/${this.wsuId}`, {
+            //         pushtoken: token
+            //     })
+            // }
         })
             .then(async () => {
                 StaffSubject.register(StaffPage);
@@ -48,16 +53,43 @@ export class Firebase {
                 StaffSubject.register(MessagesPage);
                 ConversationSubject.register(MessagesPage);
                 ConversationSubject.register(DMViewModel);
-
                 UserSubject.register(SettingsPage);
                 UserSubject.register(ConversationSubject);
                 UserSubject.register(DMViewModel);
                 UserSubject.register(this);
                 UserSubject.register(StaffPage);
+                PostsSubject.register(FeedPage);
+                UserSubject.register(PostsSubject);
+
             })
             .catch((err) => (console.log("Error initing firebase " + err)));
     }
 
+    public addPushTokenReceivedCallback() {
+        return firebase.addOnPushTokenReceivedCallback((token) => {
+            console.log("pushtoken: " + token);
+                firebase.update(`${this.role}/${this.wsuId}`, {
+                    pushtoken: token
+                })
+        })
+    }
+    
+
+    public uploadPushtoken(): void {
+        firebase.getCurrentPushToken()
+            .then((token) => {
+                firebase.update(`${this.role}/${this.wsuId}`, {
+                    pushtoken: token
+                })
+            })
+    }
+
+    public setOnMessageRecievedCallback() {
+        firebase.addOnMessageReceivedCallback(() => {
+            // Store.getHomeViewModel().t
+
+        })
+    }
     public doLogin(email: string, password: string): Promise<firebase.User> {
         let login: FirebasePasswordLoginOptions = {
             email: email,
@@ -299,6 +331,18 @@ export class Firebase {
 
     public removeEventListeners(listeners, path) {
         firebase.removeEventListeners(listeners, path);
+    }
+
+    public toggleSmile(postId) {
+       const fn = firebase.functions.httpsCallable("toggleSmile");
+
+       fn({ postId, wsuId: this.wsuId })
+        .then((message: any) => {
+            console.log("Callable Function Result: " + message.message);
+        })
+        .catch((error: any) => {
+            console.log(error);
+        })
     }
 }
 

@@ -13,7 +13,7 @@ export default class LoginPage extends Observable {
     public email: string = "fumiko.denham@wsu.edu";
     public password: string = "123456789";
     public toggle: boolean = true;
-
+    public btnEnabled: boolean = true;
     constructor() {
         super();
         //this.email = "luis.delatorre@wsu.edu";
@@ -23,10 +23,10 @@ export default class LoginPage extends Observable {
     public login(args: EventData) {
         let button = <Button>args.object;
         let page = button.page;  
-
+        this.set("btnEnabled", false);
         Authentication.login(this.email.trim(), this.password.trim())
             .then(async () => {
-                // let auth = Authentication.isAuthenticated();
+                this.set("btnEnabled", true);
                 Navigator.navigateToHome();
             })
             .catch(() => {
@@ -35,7 +35,10 @@ export default class LoginPage extends Observable {
                     okButtonText: "OK",
                     title: "Invalid Credentials"
                 })
+
+                this.set("btnEnabled", true);
             })
+    
            
     }
 

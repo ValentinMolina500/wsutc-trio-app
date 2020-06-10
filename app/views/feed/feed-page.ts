@@ -1,7 +1,7 @@
 import { EventData, NavigatedData, Page } from "tns-core-modules/ui/page/page";
 import ViewModel from "./feed-page-vm";
 import { ContentItem } from "~/utils/content";
-let viewModel: ViewModel;
+let viewModel: any;
 
 export function onNavigatingTo(args: NavigatedData): void {
 	console.log('onNavigatingTo');
@@ -9,7 +9,7 @@ export function onNavigatingTo(args: NavigatedData): void {
 		return;
 	}
     const page = <Page>args.object;
-	viewModel= new ViewModel();
+	viewModel= ViewModel;
 	page.bindingContext = viewModel;
 }
 export function onNavigatedTo(args: NavigatedData): void {

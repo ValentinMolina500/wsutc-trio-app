@@ -16,7 +16,7 @@
             </Label>
         </StackLayout>
 
-        <Button tap="{{ login }}" id="login-btn" row="4" colSpan="2" text="LOGIN" />
+        <Button isEnabled="{{ btnEnabled }}" tap="{{ login }}" id="login-btn" row="4" colSpan="2" text="LOGIN" />
     </GridLayout>
 </Page>
 <!-- 

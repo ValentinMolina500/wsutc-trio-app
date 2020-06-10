@@ -7,7 +7,7 @@ import { Frame } from "tns-core-modules/ui/frame/frame";
 import Store from '~/store/store';//store adapter
 import { ObservableProperty } from '~/observable-property-decorator';
 import { Staff } from "~/models/staff";
-
+declare let android;
 export class DirectMessagePage extends Observable   {
     @ObservableProperty() messages: any;
     public name;
@@ -19,6 +19,9 @@ export class DirectMessagePage extends Observable   {
     public conversations;   
     public recieverId;
     public recieverRole;
+    public ListViewHeight = "100%";
+    public keyboardShown = true;
+    public page: any = {};
 
     constructor() {
         super();
@@ -29,8 +32,9 @@ export class DirectMessagePage extends Observable   {
         this.conversationKey = "";
     }
 
-    public setPage({ wsuId }) {
+    public setPage({ wsuId }, page) {
         console.log("THIS IS WSUID: " + wsuId);
+        this.set("page", page);
         this.conversations.forEach((value, key) => {
             if (key == wsuId) {
                 this.set("messages", value.conversation.messages);
@@ -46,8 +50,14 @@ export class DirectMessagePage extends Observable   {
                 this.set("recieverRole", staff.role);
             }
         })
+
+       
     }
 
+    public scrollFeed() {
+        let feed = this.page.getViewById("feed");
+        feed.scrollToIndex(feed.items.length - 1);
+    }
     // public messages: ObservableArray<any> = new ObservableArray();
     // private isInit = false;
     // private currentMessage: string = "";
@@ -61,7 +71,7 @@ export class DirectMessagePage extends Observable   {
     //     if (!this.isInit) {
     //         this.feed = page.getViewById("feed");
     //         this.conversation = conversation.value;
-    //         this.isInit = true;
+    //         this.isInit = true;  
     //     }
     // }
 
@@ -90,6 +100,35 @@ export class DirectMessagePage extends Observable   {
        this.wsuId = user.wsuId;  
 
        this.set("messageSelector", (item) => { return item.senderId == this.wsuId ? "sent" : "recieved"; })
+    }
+
+    public trackAndroidKeyboard() {
+        let _this = this;
+        let cv = Frame.topmost().currentPage.android;
+        cv.getViewTreeObserver().addOnGlobalLayoutListener(new android.view.ViewTreeObserver.OnGlobalLayoutListener({
+            onGlobalLayout: function() {
+                // Grab the Current Screen Height
+                var rect = new android.graphics.Rect();
+                cv.getWindowVisibleDisplayFrame(rect);
+                var screenHeight = cv.getRootView().getHeight();
+                var missingSize = screenHeight - rect.bottom;
+                if (missingSize > (screenHeight * 0.15)) {
+                  
+
+                    if (_this.keyboardShown) {
+                        console.log("ListViewHeight");
+                        _this.set('ListViewHeight', (100*(1 - missingSize / screenHeight+.04)).toFixed(0)+'%');
+                         
+                        _this.keyboardShown = false;
+                    }
+                   
+
+                } else {
+                    _this.set('ListViewHeight', '100%');
+                    _this.keyboardShown = true;
+                }
+            }
+        }));
     }
 }
 

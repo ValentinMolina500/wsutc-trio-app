@@ -7,6 +7,7 @@ import { ObservableProperty } from '~/observable-property-decorator';
 import Cache from "~/utils/image-cache";
 import * as utils from "tns-core-modules/utils/utils";
 import { formatPostTimestamp } from "~/utils/time";
+import firebase from "~/utils/firebase";
 
 declare let android;
 
@@ -17,10 +18,10 @@ export enum PostType {
     FACEBOOK = "FACEBOOK"
 };
 
-export function postFactory(post: any): any {
+export function postFactory(post: any, wsuId): any {
     switch (post.type) {
         case PostType.NEWS:
-            return new NewsPost(post);
+            return new NewsPost(post, wsuId);
             break;
         
         case PostType.EVENT:
@@ -71,6 +72,7 @@ export class FeedItem extends Observable {
         this.image = feedItem.image;
         this.timestamp = feedItem.timestamp;
         this.type = feedItem.type;
+        this.postId = feedItem.postId;
 
         /* TODO: Add format for timestamp */
         this.visibleTimestamp = formatPostTimestamp(feedItem.timestamp);
@@ -90,7 +92,7 @@ export class NewsPost extends FeedItem {
     public staffName: string;
 
     public title: string;
-
+    public smiles: any;
     public smileCount: number;
 
     public surprisedCount: number;
@@ -99,19 +101,36 @@ export class NewsPost extends FeedItem {
 
     public hasSurprised: boolean = false;
 
-    constructor(newsItem: any) {
+    constructor(newsItem: any, wsuId) {
         super(newsItem);
 
-        this.update(newsItem);
+        this.update(newsItem, wsuId);
     }
 
-    public update(newsItem: any) {
+    // public update(newsItem: any) {
+    //     this.area = newsItem.area;
+    //     this.iconImage = newsItem.iconImage;
+    //     this.staffName = newsItem.staffName;
+    //     this.title = newsItem.title;
+    //     this.smiles = newsItem.smiles;
+    //     this.set("smileCount", newsItem.smileCount);
+    //     this.surprisedCount = newsItem.surprisedCount;
+    // }
+
+    public update(newsItem: any, wsuId: string) {
         this.area = newsItem.area;
         this.iconImage = newsItem.iconImage;
+        this.smiles = newsItem.smiles;
         this.staffName = newsItem.staffName;
         this.title = newsItem.title;
 
-        this.smileCount = newsItem.smileCount;
+        if (newsItem.smiles && newsItem.smiles[wsuId]) {
+            console.log("smiles!");
+            this.set("hasSmiled", true);
+        } else {
+            this.set("hasSmiled", false);
+        }
+        this.set("smileCount", newsItem.smileCount);
         this.surprisedCount = newsItem.surprisedCount;
     }
 
@@ -121,13 +140,16 @@ export class NewsPost extends FeedItem {
             view.playSoundEffect(android.view.SoundEffectConstants.CLICK);
         }
 
-        if (!this.hasSmiled) {
-            this.set("smileCount", this.get("smileCount") + 1);
-            this.set("hasSmiled", true);
-        } else {
-            this.set("smileCount", this.get("smileCount") - 1);
-            this.set("hasSmiled", false);
-        }
+        console.log("This is post id: ");
+        console.log(this.postId);
+        firebase.toggleSmile(this.postId);
+        // if (!this.hasSmiled) {
+        //     this.set("smileCount", this.get("smileCount") + 1);
+        //     this.set("hasSmiled", true);
+        // } else {
+        //     this.set("smileCount", this.get("smileCount") - 1);
+        //     this.set("hasSmiled", false);
+        // }
     }
 
     
@@ -197,38 +219,17 @@ export class InstagramPost extends FeedItem {
     }
 }
 
-export async function newImageCacheFeedFactory(result: any) {
+export async function newImageCacheFeedFactory(result: any, wsuId) {
     let tempFeed = result.value;
     tempFeed.postId = result.key;
     tempFeed.key = result.key;
 
+    console.log(result.key);
     if (tempFeed.iconImage) {
         tempFeed.iconImage = await Cache.getImageByUrl(tempFeed.iconImage);
     }
     tempFeed.image = await Cache.getImageByUrl(tempFeed.image);
    
-    return postFactory(tempFeed);
+    return postFactory(tempFeed, wsuId);
 };
-
-// export function formatPostTimestamp(ts: string): string {
-//     const timestamp: Date = new Date(ts);
-//     const currentDate: Date = new Date();
-
-//     if (currentDate.getTime() - timestamp.getTime() < 86400000) {
-//         return `${timestamp.getHours()}:${timestamp.getMinutes() < 10 ? '0' : ''}${timestamp.getMinutes()}`;
-//     }
-
-//     return `debug`;
-// }
-
-// export function Order(a: Feed, b: Feed) {
-//      if (a.updateTs < b.updateTs) {
-//         return 1;
-//     } else if (a.updateTs > b.updateTs) {
-//         return -1;
-//     }
-//      return 0;
-//  }
-
-
 

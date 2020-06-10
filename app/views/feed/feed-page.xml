@@ -29,7 +29,7 @@
                         <RL:Ripple col="0" tap="{{ doSmile }}">
                             <Label class="{{ hasSmiled ? 'card-active-text' : 'card-time-text' }}" padding="16" textAlign="center">
                                 <FormattedString>
-                                    <Span class="far" text="&#xf5c2;  " />
+                                    <Span class="far" text="&#xf59a;  " />
                                     <Span text="{{ smileCount }}" />
                                 </FormattedString>
                             </Label>
@@ -37,7 +37,7 @@
                         <RL:Ripple col="1" tap="{{ doSurprise }}">
                             <Label class="{{ hasSurprised ? 'card-active-text' : 'card-time-text' }}" padding="16" col="1">
                                 <FormattedString>
-                                    <Span class="far" text="&#xf59a;  " />
+                                    <Span class="far" text="&#xf5c2;  " />
                                     <Span text="{{ surprisedCount }}" />
                                 </FormattedString>
                             </Label>

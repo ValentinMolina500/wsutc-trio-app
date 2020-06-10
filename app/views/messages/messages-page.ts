@@ -31,3 +31,4 @@ export function onNavigatingTo(args: NavigatedData): void {
 export function onNavigatedTo(): void {
     console.log("NAVIGATING TO");
 }
+

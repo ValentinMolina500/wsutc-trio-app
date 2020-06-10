@@ -1,4 +1,4 @@
-<Page id="page" navigatingTo="onLoaded">
+<Page id="page" loaded="onLoaded2" navigatingTo="onLoaded" navigatedTo="onNavigatedTo">
     <ActionBar class="action-bar">
         <GridLayout tap="goBack" width="auto"   rows="auto" columns="auto, auto, *">
             <Label  col="0" class="far " text="&#xf060;" fontSize="20" verticalAlignment="middle" />
@@ -8,7 +8,7 @@
     </ActionBar>
 
     <ScrollView >
-        <GridLayout rows="*,auto" columns="*,50" height="100%">
+        <GridLayout rows="*,auto" columns="*,50" height="{{ListViewHeight}}" verticalAlignment="top">
             <ListView color="#48505b" row="0" colSpan="2" margin="8" separatorColor="transparent" width="100%" id="feed" items="{{ messages }}" itemTemplateSelector="{{ messageSelector }}">
                 <ListView.itemTemplates>
                     <template key="recieved">

@@ -8,7 +8,7 @@ export default class HomeViewModel extends Observable {
 	@ObservableProperty() listLoad: Promise<boolean> | boolean = false;
 	public currentIndex: number;
 	public role;
-
+	
 	constructor(page: Page) {
 		super();
 		this.currentIndex = 0;

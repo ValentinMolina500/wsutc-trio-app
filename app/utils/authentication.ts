@@ -6,6 +6,7 @@ import UserSubject from "~/logic/UserSubject";
 import * as dialogs from "tns-core-modules/ui/dialogs"; 
 import ConversationSubject from "~/logic/ConversationsSubject"
 import StaffSubject from "~/logic/StaffSubject";
+import PostsSubject from "~/logic/PostsSubject";
 
 export class Authentication {
     public login(email: string, password: string) {
@@ -32,8 +33,11 @@ export class Authentication {
                             console.log(currentUser);
                             UserSubject.setCurrentUser(currentUser.value);
                             StaffSubject.setStaffListener(currentUser.value.role);
-
                             ConversationSubject.setConversationsListener(currentUser.value.wsuId, currentUser.value.role);
+                            Firebase.addPushTokenReceivedCallback();
+                            Firebase.uploadPushtoken();
+                            PostsSubject.setPosts();
+
                             resolve(true);
                         })
 

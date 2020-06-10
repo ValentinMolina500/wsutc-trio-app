@@ -10,13 +10,22 @@ import Firebase from "~/utils/firebase";
 import { FeedItem } from '~/models/feed';
 import Cache from "~/utils/image-cache";
 import { ObservableProperty } from '~/observable-property-decorator'; 
-export default class FeedPage extends Observable {
+import { ObservableArray } from 'tns-core-modules/data/observable-array/observable-array';
+
+export class FeedPage extends Observable {
 	@ObservableProperty() loaded: boolean;
-	public feeds: BaseArray<any>;
+	public feeds = new BaseArray<any>();
 
 	public defaultImage: string = Config.iconImage;
 	constructor() {
 		super();
-		this.feeds = Store.getFeeds();
+		// this.feeds = Store.getFeeds();
+	}
+
+	public updatePosts(posts) {
+		this.set("feeds", posts);
 	}
 }
+const s = new FeedPage();
+
+export default s;

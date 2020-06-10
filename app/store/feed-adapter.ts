@@ -16,9 +16,9 @@ export class FeedsAdapter extends Observable {
     public updateFeed = async (result: any) => {
 
 
-       let feed =await newImageCacheFeedFactory(result);
+    //    let feed =await newImageCacheFeedFactory(result);
 
-       this.feeds.push(feed);
+    //    this.feeds.push(feed);
         // let tempFeed = this.feeds.findItem(feed, feed.postId);
         // if (typeof (tempFeed) === "number") {
         //     this.feeds.push(feed);

@@ -3,6 +3,7 @@ export class BaseArray<T> extends ObservableArray<T> {
     constructor() {
         super();
     }
+    
     public findItem(itemT: T, field): T | number {//override findItem
         let item: T;
         for (let i = 0, l = this.length; i < l; i++) {
