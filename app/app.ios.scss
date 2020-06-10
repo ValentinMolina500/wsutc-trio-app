@@ -1,4 +1,122 @@
-// Import common styles
-@import "app-common";
+// Place any CSS rules you want to apply only on Android here
+$wsu-crimson: #981e32;
+$default-font: "Roboto-Regular";
+// $red-accent: #c60c30;
+$red-accent: #f72f36;
+$lightgray: #ecf4fa;
 
-// Place any CSS rules you want to apply only on iOS here
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+    // font-weight: 400;
+}
+
+.fas {
+    font-family: "Font Awesome 5 Pro", fa-solid-900;
+}
+
+.far {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+    // font-weight: 400;
+}
+
+.inter-var {
+    font-family: "Inter" !important;
+}
+
+
+.fal {
+    font-family: "Font Awesome 5 Pro", "fa-light-300";
+    font-weight: 300;
+}
+.rounded-none{
+  border-radius: 0;
+}
+.rounded-xs{
+  border-radius: 2;
+}
+.rounded-md{
+  border-radius: 5;
+}
+.rounded-lg{
+  border-radius: 10;
+}
+
+Label, Button, TextField {
+    font-family: "VarelaRound-Regular", "Varela Round";
+    font-size: 14;
+}
+
+.raleway-bold {
+    font-family: "Raleway";
+    // font-weight: 600;
+}
+
+.image1x{
+    width: 10;
+    height: 10;
+    font-size: 10;
+ }
+
+Tabs.bottom-nav {
+    background-color: orangered;
+    color: gold;
+    font-size: 5;
+}
+
+#page, .divider {
+    background-color: $lightgray;
+}
+
+.bold-text {
+    font-family: "Roboto-Bold";
+}
+
+.action-bar {
+    background-color: #c60c30;
+    color: white;
+}
+
+.color-red {
+    color: $red-accent;
+}
+
+.login-wrapper {
+    margin-top: 56;
+}
+
+.wsutc-logo {
+    width: 25%;
+    height: 25%;
+    // background-color: red;
+}
+
+
+.login-text-field {
+    margin: 4 36;
+    height: 48;
+    font-size: 16;
+    font-family: "Roboto-Regular";
+}
+
+.login-button {
+    height: 64;
+    background-color: $red-accent;
+    color: #fff;
+    // font-weight: bold;
+    font-size: 20;
+    margin-top: 24;
+    margin-left: 24;
+    margin-right: 24;
+    vertical-align: middle;
+}
+
+#settings {
+    // background: linear-gradient(to top, white, $lightgray);
+}
+// .register-text {
+//     text-align: center;
+//     vertical-align: middle;
+//     color: gray;
+//     margin-bottom: 24;
+//     font-size: 16;
+// }

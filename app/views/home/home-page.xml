@@ -1,10 +1,10 @@
 <Page actionBarHidden="true" loaded="onLoaded" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo">
     <GridLayout >
-        <Tabs  row="0" tabsPosition="bottom" selectedIndex="{{ currentIndex }}" visibility="{{ listLoad ? 'visible' : 'collapse' }}">
-            <TabStrip height="50" highlightColor="#c60c30" isIconSizeFixed="false">
+        <Tabs  row="0" iOSTabBarItemsAlignment="center" tabsPosition="bottom" selectedIndex="{{ currentIndex }}" visibility="{{ listLoad ? 'visible' : 'collapse' }}">
+            <TabStrip height="50" highlightColor="#c60c30"  color="#777777" class="fas bottom-bar-icons" isIconSizeFixed="false">
                 <TabStripItem >
                     <Label text="Home" />
-                     <Image src="font://&#xf015;"  color="#777777" class="fas"></Image> 
+                     <Image src="font://&#xf015;" ></Image> 
                 </TabStripItem>
                 <TabStripItem>
                     <Image src="font://&#xf0c0;"  color="#777777" class="fas"  />
@@ -12,7 +12,7 @@
                 </TabStripItem>
                 <TabStripItem>
                     <Image src="font://&#xf27a;"  color="#777777" class="fas"  />
-                    <Label text="Message" />
+                    <Label color="red" text="Message" />
                 </TabStripItem>
                 <TabStripItem>
                     <Image src="font://&#xf085;"  color="#777777" class="fas"  />

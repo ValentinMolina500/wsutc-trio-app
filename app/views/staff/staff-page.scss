@@ -24,11 +24,13 @@ $time-text-color: #ccd6e3;
     vertical-align: bottom;
     font-weight: bold;
     font-size: 16;
-    color: $bold-text-color;
+    // color: $bold-text-color;
+    color: #48505b;
 }
 
 .staff-position {
-    color: $sub-heading-color
+    color: $sub-heading-color;
+    font-size: 14;
 }
 .staff-position-pres {
     color: $red-accent;

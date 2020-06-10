@@ -1,13 +1,13 @@
 <Page id="page" navigatingTo="onNavigatingTo" xmlns:RL="nativescript-ripple" >
     <ActionBar class="action-bar" title="{{ role == 'students' ? 'Current Staff' : 'Current Students' }}"  marginBottom="4" />
-    <ListView id="list-view" items="{{ staff }}">
+    <ListView backgroundColor="#ecf4fa" id="list-view" items="{{ staff }}">
         <ListView.itemTemplate>
             <StackLayout>
                 <GridLayout rows="auto, auto, auto, 1, auto" columns="auto, *" class="card-container">
                     <Image row="0" class="card-icon-img" rowSpan="2" src="{{ image }}" /> 
                     <Label class="staff-name" row="0" col="1" text="{{ name }}" />
 
-                    <Label class="staff-position" row="1" col="1" text="{{ position }}" />
+                    <Label verticalAlignment="top" class="staff-position r" row="1" col="1" text="{{ position }}" />
  
                     <GridLayout visibility="{{ showMoreInfo ? 'visible' : 'collapsed' }}" class="{{ showMoreInfo ? 'more-info' : '' }}" row="2" colSpan="2" rows="auto, auto">
                         <Label margin="0 16 4 16" text="Email: valentin.molina@wsu.edu" />

@@ -103,32 +103,32 @@ export class DirectMessagePage extends Observable   {
     }
 
     public trackAndroidKeyboard() {
-        let _this = this;
-        let cv = Frame.topmost().currentPage.android;
-        cv.getViewTreeObserver().addOnGlobalLayoutListener(new android.view.ViewTreeObserver.OnGlobalLayoutListener({
-            onGlobalLayout: function() {
-                // Grab the Current Screen Height
-                var rect = new android.graphics.Rect();
-                cv.getWindowVisibleDisplayFrame(rect);
-                var screenHeight = cv.getRootView().getHeight();
-                var missingSize = screenHeight - rect.bottom;
-                if (missingSize > (screenHeight * 0.15)) {
+        // let _this = this;
+        // let cv = Frame.topmost().currentPage.android;
+        // cv.getViewTreeObserver().addOnGlobalLayoutListener(new android.view.ViewTreeObserver.OnGlobalLayoutListener({
+        //     onGlobalLayout: function() {
+        //         // Grab the Current Screen Height
+        //         var rect = new android.graphics.Rect();
+        //         cv.getWindowVisibleDisplayFrame(rect);
+        //         var screenHeight = cv.getRootView().getHeight();
+        //         var missingSize = screenHeight - rect.bottom;
+        //         if (missingSize > (screenHeight * 0.15)) {
                   
 
-                    if (_this.keyboardShown) {
-                        console.log("ListViewHeight");
-                        _this.set('ListViewHeight', (100*(1 - missingSize / screenHeight+.04)).toFixed(0)+'%');
+        //             if (_this.keyboardShown) {
+        //                 console.log("ListViewHeight");
+        //                 _this.set('ListViewHeight', (100*(1 - missingSize / screenHeight+.04)).toFixed(0)+'%');
                          
-                        _this.keyboardShown = false;
-                    }
+        //                 _this.keyboardShown = false;
+        //             }
                    
 
-                } else {
-                    _this.set('ListViewHeight', '100%');
-                    _this.keyboardShown = true;
-                }
-            }
-        }));
+        //         } else {
+        //             _this.set('ListViewHeight', '100%');
+        //             _this.keyboardShown = true;
+        //         }
+        //     }
+        // }));
     }
 }
 

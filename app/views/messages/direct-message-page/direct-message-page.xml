@@ -8,8 +8,8 @@
     </ActionBar>
 
     <ScrollView >
-        <GridLayout rows="*,auto" columns="*,50" height="{{ListViewHeight}}" verticalAlignment="top">
-            <ListView color="#48505b" row="0" colSpan="2" margin="8" separatorColor="transparent" width="100%" id="feed" items="{{ messages }}" itemTemplateSelector="{{ messageSelector }}">
+        <GridLayout backgroundColor="#ecf4fa" rows="*,auto" columns="*,50" height="{{ListViewHeight}}" verticalAlignment="top">
+            <ListView backgroundColor="#ecf4fa" color="#48505b" row="0" colSpan="2" margin="8" separatorColor="transparent" width="100%" id="feed" items="{{ messages }}" itemTemplateSelector="{{ messageSelector }}">
                 <ListView.itemTemplates>
                     <template key="recieved">
                         <StackLayout>

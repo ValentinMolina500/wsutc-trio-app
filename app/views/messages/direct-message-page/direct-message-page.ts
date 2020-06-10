@@ -20,7 +20,7 @@ export function onLoaded(args: EventData) {
 }
 
 export function onLoaded2() {
-    vm.scrollFeed();
+    // vm.scrollFeed();
 }
 // export function messageSelector(item)
 // {
@@ -33,5 +33,5 @@ export function goBack() {
 
 export function onNavigatedTo(args: EventData) {
    
-	vm.trackAndroidKeyboard();
+	// vm.trackAndroidKeyboard();
 }

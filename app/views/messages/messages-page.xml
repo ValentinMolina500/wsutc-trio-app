@@ -4,11 +4,11 @@
     <GridLayout>
         <ListView visibility="{{ hasConversations ? 'visible' : 'collapsed' }}" id="feed" items="{{ conversations }}" itemTap="{{ onItemTap }}">
             <ListView.itemTemplate>
-            <StackLayout height="100%">
+            <StackLayout>
                 <GridLayout rows="auto, auto, 1" columns="auto, *">
                     <Image height="65" rowSpan="2" width="65" stretch="aspectFill" borderRadius="100%" src="{{ image }}" margin="16" />
                     <Label col="1" row="0" class="staff-name" text="{{ name }}" />
-                    <Label col="1" row="1" class="messages-text" text="{{ recentMessage }}" />
+                    <Label verticalAlignment="top" col="1" row="1" class="messages-text" text="{{ recentMessage }}" />
                     <StackLayout row="2" col="1" class="card-divider" />
                     <Label col="1" rowSpan="2" class="date-text" text="{{ displayDate }}" />
                 </GridLayout>

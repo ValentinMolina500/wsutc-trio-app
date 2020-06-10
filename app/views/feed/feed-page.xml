@@ -1,7 +1,8 @@
-<Page id="page" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo" xmlns:RL="nativescript-ripple" xmlns:dd="nativescript-drop-down">
+<Page  iosOverflowSafeArea="false" id="page" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo" xmlns:RL="nativescript-ripple" xmlns:dd="nativescript-drop-down">
     <ActionBar class="action-bar" title="What's New" marginBottom="4" />
     
-    <ListView id="feed" separatorColor="#eff0f2" items="{{ feeds }}" itemTemplateSelector="typeOfContent" >
+    <StackLayout iosOverflowSafeArea="false">
+    <ListView height="100%" iosOverflowSafeArea="false" backgroundColor="#ecf4fa" id="feed" separatorColor="#eff0f2" items="{{ feeds }}" itemTemplateSelector="typeOfContent" >
         <ListView.itemTemplates>
             <template key="NEWS">
                 <StackLayout>
@@ -20,7 +21,7 @@
                         <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
                     </RL:Ripple>
                     <!-- <dd:DropDown items="{{ ddItems }}" colSpan="2" rowSpan="2" class="drop-down" /> -->
-                    <Label col="1" row="1" class="posted-time" text="{{ visibleTimestamp }}" />
+                    <Label verticalAlignment="top"  col="1" row="1" class="posted-time" text="{{ visibleTimestamp }}" />
                     <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
                     <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
                     <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
@@ -68,7 +69,7 @@
                         <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
                     </RL:Ripple>
                     <!-- <dd:DropDown items="{{ ddItems }}" colSpan="2" rowSpan="2" class="drop-down" /> -->
-                    <Label col="1" row="1" class="posted-time" text="{{ visibleTimestamp }}" />
+                    <Label verticalAlignment="top" col="1" row="1" class="posted-time" text="{{ visibleTimestamp }}" />
                     <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
                     <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="@trio_wsutc" />
                     <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
@@ -77,7 +78,7 @@
                         <RL:Ripple tap="{{ openLink }}">
                             <Label padding="16" class="open-ig" textAlignment="center">
                                 <FormattedString>
-                                    <Span  text="Open in Instagram " />
+                                    <Span fontSize="14" text="Open in Instagram " />
                                     <Span class="fab" text="&#xf16d;" />
                                 </FormattedString>
                             </Label>
@@ -103,7 +104,7 @@
                     <RL:Ripple id="{{ postId }}" tap="{{ openMenu }}" colSpan="2" rowSpan="2" verticalAlignment="middle" horizontalAlignment="right">
                         <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
                     </RL:Ripple>
-                    <Label col="1" row="1" class="posted-time" text="{{ timestamp }}" />
+                    <Label verticalAlignment="top" col="1" row="1" class="posted-time" text="{{ timestamp }}" />
                     <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
                     <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
                     <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
@@ -135,6 +136,8 @@
             </template>
         </ListView.itemTemplates>
     </ListView>
+    <StackLayout height="1" />
+    </StackLayout>
 
     
 </Page>
