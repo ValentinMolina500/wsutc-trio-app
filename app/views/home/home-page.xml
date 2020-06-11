@@ -7,15 +7,15 @@
                      <Image src="font://&#xf015;" ></Image> 
                 </TabStripItem>
                 <TabStripItem>
-                    <Image src="font://&#xf0c0;"  color="#777777" class="fas"  />
+                    <Image src="font://&#xf0c0;"  class="fas"  />
                     <Label text="{{ role == 'students' ? 'Staff' : 'Students' }}" />
                 </TabStripItem>
                 <TabStripItem>
-                    <Image src="font://&#xf27a;"  color="#777777" class="fas"  />
-                    <Label color="red" text="Message" />
+                    <Image src="font://&#xf27a;"  class="fas"  />
+                    <Label text="Message" />
                 </TabStripItem>
                 <TabStripItem>
-                    <Image src="font://&#xf085;"  color="#777777" class="fas"  />
+                    <Image src="font://&#xf085;"   class="fas"  />
                     <Label text="Settings" />
                 </TabStripItem>
             </TabStrip>
