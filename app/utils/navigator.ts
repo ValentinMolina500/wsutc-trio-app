@@ -2,6 +2,8 @@ import { Frame, Page, getFrameById } from "tns-core-modules/ui/frame";
 import pages, { Pages } from "~/utils/pages";
 import Authentication from "./authentication";
 import { NavigationEntry } from "tns-core-modules/ui/frame";
+import BottomBar from "~/app-root-vm";
+
 /**
  * Handles navigating between pages
  */
@@ -33,6 +35,8 @@ export class Navigator {
             moduleName: pages.get(Pages.LOGIN).path,
             clearHistory: true
         };
+
+        BottomBar.hideBottomBar();
         frame.navigate(navigationEntry);
     }
     public navigateToHome() {
@@ -41,6 +45,8 @@ export class Navigator {
             moduleName: pages.get(Pages.HOME).path,
             clearHistory: true
         };
+
+        BottomBar.showBottomBar();
         frame.navigate(navigationEntry);
     }
     

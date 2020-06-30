@@ -1,8 +1,8 @@
 <Page  iosOverflowSafeArea="false" id="page" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo" xmlns:RL="nativescript-ripple" xmlns:dd="nativescript-drop-down">
     <ActionBar class="action-bar" title="What's New" marginBottom="4" />
     
-    <StackLayout iosOverflowSafeArea="false">
-    <ListView height="100%" iosOverflowSafeArea="false" backgroundColor="#ecf4fa" id="feed" separatorColor="#eff0f2" items="{{ feeds }}" itemTemplateSelector="typeOfContent" >
+    <StackLayout id="main-stack" iosOverflowSafeArea="false">
+    <ListView  height="100%" iosOverflowSafeArea="false" backgroundColor="#ecf4fa" id="feed" separatorColor="#eff0f2" items="{{ feeds }}" itemTemplateSelector="typeOfContent" >
         <ListView.itemTemplates>
             <template key="NEWS">
                 <StackLayout>
@@ -22,7 +22,8 @@
                     </RL:Ripple>
                     <!-- <dd:DropDown items="{{ ddItems }}" colSpan="2" rowSpan="2" class="drop-down" /> -->
                     <Label verticalAlignment="top"  col="1" row="1" class="posted-time" text="{{ visibleTimestamp }}" />
-                    <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
+                    <!-- <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" /> -->
+                    <WebView  height="200" row="2" col="0" colSpan="2" class="card-img" src="<!DOCTYPE html><html style='margin: 0; padding: 0; width: 100%; height: 100%'><body style='margin: 0; padding: 0; width: 100%; height: 100%'><iframe width='100%' height='100%' style='margin: 0; padding: 0; border: none' src='https://www.youtube.com/embed/X3RSvZWbwt0'></iframe><html></body></html>"/>
                     <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
                     <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
                     <StackLayout row="5" colSpan="2" class="card-divider" />
@@ -104,7 +105,7 @@
                     <RL:Ripple id="{{ postId }}" tap="{{ openMenu }}" colSpan="2" rowSpan="2" verticalAlignment="middle" horizontalAlignment="right">
                         <Label class="fas gray" fontSize="18" padding="16" text="&#xf141;" />
                     </RL:Ripple>
-                    <Label verticalAlignment="top" col="1" row="1" class="posted-time" text="{{ timestamp }}" />
+                    <Label verticalAlignment="top" col="1" row="1" class="posted-time" text="{{ visibleTimestamp }}" />
                     <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
                     <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
                     <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />

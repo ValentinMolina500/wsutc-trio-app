@@ -8,7 +8,7 @@ export class StaffAdapter extends Observable {
 	public staffs: BaseArray<Staff>;
 	constructor() {
 		super();
-		this.staffs = new BaseArray<Staff>();
+		this.staffs = new BaseArray<Staff>(null);
 	}
 
 	public updateStaff = async (result: any) => {

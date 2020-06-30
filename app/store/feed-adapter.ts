@@ -10,7 +10,7 @@ export class FeedsAdapter extends Observable {
     public feeds: BaseArray<any>;
     constructor() {
         super();
-        this.feeds = new BaseArray<any>();
+        this.feeds = new BaseArray<any>(null);
     }
 
     public updateFeed = async (result: any) => {

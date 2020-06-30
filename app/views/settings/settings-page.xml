@@ -12,7 +12,7 @@
     </GridLayout> -->
 
     <!-- <ScrollView height="100%"> -->
-    <GridLayout iosOverflowSafeArea="false" color="#48505b" backgroundColor="white" padding="8" rows="auto, auto auto, auto, auto, auto, auto, auto, auto, auto, *" columns="auto, *, *, *, auto">
+    <GridLayout id="main-view" iosOverflowSafeArea="false" color="#48505b" backgroundColor="white" padding="8" rows="auto, auto auto, auto, auto, auto, auto, auto, auto, auto, *" columns="auto, *, *, *, auto">
         <Label textAlignment="center" class="heading" row="0" colSpan="5" text="Current User" />
         <Image stretch="aspectFill" class="profile-pic" row="1" colSpan="5" src="{{ image || '~/imgs/wsutc-logo-v2.png' }}" />
         <Label color="#a3b1ca" row="2" col="0" margin="8 16" fontSize="22" class="fas" text="&#xf007;" />

@@ -1,7 +1,7 @@
 <Page actionBarHidden="true" loaded="onLoaded" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo">
     <GridLayout >
-        <Tabs  row="0" iOSTabBarItemsAlignment="center" tabsPosition="bottom" selectedIndex="{{ currentIndex }}" visibility="{{ listLoad ? 'visible' : 'collapse' }}">
-            <TabStrip height="50" highlightColor="#c60c30"  color="#777777" class="fas bottom-bar-icons" isIconSizeFixed="false">
+        <Tabs  row="0"  iOSTabBarItemsAlignment="center" tabsPosition="bottom" selectedIndex="{{ currentIndex }}" visibility="{{ listLoad ? 'visible' : 'collapse' }}">
+            <TabStrip  height="50" highlightColor="#c60c30" backgroundColor="red"  color="#777777" class="fas bottom-bar-icons" isIconSizeFixed="false">
                 <TabStripItem >
                     <Label text="Home" />
                      <Image src="font://&#xf015;" ></Image> 

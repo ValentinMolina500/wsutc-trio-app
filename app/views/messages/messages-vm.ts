@@ -78,7 +78,6 @@ export class MessagesPage extends Observable {
 
 
 	public onItemTap(args: ItemEventData) {
-		console.log("*******************")
 		console.log(this.conversations[args.index]);
 		Frame.topmost().navigate({ moduleName: "~/views/messages/direct-message-page/direct-message-page", context: { wsuId: this.conversations.getItem(args.index).wsuId } });
 	}

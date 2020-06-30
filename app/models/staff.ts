@@ -17,6 +17,7 @@ export class Staff extends Observable {
 	public role;
 	public showMoreInfo;
 	public email: string;
+	public rank: number;
 
 	constructor(data: Staff) {
 		super();
@@ -28,8 +29,9 @@ export class Staff extends Observable {
 	public update(data: Staff) {
 		this.position = data.position || "Student";
 		this.name = data.name;
-		this.image = data.image;
+		this.image = data.image || "~/imgs/default_image.png";
 		this.role = data.role;
+		this.rank = data.rank;
 	};
 
 	public sendMessage(): void {

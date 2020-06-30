@@ -14,7 +14,7 @@ import { ObservableArray } from 'tns-core-modules/data/observable-array/observab
 
 export class FeedPage extends Observable {
 	@ObservableProperty() loaded: boolean;
-	public feeds = new BaseArray<any>();
+	public feeds = new BaseArray<any>(null);
 
 	public defaultImage: string = Config.iconImage;
 	constructor() {

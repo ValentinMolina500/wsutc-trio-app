@@ -8,6 +8,7 @@ import Cache from "~/utils/image-cache";
 import * as utils from "tns-core-modules/utils/utils";
 import { formatPostTimestamp } from "~/utils/time";
 import firebase from "~/utils/firebase";
+// import moment from "moment";
 
 declare let android;
 
@@ -75,7 +76,17 @@ export class FeedItem extends Observable {
         this.postId = feedItem.postId;
 
         /* TODO: Add format for timestamp */
-        this.visibleTimestamp = formatPostTimestamp(feedItem.timestamp);
+        this.visibleTimestamp = this.timestamp;
+        let timestamp = new Date(this.timestamp);
+
+        if (this.type == "INSTAGRAM")
+        {
+            this.timestamp = this.timestamp.slice(0, this.timestamp.indexOf("+"))
+            this.visibleTimestamp = new Date(this.timestamp).toDateString();
+        } else {
+            this.visibleTimestamp = timestamp.toDateString();
+        }
+
     }
 }
 
@@ -154,8 +165,6 @@ export class NewsPost extends FeedItem {
 
     
 }
-
-
 
 export class EventPost extends FeedItem {
     /* The area this post falls into i.e. finance, self-care */

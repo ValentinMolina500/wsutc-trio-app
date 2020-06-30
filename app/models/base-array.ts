@@ -1,7 +1,12 @@
 import { ObservableArray } from 'tns-core-modules/data/observable-array';
+
 export class BaseArray<T> extends ObservableArray<T> {
-    constructor() {
+    constructor(items: Array<any>) {
         super();
+        
+        if (items) {
+            items.forEach((item) => this.push(item));
+        } 
     }
     
     public findItem(itemT: T, field): T | number {//override findItem

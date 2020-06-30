@@ -1,10 +1,11 @@
 import firebase from "~/utils/firebase";
 import { BaseArray } from '~/models/base-array';
 import { newImageCacheFeedFactory } from "~/models/feed";
+import { ObservableArray } from "tns-core-modules/data/observable-array";
 
 class PostsSubject {
     public observers = [];
-    public posts = new BaseArray<any>();
+    public posts = new BaseArray<any>(null);
     public listeners = []; 
     public isSet = false;
     public wsuId = "";
@@ -14,6 +15,8 @@ class PostsSubject {
     }
     
     public notifyObservers(): void {
+       
+
         this.observers.forEach((o) => {
 
             o.updatePosts(this.posts);
@@ -36,8 +39,22 @@ class PostsSubject {
             } else {
                 this.posts.push(post);
             }
-            console.log(result.type);
-        
+            
+            this.posts = new BaseArray<any>(this.posts.sort((a, b) => {
+                let at = new Date(a.timestamp).getTime();
+                let bt = new Date(b.timestamp).getTime();
+
+                console.log("\nat: " + at);
+                console.log("bt: " + bt + "\n\n");
+                
+                if (at > bt) {
+                    return -1;
+                } else if (at < bt) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }));
             
             this.notifyObservers();
         }

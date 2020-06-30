@@ -1,7 +1,7 @@
 import { Page, EventData, Color } from "tns-core-modules/ui/page/page";
 import { fromObject } from "tns-core-modules/data/observable/observable";
 import { ListView } from "tns-core-modules/ui/list-view/list-view";
-import { Frame } from "tns-core-modules/ui/frame/frame";
+import { Frame, PercentLength, isIOS } from "tns-core-modules/ui/frame/frame";
 import vm from "./direct-message-vm";
 import dialogs from "~/utils/dialogs";
 import * as app from "tns-core-modules/application";
@@ -15,7 +15,12 @@ export function onLoaded(args: EventData) {
     //     window.setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     // }
     page.bindingContext = vm;
-
+    if (isIOS) {
+        const view = page.getViewById("main-view");
+        const backButton = page.getViewById("back-button");
+        backButton.style.visibility = "collapse";
+        view.style.marginBottom = PercentLength.parse("39");
+    }
     vm.setPage(page.navigationContext, page);
 }
 

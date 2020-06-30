@@ -1,7 +1,7 @@
 <Page backgroundColor="white" loaded="onLoaded" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo">
     <ActionBar class="action-bar" title="Messages" />
 
-    <GridLayout>
+    <GridLayout id="main-view">
         <ListView visibility="{{ hasConversations ? 'visible' : 'collapsed' }}" id="feed" items="{{ conversations }}" itemTap="{{ onItemTap }}">
             <ListView.itemTemplate>
             <StackLayout>

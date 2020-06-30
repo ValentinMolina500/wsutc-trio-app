@@ -31,6 +31,15 @@ export class StaffSubject {
 		Firebase.staffListener((result) => {
 			if (result.type == "ChildAdded") {
 				this.staff.push(new Staff(result.value));
+				this.staff = this.staff.sort((a, b) => {
+					if (a.rank < b.rank) {
+						return 1;
+					} else if (a.rank > b.rank) {
+						return -1;
+					}
+
+					return 0;
+				});
 
 				this.notifyObservers();
 			}

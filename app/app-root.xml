@@ -1,3 +1,23 @@
-<Page>
-    <Frame id="top-frame" defaultPage="views/home/home-page" />
-</Page>
+<GridLayout rows="*, auto" columns="*" loaded="onLoaded">
+
+	<Frame id="top-frame" row="0" defaultPage="views/feed/feed-page"/>
+
+	<GridLayout backgroundColor="#fff" visibility="visible" row="1" columns="*,*,*,*" id="bottomNavBar" class="bottom-nav">
+		<StackLayout id="feed" class="bottom-nav-btn-active" col="0" tap="{{ navigate }}">
+				<Label text="&#xf015;" class="far bottom-nav-icon" textWrap="true" />
+				<Label text="Home" textWrap="true" class="bottom-nav-text" />
+		</StackLayout>
+		<StackLayout id="staff" class="bottom-nav-btn" tap="{{ navigate }}" col="1">
+				<Label text="&#xf0c0;" class="far bottom-nav-icon" textWrap="true" />
+				<Label text="Staff" textWrap="true" class="bottom-nav-text" />
+		</StackLayout>
+		<StackLayout id="messages" class="bottom-nav-btn" tap="{{ navigate }}" col="2">
+				<Label text="&#xf27a;" class="far bottom-nav-icon" textWrap="true" />
+				<Label text="Messages" textWrap="true" class="bottom-nav-text" />
+		</StackLayout>
+		<StackLayout id="settings" class="bottom-nav-btn" tap="{{ navigate }}" col="3">
+				<Label text="&#xf085;" class="far bottom-nav-icon" textWrap="true" />
+				<Label text="Settings" textWrap="true" class="bottom-nav-text" />
+		</StackLayout>
+	</GridLayout>
+</GridLayout>

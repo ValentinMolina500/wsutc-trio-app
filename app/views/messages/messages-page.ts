@@ -1,7 +1,7 @@
 import { EventData, Page, Color } from "tns-core-modules/ui/page/page";
 import { fromObject } from "tns-core-modules/data/observable/observable";
 import { ListView, ItemEventData } from "tns-core-modules/ui/list-view/list-view";
-import { Frame } from "tns-core-modules/ui/frame/frame";
+import { Frame, isIOS, PercentLength } from "tns-core-modules/ui/frame/frame";
 import ViewModel from "./messages-vm";
 import { NavigatedData } from 'tns-core-modules/ui/page';
 import Store from '../../store/store';//store adapter
@@ -13,6 +13,10 @@ export function onNavigatingTo(args: NavigatedData): void {
     let page = <Page>args.object;
     page.bindingContext = ViewModel;
     
+    if (isIOS) {
+        const stackLayout = page.getViewById("main-view");
+        stackLayout.style.marginBottom = PercentLength.parse("39");
+    }
  
     // page.bindingContext = fromObject({
     //     conversations: [],
