@@ -1,3 +1,53 @@
-<Page>
-    <Label text="Testing!" />
+<Page loaded="onLoaded">
+    <ActionBar class="action-bar" title="Videos" />
+    <GridLayout class="main-container" rows="auto, *">
+        <ScrollView class="top-bar" orientation="horizontal">
+            <GridLayout columns="auto, auto, auto, auto, auto, auto">
+                <StackLayout col="0" class="top-bar-item" >
+                    <Label class="top-bar-icon-active linear-icons" text="&#xe83a;" />
+                    <Label class="top-bar-text-active" text="Career" />
+                </StackLayout>
+                <StackLayout col="1" class="top-bar-item" >
+                    <Label class="top-bar-icon linear-icons" text="&#xe75a;" />
+                    <Label class="top-bar-text" text="Financial" />
+                </StackLayout>
+                <StackLayout col="2" class="top-bar-item" >
+                    <Label class="top-bar-icon linear-icons" text="&#xe712;" />
+                    <Label class="top-bar-text" text="Study Skills" />
+                </StackLayout>
+                <StackLayout col="3" class="top-bar-item">
+                    <Label class="top-bar-icon linear-icons" text="&#xe7ec;" />
+                    <Label class="top-bar-text" text="Stress" />
+                </StackLayout>
+                <StackLayout col="4" class="top-bar-item">
+                     <Label class="top-bar-icon linear-icons" text="&#xe6da;" />
+                    <Label class="top-bar-text" text="Majors" />
+                </StackLayout>
+                <StackLayout col="5" class="top-bar-item">
+                    <Label class="top-bar-icon linear-icons" text="&#xe82c;" />
+                    <Label class="top-bar-text" text="Academics" />
+                </StackLayout>
+            </GridLayout>
+
+           
+            
+        </ScrollView>
+
+        <GridLayout row="1"  background="#ecf4fa">
+            <ListView items="{{ videos }}" class="video-list-container">
+                <ListView.itemTemplate>
+                    <GridLayout width="100%" rows="*, *" height="200" class="video-container">
+                        <Image rowSpan="2" stretch="aspectFill" class="video-thumbnail" src="{{ thumbnail}}" />
+                        <GridLayout row="2" verticalAligment="bottom"  rows="*">
+                            <StackLayout class="stack">
+
+                                <Label  class="video-title" text="{{ title }}" />
+                                <Label row="1" class="video-timestamp" text="{{ timestamp }}" />
+                            </StackLayout>
+                        </GridLayout>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+           </GridLayout>
+    </GridLayout>
 </Page>
