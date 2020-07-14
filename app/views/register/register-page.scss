@@ -1,60 +1,54 @@
 .heading {
-	font-size: 20;
-	color: #060606;
-	margin-bottom:8;
+    font-size: 24;
+    margin-bottom: 24;
+    color: #1a202c;
 }
 
 .input-heading {
-	color:  #718096;
-	font-size: 18;
+    font-size: 14;
+    margin-top: 16;
+    color:  #2d3748;
 }
 
-.label {
-	margin: 16 0 0 16;
+.register-input {
+    font-size: 16;
+    border-color: #2d3748;
+    border-bottom-width: 1;
+    padding: 4 0;
+    color: #1a202c;
+}
+.main-container {
+    background: #fff;
+    margin: 24;
 }
 
-.input {
-	margin: 0 11;
+.register-button {
+    background: linear-gradient(to right, #c60c30, #f72f36); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: 40 16;
+    padding: 16 0;
+    border-radius: 100%;
+    color: white;
+    font-size: 16;
 }
 
-.submit-btn {
-	margin: 0 16;
-	color: white;
-	background-color: #c60c30;
+.error-text {
+    font-size: 12;
+    color: #b00020;
 }
 
-.register-container {
-	background: #fff;
-	vertical-align: top;
-	padding: 16;
-	border-radius: 5;
+.error-text.collapsed {
+    visibility: collapse;
 }
-
-Page {
-	background: #ecf4fa;
-}
-
-TextField {
-	margin-bottom: 8;
-	color: #060606;
-}
-
-Button {
-	margin-top: 8;
-}
-
-.tooltip-off {
-	visibility: collapse;
-}
-
-.tooltip {
-	color: #B00020;
-	animation-name: appear;
-	animation-duration: 2s;
+.error-text.visible {
+    visibility: visible;
+    animation-name: appear;
+    animation-duration: 1s;
 
 }
 
 @keyframes appear {
-	from { opacity: 0; visibility: collapse; }
-	to { opacity: 1; visibility: visible; }
+    from { opacity: 0; }
+    to { opacity: 1; }
+
+
 }
