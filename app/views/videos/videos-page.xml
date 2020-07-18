@@ -2,30 +2,38 @@
     <ActionBar class="action-bar" title="Videos" />
     <GridLayout class="main-container" rows="auto, *">
         <ScrollView class="top-bar" orientation="horizontal">
-            <GridLayout columns="auto, auto, auto, auto, auto, auto">
-                <StackLayout col="0" class="top-bar-item" >
+            <GridLayout columns="auto, auto, auto, auto, auto, auto, auto, auto">
+                 <StackLayout col="0" class="top-bar-item" >
+                    <Label class="top-bar-icon linear-icons" text="&#xe716;" />
+                    <Label class="top-bar-text" text="Bookmarked" />
+                </StackLayout>
+                <StackLayout col="1" class="top-bar-item" >
                     <Label class="top-bar-icon-active linear-icons" text="&#xe83a;" />
                     <Label class="top-bar-text-active" text="Career" />
                 </StackLayout>
-                <StackLayout col="1" class="top-bar-item" >
+                <StackLayout col="2" class="top-bar-item" >
                     <Label class="top-bar-icon linear-icons" text="&#xe75a;" />
                     <Label class="top-bar-text" text="Financial" />
                 </StackLayout>
-                <StackLayout col="2" class="top-bar-item" >
+                <StackLayout col="3" class="top-bar-item" >
                     <Label class="top-bar-icon linear-icons" text="&#xe712;" />
                     <Label class="top-bar-text" text="Study Skills" />
                 </StackLayout>
-                <StackLayout col="3" class="top-bar-item">
-                    <Label class="top-bar-icon linear-icons" text="&#xe7ec;" />
+                <StackLayout col="4" class="top-bar-item">
+                    <Label class="top-bar-icon linear-icons" text="&#xe7e8;" />
                     <Label class="top-bar-text" text="Stress" />
                 </StackLayout>
-                <StackLayout col="4" class="top-bar-item">
+                <StackLayout col="5" class="top-bar-item">
                      <Label class="top-bar-icon linear-icons" text="&#xe6da;" />
                     <Label class="top-bar-text" text="Majors" />
                 </StackLayout>
-                <StackLayout col="5" class="top-bar-item">
-                    <Label class="top-bar-icon linear-icons" text="&#xe82c;" />
+                <StackLayout col="6" class="top-bar-item">
+                    <Label class="top-bar-icon linear-icons" text="&#xe719;" />
                     <Label class="top-bar-text" text="Academics" />
+                </StackLayout>
+                <StackLayout col="7" class="top-bar-item">
+                    <Label class="top-bar-icon linear-icons" text="&#xe701;" />
+                    <Label class="top-bar-text" text="All Videos" />
                 </StackLayout>
             </GridLayout>
 
@@ -34,7 +42,7 @@
         </ScrollView>
 
         <GridLayout row="1"  background="#ecf4fa">
-            <ListView items="{{ videos }}" class="video-list-container">
+            <ListView items="{{ videos }}" itemTap="{{ onVideoTap }}" class="video-list-container">
                 <ListView.itemTemplate>
                     <GridLayout width="100%" rows="*, *" height="200" class="video-container">
                         <Image rowSpan="2" stretch="aspectFill" class="video-thumbnail" src="{{ thumbnail}}" />
@@ -45,6 +53,8 @@
                                 <Label row="1" class="video-timestamp" text="{{ timestamp }}" />
                             </StackLayout>
                         </GridLayout>
+
+                        <Label row="0" class="{{ bookmarked ? 'linear-icons bookmark-icon' : 'linear-icons bookmark-icon-active' }}" text="&#xe716;" />
                     </GridLayout>
                 </ListView.itemTemplate>
             </ListView>

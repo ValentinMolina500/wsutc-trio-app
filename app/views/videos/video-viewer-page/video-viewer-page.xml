@@ -1,0 +1,10 @@
+<Page loaded="onLoaded">
+    <ActionBar class="action-bar" title="View Video" />
+    <GridLayout rows="auto, auto, *">
+        <WebView row="0" height="250"  class="card-img" src="<!DOCTYPE html><html style='margin: 0; padding: 0; width: 100%; height: 100%'><body style='margin: 0; padding: 0; width: 100%; height: 100%'><iframe width='100%' height='100%' style='margin: 0; padding: 0; border: none' src='https://www.youtube.com/embed/X3RSvZWbwt0'></iframe><html></body></html>"/>
+        <StackLayout class="video-description-container" row="1">
+            <Label class="video-title" text="{{ videoTitle }}" />
+            <Label class="video-timestamp" text="{{ videoTimestamp }}" />
+        </StackLayout>
+    </GridLayout>
+</Page>

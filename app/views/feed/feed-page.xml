@@ -22,8 +22,8 @@
                     </RL:Ripple>
                     <!-- <dd:DropDown items="{{ ddItems }}" colSpan="2" rowSpan="2" class="drop-down" /> -->
                     <Label verticalAlignment="top"  col="1" row="1" class="posted-time" text="{{ visibleTimestamp }}" />
-                    <!-- <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" /> -->
-                    <WebView  height="200" row="2" col="0" colSpan="2" class="card-img" src="<!DOCTYPE html><html style='margin: 0; padding: 0; width: 100%; height: 100%'><body style='margin: 0; padding: 0; width: 100%; height: 100%'><iframe width='100%' height='100%' style='margin: 0; padding: 0; border: none' src='https://www.youtube.com/embed/X3RSvZWbwt0'></iframe><html></body></html>"/>
+                    <Image visibility="{{ image ? 'visible' : 'collapse' }}" class="card-img" row="2" col="0" colSpan="2" src="{{ image }}" />
+                    <!-- <WebView  height="200" row="2" col="0" colSpan="2" class="card-img" src="<!DOCTYPE html><html style='margin: 0; padding: 0; width: 100%; height: 100%'><body style='margin: 0; padding: 0; width: 100%; height: 100%'><iframe width='100%' height='100%' style='margin: 0; padding: 0; border: none' src='https://www.youtube.com/embed/X3RSvZWbwt0'></iframe><html></body></html>"/> -->
                     <Label row="3" textWrap="true" class="card-title-text" colSpan="2" text="{{ title }}" />
                     <Label row="4" colSpan="2" class="card-description-text" text="{{ description }}" />
                     <StackLayout row="5" colSpan="2" class="card-divider" />
