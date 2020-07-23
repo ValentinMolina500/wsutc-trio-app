@@ -19,10 +19,10 @@ class SettingsPage extends Observable {
 		this.homeViewModel = Store.getHomeViewModel();
     }
 
-    public logout(args: EventData) {
+    public async logout(args: EventData) {
         let button = <Page>args.object;
         let page = button.page;
-        Auth.logout();
+        await Auth.logout();
         UserSubject.logout();
         //setTimeout(()=>{
            // this.homeViewModel.setIndex(0); 

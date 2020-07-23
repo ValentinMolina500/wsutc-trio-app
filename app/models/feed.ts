@@ -233,11 +233,19 @@ export async function newImageCacheFeedFactory(result: any, wsuId) {
     tempFeed.postId = result.key;
     tempFeed.key = result.key;
 
-    console.log(result.key);
     if (tempFeed.iconImage) {
-        tempFeed.iconImage = await Cache.getImageByUrl(tempFeed.iconImage);
+        try {
+            tempFeed.iconImage = await Cache.getImageByUrl(tempFeed.iconImage);
+        } catch (err) {
+            console.log("Error! Image failed to cache");
+        }
     }
-    tempFeed.image = await Cache.getImageByUrl(tempFeed.image);
+    
+    try {
+        tempFeed.image = await Cache.getImageByUrl(tempFeed.image);
+    } catch (err) {
+        console.log("Error! Image failed to cache");
+    }
    
     return postFactory(tempFeed, wsuId);
 };

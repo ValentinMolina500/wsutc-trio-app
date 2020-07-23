@@ -165,7 +165,6 @@ export class Firebase {
         });
     }
     public doLogout(): Promise<any> {
-
         return firebase.logout();
     }
 

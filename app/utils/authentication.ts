@@ -50,7 +50,7 @@ export class Authentication {
     }
 
     public logout() {
-        Firebase.doLogout().then(() => console.log("User logged out"));
+        return Firebase.doLogout()
     }
 }
 

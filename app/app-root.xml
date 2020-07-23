@@ -3,7 +3,7 @@
 	<Frame id="top-frame" row="0" defaultPage="views/feed/feed-page"/>
 
 	<GridLayout backgroundColor="#fff" visibility="visible" row="1" columns="*,*,*,*, *" id="bottomNavBar" class="bottom-nav">
-		<StackLayout id="feed" class="bottom-nav-btn-active" color="#f72f36" col="0" tap="{{ navigate }}">
+		<StackLayout id="feed" class="bottom-nav-btn bottom-nav-btn-active"  col="0" tap="{{ navigate }}">
 				<Label text="&#xf015;" class="far bottom-nav-icon" textWrap="true" />
 				<Label text="Home" textWrap="true" class="bottom-nav-text" />
 		</StackLayout>

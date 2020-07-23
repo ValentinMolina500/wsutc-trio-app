@@ -27,7 +27,8 @@ export default class LoginPage extends Observable {
         Authentication.login(this.email.trim(), this.password.trim())
             .then(async () => {
                 this.set("btnEnabled", true);
-                Navigator.navigateToHome();
+                let auth = Authentication.isAuthenticated();
+                Navigator.navigateToFeed();
             })
             .catch(() => {
                 dialogs.alert({

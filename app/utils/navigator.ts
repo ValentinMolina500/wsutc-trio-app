@@ -50,6 +50,17 @@ export class Navigator {
         frame.navigate(navigationEntry);
     }
     
+    public navigateToFeed() {
+        const frame = getFrameById("top-frame");
+        const navigationEntry: NavigationEntry = {
+            moduleName: pages.get(Pages.FEED).path,
+            clearHistory: true
+        };
+
+        BottomBar.showBottomBar();
+        frame.navigate(navigationEntry);
+    }
+
     public requestNavigateToBack() {
         let frame = Frame.topmost();
         frame.goBack();
