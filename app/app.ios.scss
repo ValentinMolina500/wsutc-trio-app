@@ -1,16 +1,15 @@
 // Place any CSS rules you want to apply only on Android here
 $wsu-crimson: #981e32;
 $default-font: "Roboto-Regular";
-// $red-accent: #c60c30;
 $red-accent: #f72f36;
-$lightgray: #ecf4fa;
+$lightgray: #eee;
 
 .linear-icons {
     font-family: "Linearicons";
 }
 .fab {
     font-family: "Font Awesome 5 Brands", "fa-brands-400";
-    // font-weight: 400;
+
 }
 
 .fas {
@@ -19,7 +18,6 @@ $lightgray: #ecf4fa;
 
 .far {
     font-family: "Font Awesome 5 Free", "fa-regular-400";
-    // font-weight: 400;
 }
 
 .inter-var {
@@ -90,7 +88,6 @@ Tabs.bottom-nav {
 .wsutc-logo {
     width: 25%;
     height: 25%;
-    // background-color: red;
 }
 
 
@@ -113,13 +110,3 @@ Tabs.bottom-nav {
     vertical-align: middle;
 }
 
-#settings {
-    // background: linear-gradient(to top, white, $lightgray);
-}
-// .register-text {
-//     text-align: center;
-//     vertical-align: middle;
-//     color: gray;
-//     margin-bottom: 24;
-//     font-size: 16;
-// }
