@@ -1,41 +1,40 @@
 {
   "project_info": {
-    "project_number": "910423929795",
-    "firebase_url": "https://wsutc-trio-app.firebaseio.com",
-    "project_id": "wsutc-trio-app",
-    "storage_bucket": "wsutc-trio-app.appspot.com"
+    "project_number": "733934326888",
+    "project_id": "wsutc-trio-app-99170",
+    "storage_bucket": "wsutc-trio-app-99170.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:910423929795:android:ca0e2425e0d52ae0588376",
+        "mobilesdk_app_id": "1:733934326888:android:8ae62c804c4ec141fc57dd",
         "android_client_info": {
           "package_name": "org.nativescript.wsutctrioapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "910423929795-g5mun7lidrfv94rmnlf2nunce96vltfv.apps.googleusercontent.com",
+          "client_id": "733934326888-jo6engoma345n3o9ssf3nht4ovr2j85u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDTmpraiYvsYxlkaXgQrBOZfMadrroHiig"
+          "current_key": "AIzaSyDXOTTpuCv6b2gkHd2Hk0bh0pjcF8Hjdmg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "910423929795-g5mun7lidrfv94rmnlf2nunce96vltfv.apps.googleusercontent.com",
+              "client_id": "733934326888-jo6engoma345n3o9ssf3nht4ovr2j85u.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "910423929795-qkcgief4u6nttqilh3nvjjmj0j01hsvd.apps.googleusercontent.com",
+              "client_id": "733934326888-4cl4vfuo7nbmive6o6niov8evgf85bau.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "org.nativescript.TRIOApp"
+                "bundle_id": "org.nativescript.wsutctrioapp"
               }
             }
           ]
