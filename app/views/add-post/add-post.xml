@@ -1,0 +1,4 @@
+
+<Page loaded="onLoaded"><!-- Same name as in add-post.ts-->
+    <Label text="{{ message }}" />
+</Page>

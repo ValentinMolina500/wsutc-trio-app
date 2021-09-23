@@ -26,33 +26,34 @@ class PostsSubject {
         this.isSet = true;
         let callback = async (result) => {
             try {
-                let post = await newImageCacheFeedFactory(result, this.wsuId);
+                // let post = await newImageCacheFeedFactory(result, this.wsuId);
 
-                console.log(post);
-                if (result.type == "ChildChanged") {
-                    for (let i = 0; i < this.posts.length; i++) {
-                        if (this.posts.getItem(i).postId == post.postId) {
-                            this.posts.getItem(i).update(post, this.wsuId);
-                        }
-                    }
-                } else {
-                    this.posts.push(post);
-                }
+                let post = result;
+                this.posts.push(post.value);
+                // if (result.type == "ChildChanged") {
+                //     for (let i = 0; i < this.posts.length; i++) {
+                //         if (this.posts.getItem(i).postId == post.postId) {
+                //             this.posts.getItem(i).update(post, this.wsuId);
+                //         }
+                //     }
+                // } else {
+                //     this.posts.push(post);
+                // }
 
-                this.posts = new BaseArray<any>(
-                    this.posts.sort((a, b) => {
-                        let at = new Date(a.timestamp).getTime();
-                        let bt = new Date(b.timestamp).getTime();
+                // this.posts = new BaseArray<any>(
+                //     this.posts.sort((a, b) => {
+                //         let at = new Date(a.timestamp).getTime();
+                //         let bt = new Date(b.timestamp).getTime();
 
-                        if (at > bt) {
-                            return -1;
-                        } else if (at < bt) {
-                            return 1;
-                        } else {
-                            return 0;
-                        }
-                    })
-                );
+                //         if (at > bt) {
+                //             return -1;
+                //         } else if (at < bt) {
+                //             return 1;
+                //         } else {
+                //             return 0;
+                //         }
+                //     })
+                // );
 
                 this.notifyObservers();
             } catch (err) {

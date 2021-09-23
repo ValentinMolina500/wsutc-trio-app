@@ -1,7 +1,9 @@
 <Page  iosOverflowSafeArea="false" id="page" navigatingTo="onNavigatingTo" navigatedTo="onNavigatedTo" xmlns:RL="nativescript-ripple" xmlns:dd="nativescript-drop-down">
     <ActionBar class="action-bar" title="What's New" marginBottom="4" />
     
+
     <StackLayout id="main-stack" iosOverflowSafeArea="false">
+        <Button tap="{{ navigateToCreatePost }}" text="Create post" />
     <ListView  height="100%" iosOverflowSafeArea="false" backgroundColor="#ecf4fa" id="feed" separatorColor="#eff0f2" items="{{ feeds }}" itemTemplateSelector="typeOfContent" >
         <ListView.itemTemplates>
             <template key="NEWS">

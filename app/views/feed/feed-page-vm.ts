@@ -11,6 +11,7 @@ import { FeedItem } from '~/models/feed';
 import Cache from "~/utils/image-cache";
 import { ObservableProperty } from '~/observable-property-decorator'; 
 import { ObservableArray } from 'tns-core-modules/data/observable-array/observable-array';
+import { Frame } from "tns-core-modules/ui/frame";
 
 export class FeedPage extends Observable {
 	@ObservableProperty() loaded: boolean;
@@ -25,6 +26,10 @@ export class FeedPage extends Observable {
 	public updatePosts(posts) {
 		this.set("feeds", posts);
 	}
+
+    public navigateToCreatePost(args) {
+        Frame.topmost().navigate("~/views/add-post/add-post");
+    }
 }
 const s = new FeedPage();
 
